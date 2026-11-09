@@ -72,8 +72,17 @@ jobs:
           export KEY_PASSWORD=$(printf "%s" "$KEY_PASSWORD_RAW" | tr -d ' \r\n')
           export STORE_PASSWORD=$(printf "%s" "$STORE_PASSWORD_RAW" | tr -d ' \r\n')
           flutter pub get
-          flutter build apk --release --build-name=1.0.${{ github.run_number }} --build-number=${{ github.run_number }}
-          cp build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/salah-time.apk
+          OUT=build/app/outputs/flutter-apk
+          VER="--build-name=1.0.${{ github.run_number }} --build-number=${{ github.run_number }}"
+          # Small per-CPU APKs for the in-app updater (about half the size).
+          # x86_64 is only for PC emulators, so it is left out of every APK.
+          flutter build apk --release --split-per-abi --target-platform android-arm,android-arm64 $VER
+          cp $OUT/app-arm64-v8a-release.apk $OUT/salah-time-arm64.apk
+          cp $OUT/app-armeabi-v7a-release.apk $OUT/salah-time-arm.apk
+          # Full APK (works on every phone) for sharing, the website and older app versions.
+          flutter build apk --release --target-platform android-arm,android-arm64 $VER
+          cp $OUT/app-release.apk $OUT/salah-time.apk
+          ls -lh $OUT/*.apk
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
@@ -81,9 +90,12 @@ jobs:
           tag_name: v1.0.${{ github.run_number }}
           name: Salah Time 1.0.${{ github.run_number }}
           make_latest: true
-          files: app/build/app/outputs/flutter-apk/salah-time.apk
+          files: |
+            app/build/app/outputs/flutter-apk/salah-time.apk
+            app/build/app/outputs/flutter-apk/salah-time-arm64.apk
+            app/build/app/outputs/flutter-apk/salah-time-arm.apk
 
       - uses: actions/upload-artifact@v4
         with:
           name: salah-time-apk
-          path: app/build/app/outputs/flutter-apk/salah-time.apk
+          path: app/build/app/outputs/flutter-apk/salah-time*.apk
