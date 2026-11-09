@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salah Time — নামাজের সময় ও আজান অ্যাপ</title>
+<meta name="description" content="Salah Time: আপনার লোকেশন অনুযায়ী নামাজের নির্ভুল সময়, অফলাইন আজান, কুরআন, দোয়া, তাসবিহ, কিবলা ও রমজান ক্যালেন্ডার। সম্পূর্ণ ফ্রি।">
+<meta name="theme-color" content="#073b27">
+<meta property="og:title" content="Salah Time — নামাজের সময় ও আজান অ্যাপ">
+<meta property="og:description" content="নামাজের নির্ভুল সময়, অফলাইন আজান, কুরআন, দোয়া, তাসবিহ ও আরও অনেক কিছু। সম্পূর্ণ ফ্রি।">
+<meta property="og:image" content="og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04190e;--g1:#0f5a3c;--g2:#073b27;--gold:#f0cf74;--gold2:#c9972f;--text:#f3f7f4;--muted:#b4cdbf;--line:rgba(230,195,106,.22);--card:rgba(255,255,255,.045)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.bgfx{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 70% 0%,rgba(15,90,60,.75),transparent 70%),radial-gradient(ellipse 60% 50% at 0% 100%,rgba(15,90,60,.45),transparent 70%),var(--bg)}
+.bgfx::after{content:"";position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><g fill='none' stroke='%23e6c36a' stroke-width='1.6'><path d='M60 6 L74 46 L114 60 L74 74 L60 114 L46 74 L6 60 L46 46 Z'/><circle cx='60' cy='60' r='22'/></g></svg>")}
+/* nav */
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(4,25,14,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
+.brand img{width:38px;height:38px;border-radius:50%}
+.brand span{color:var(--gold)}
+.navbtn{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;font-weight:700;padding:8px 18px;border-radius:40px;font-size:15px}
+/* hero */
+.hero{padding:64px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:30px;font-size:14px;color:var(--gold)}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80}
+h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(36px,5.6vw,62px);line-height:1.25;margin:18px 0 14px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#ffe7a6,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:560px}
+.dl{margin-top:30px;display:flex;flex-direction:column;gap:12px;max-width:440px}
+.btn{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:18px;font-weight:700;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;box-shadow:0 14px 40px rgba(201,151,47,.35)}
+.btn.primary:hover{box-shadow:0 18px 50px rgba(201,151,47,.5);transform:translateY(-2px)}
+.btn.ghost{border:1.5px solid var(--line);background:var(--card)}
+.btn svg{flex:none}
+.btn .t1{font-size:19px;line-height:1.2}
+.btn .t2{font-size:13.5px;font-weight:500;opacity:.8;line-height:1.3}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:6px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--text);font-weight:600}
+.phones{position:relative;height:560px}
+.phones img{position:absolute;width:250px;border-radius:34px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.phones .p1{right:150px;top:0;transform:rotate(-5deg);z-index:2}
+.phones .p2{right:0;top:60px;transform:rotate(6deg);opacity:.95}
+.glow{position:absolute;right:40px;top:80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(240,207,116,.3),transparent 65%)}
+/* sections */
+section{padding:56px 0}
+h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(28px,3.6vw,40px);text-align:center;line-height:1.3}
+h2 span{color:var(--gold)}
+.sub{text-align:center;color:var(--muted);margin:8px auto 34px;max-width:560px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.f{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;transition:border-color .2s,transform .2s}
+.f:hover{border-color:rgba(240,207,116,.55);transform:translateY(-3px)}
+.f .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(240,207,116,.12);margin-bottom:14px}
+.f h3{font-size:20px;margin-bottom:4px}
+.f p{color:var(--muted);font-size:15px}
+.video{max-width:900px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.video video{display:block;width:100%;height:auto;background:#000}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;position:relative}
+.step::before{counter-increment:s;content:counter(s,bengali);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;
+ background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;font-weight:700;font-size:20px;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:4px}
+.step p{color:var(--muted);font-size:14.5px}
+.faq{max-width:780px;margin:0 auto}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);margin-top:10px;font-size:15.5px}
+.cta{text-align:center;background:linear-gradient(135deg,rgba(15,90,60,.6),rgba(7,59,39,.4));border:1px solid var(--line);border-radius:30px;padding:48px 20px}
+.cta img{width:96px;height:96px;border-radius:50%;box-shadow:0 0 0 4px rgba(240,207,116,.4)}
+.cta .btn{display:inline-flex;margin-top:22px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--gold)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:860px){
+ .hero{padding:36px 0 20px}
+ .hero .wrap{grid-template-columns:1fr}
+ .hero .txt{text-align:center}.lead{margin:0 auto}.dl{margin:26px auto 0}.meta{justify-content:center}
+ .phones{height:430px;max-width:400px;margin:0 auto;width:100%}
+ .phones img{width:195px}.phones .p1{right:auto;left:8%}.phones .p2{right:6%;top:50px}
+ .glow{right:50%;margin-right:-190px}
+ .grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}
+ section{padding:40px 0}
+}
+@media (max-width:520px){.grid,.steps{grid-template-columns:1fr}.f{display:flex;gap:14px;align-items:flex-start}.f .ic{flex:none;margin:0}
+ .navbtn{display:none}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="bgfx"></div>
+
+<nav><div class="wrap">
+  <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
+  <a class="navbtn" href="#download">ডাউনলোড</a>
+</div></nav>
+
+<header class="hero" id="download"><div class="wrap">
+  <div class="txt">
+    <div class="badge"><span class="dot"></span><span id="verBadge">সর্বশেষ ভার্সন</span></div>
+    <h1>নামাজের সময়, <em>সময়মতো আজান</em></h1>
+    <p class="lead">আপনার লোকেশন অনুযায়ী পাঁচ ওয়াক্ত নামাজের নির্ভুল সময়, ইন্টারনেট ছাড়াও আজান, সাথে কুরআন, দোয়া, তাসবিহ, কিবলা ও রমজান ক্যালেন্ডার। সবকিছু এক অ্যাপে।</p>
+    <div class="dl">
+      <a class="btn primary" id="dlMain" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+        <span><span class="t1">ফ্রি ডাউনলোড করুন</span><br><span class="t2">Android · সব ফোনে চলবে <span id="szMain"></span></span></span>
+      </a>
+      <a class="btn ghost" id="dlSmall" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time-arm64.apk">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+        <span><span class="t1" style="font-size:16.5px">ছোট সাইজ: নতুন ফোনের জন্য</span><br><span class="t2">২০১৭ সালের পরের বেশিরভাগ ফোন <span id="szSmall"></span></span></span>
+      </a>
+      <div class="meta"><span>✓ <b>সম্পূর্ণ ফ্রি</b></span><span>✓ বাংলা ও English</span><span>✓ Android 6.0+</span></div>
+    </div>
+  </div>
+  <div class="phones">
+    <div class="glow"></div>
+    <img class="p1" src="shot-times.jpg" alt="নামাজের সময়ের স্ক্রিন">
+    <img class="p2" src="shot-adhan.jpg" alt="আজানের নোটিফিকেশন">
+  </div>
+</div></header>
+
+<section id="features"><div class="wrap">
+  <h2 class="reveal">যা যা <span>পাবেন</span></h2>
+  <p class="sub reveal">একজন মুসলমানের প্রতিদিনের প্রয়োজনীয় সবকিছু, এক জায়গায়</p>
+  <div class="grid">
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h3>নির্ভুল নামাজের সময়</h3><p>আপনার লোকেশন অনুযায়ী প্রতিদিনের পাঁচ ওয়াক্ত, সাথে পরবর্তী নামাজের কাউন্টডাউন।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="#f0cf74"><path d="M12 3c-3.3 0-6 2.6-6 6v4l-2 3h16l-2-3V9c0-3.4-2.7-6-6-6zm0 19a2.5 2.5 0 0 0 2.4-2h-4.8a2.5 2.5 0 0 0 2.4 2z"/></svg></div><div><h3>অফলাইন আজান</h3><p>ইন্টারনেট না থাকলেও, অ্যাপ বন্ধ থাকলেও ঠিক সময়ে আজান বাজবে।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9.5 4.3 6 4.2 3 5v14c3-.8 6.5-.7 9 1 2.5-1.7 6-1.8 9-1V5c-3-.8-6.5-.7-9 1z"/><path d="M12 6v14"/></svg></div><div><h3>আল-কুরআন</h3><p>১১৪টি সূরা, তিলাওয়াতের অডিও ও বাংলা অনুবাদ। শেষ পড়া জায়গা থেকে আবার শুরু।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><path d="M8 21v-8c0-1.5 2-1.5 2 0v3M10 13V7c0-1.5 2-1.5 2 0v8M16 21v-8c0-1.5-2-1.5-2 0v3M14 13V7"/></svg></div><div><h3>দোয়া</h3><p>প্রতিদিনের প্রয়োজনীয় দোয়া, আরবি ও বাংলা অর্থসহ।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="#f0cf74"><circle cx="12" cy="4" r="1.6"/><circle cx="17" cy="6" r="1.6"/><circle cx="19.5" cy="11" r="1.6"/><circle cx="17" cy="16" r="1.6"/><circle cx="7" cy="16" r="1.6"/><circle cx="4.5" cy="11" r="1.6"/><circle cx="7" cy="6" r="1.6"/><rect x="11" y="17" width="2" height="5" rx="1"/></svg></div><div><h3>ডিজিটাল তাসবিহ</h3><p>এক ট্যাপে গণনা, লক্ষ্য ঠিক করা, প্রতিদিনের হিসাব ও ধারাবাহিকতা।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m12 5 3 7-3 7-3-7z" fill="#f0cf74"/></svg></div><div><h3>কিবলা ও রমজান</h3><p>কিবলার দিক, সেহরি-ইফতারের কাউন্টডাউন, রমজান ক্যালেন্ডার ও জাকাত হিসাব।</p></div></div>
+  </div>
+</div></section>
+
+<section id="video"><div class="wrap">
+  <h2 class="reveal">এক নজরে <span>Salah Time</span></h2>
+  <p class="sub reveal">৩৭ সেকেন্ডে দেখে নিন অ্যাপটি কীভাবে কাজ করে</p>
+  <div class="video reveal"><video src="promo.mp4" poster="poster.jpg" controls playsinline preload="none"></video></div>
+</div></section>
+
+<section id="install"><div class="wrap">
+  <h2 class="reveal">ইনস্টল করার <span>নিয়ম</span></h2>
+  <p class="sub reveal">অ্যাপটি Play Store-এর বাইরে থেকে দেওয়া, তাই প্রথমবার একটা অনুমতি দিতে হবে</p>
+  <div class="steps">
+    <div class="step reveal"><h3>ডাউনলোড</h3><p>ওপরের "ফ্রি ডাউনলোড করুন" বাটনে চাপুন। ফাইল পুরোপুরি নামা পর্যন্ত অপেক্ষা করুন।</p></div>
+    <div class="step reveal"><h3>ফাইল খুলুন</h3><p>নোটিফিকেশন বা Downloads থেকে <b>salah-time.apk</b> ফাইলে চাপুন।</p></div>
+    <div class="step reveal"><h3>অনুমতি দিন</h3><p>"Install unknown apps" বা "অজানা অ্যাপ ইনস্টল" দেখালে <b>Settings</b> থেকে চালু করে ফিরে আসুন।</p></div>
+    <div class="step reveal"><h3>ইনস্টল</h3><p><b>Install</b> চাপুন, তারপর অ্যাপ খুলে লোকেশন ও নোটিফিকেশনের অনুমতি দিন।</p></div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2 class="reveal">সাধারণ <span>প্রশ্ন</span></h2>
+  <p class="sub reveal"></p>
+  <div class="faq">
+    <details class="reveal"><summary>অ্যাপটি কি সত্যিই ফ্রি?</summary><p>হ্যাঁ, Salah Time সম্পূর্ণ ফ্রি। কোনো সাবস্ক্রিপশন বা লুকানো খরচ নেই।</p></details>
+    <details class="reveal"><summary>"App not installed" বা "package appears to be invalid" দেখাচ্ছে কেন?</summary><p>সাধারণত ফাইল পুরো ডাউনলোড না হলে এটা হয়। ফাইলটি মুছে আবার ডাউনলোড করুন। তারপরও না হলে "ছোট সাইজ" বাটনের বদলে মূল "ফ্রি ডাউনলোড করুন" বাটন থেকে নামান, এটা সব ফোনে চলে।</p></details>
+    <details class="reveal"><summary>Play Protect সতর্কবার্তা দেখাচ্ছে, কী করব?</summary><p>Play Store-এর বাইরের অ্যাপে Google এমন সতর্কবার্তা দেখায়। "More details" থেকে "Install anyway" চাপলেই ইনস্টল হবে।</p></details>
+    <details class="reveal"><summary>নতুন আপডেট কীভাবে পাব?</summary><p>নতুন ভার্সন এলে অ্যাপ নিজেই জানিয়ে দেবে। "এখন আপডেট করুন" চাপলে অ্যাপের ভেতরেই ডাউনলোড হয়ে ইনস্টল স্ক্রিন খুলবে।</p></details>
+    <details class="reveal"><summary>আজান সময়মতো না বাজলে কী করব?</summary><p>অ্যাপের সেটিংস থেকে "আজান ডায়াগনস্টিক" খুলুন। নোটিফিকেশন, Alarms ও Battery-র অনুমতি সেখান থেকে এক চাপে ঠিক করা যায়।</p></details>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="cta reveal">
+    <img src="logo.png" alt="Salah Time">
+    <h2 style="margin-top:16px">আজই শুরু করুন <span>Salah Time</span></h2>
+    <p class="sub" style="margin-bottom:0">নামাজের সময় নিয়ে আর কোনো চিন্তা নয়</p>
+    <a class="btn primary" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      <span class="t1">ফ্রি ডাউনলোড করুন</span>
+    </a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© <span id="yr">2026</span> Salah Time · It's Bayzid</span>
+  <span><a href="https://dntsalah.netlify.app/">অ্যাপকে সহায়তা করুন</a></span>
+</div></footer>
+
+<script>
+// Bangla digits
+const bn=s=>String(s).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
+document.getElementById('yr').textContent=new Date().getFullYear();
+// latest version + file sizes from GitHub (fails quietly; the buttons work without it)
+fetch('https://api.github.com/repos/khanbhai19u-spec/salah.time/releases/latest')
+ .then(r=>r.ok?r.json():Promise.reject())
+ .then(j=>{
+   const v=(j.tag_name||'').replace(/^v/,'');
+   if(v)document.getElementById('verBadge').textContent='সর্বশেষ ভার্সন '+bn(v);
+   const mb=n=>'· '+bn((n/1048576).toFixed(0))+' MB';
+   for(const a of j.assets||[]){
+     if(a.name==='salah-time.apk')document.getElementById('szMain').textContent=mb(a.size);
+     if(a.name==='salah-time-arm64.apk')document.getElementById('szSmall').textContent=mb(a.size);
+   }
+   if(!(j.assets||[]).some(a=>a.name==='salah-time-arm64.apk'))document.getElementById('dlSmall').style.display='none';
+ }).catch(()=>{});
+// scroll reveal
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12}):null;
+document.querySelectorAll('.reveal').forEach(el=>io?io.observe(el):el.classList.add('in'));
+</script>
+</body>
+</html>
