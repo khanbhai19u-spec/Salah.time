@@ -93,7 +93,10 @@ jobs:
           cp $OUT/app-release.apk $OUT/salah-time.apk
           ls -lh $OUT/*.apk
 
+      # Only main/master publish a release (users + website update from it).
+      # Builds started from any other branch are test builds: APK as artifact only.
       - name: Publish GitHub Release
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
