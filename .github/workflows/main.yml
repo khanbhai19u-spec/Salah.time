@@ -80,7 +80,9 @@ jobs:
           export STORE_PASSWORD=$(printf "%s" "$STORE_PASSWORD_RAW" | tr -d ' \r\n')
           flutter pub get
           OUT=build/app/outputs/flutter-apk
-          VER="--build-name=1.0.${{ github.run_number }} --build-number=${{ github.run_number }}"
+          # versionCode 3000+run for ALL apks (old split apks used 1xxx/2xxx): any installed
+          # variant can update to any new one; the version name stays 1.0.<run>
+          VER="--build-name=1.0.${{ github.run_number }} --build-number=$((3000 + ${{ github.run_number }}))"
           # Gradle download sometimes fails with 504 from GitHub: retry up to 3 times
           for i in 1 2 3; do
             flutter build apk --release --split-per-abi --target-platform android-arm,android-arm64 $VER && break
@@ -92,6 +94,13 @@ jobs:
           flutter build apk --release --target-platform android-arm,android-arm64 $VER
           cp $OUT/app-release.apk $OUT/salah-time.apk
           ls -lh $OUT/*.apk
+          # all three APKs must carry the same versionCode, else switching between them fails
+          AAPT=$(ls $ANDROID_HOME/build-tools/*/aapt | sort -V | tail -n 1)
+          for f in $OUT/salah-time.apk $OUT/salah-time-arm64.apk $OUT/salah-time-arm.apk; do
+            $AAPT dump badging "$f" | grep -o "versionCode='[0-9]*'"
+          done | sort -u > /tmp/vc.txt
+          cat /tmp/vc.txt
+          if [ "$(wc -l < /tmp/vc.txt)" != "1" ]; then echo "ERROR: APK version codes differ"; exit 1; fi
 
       # Only main/master publish a release (users + website update from it).
       # Builds started from any other branch are test builds: APK as artifact only.
