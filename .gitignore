@@ -1,0 +1,5 @@
+# never commit signing material; it lives in GitHub Actions Secrets
+signing-secrets.txt
+*.jks
+*.keystore
+key.properties
