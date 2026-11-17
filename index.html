@@ -182,6 +182,17 @@ footer{border-top:1px solid var(--line);padding:28px 0 calc(36px + env(safe-area
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
 footer .brand{font-size:16px;color:var(--text)}footer .brand img{width:30px;height:30px}
 footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);font-weight:600}
+.safe{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.safe-hero{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--line2);padding:30px;background:linear-gradient(150deg,rgba(15,90,60,.7),rgba(7,59,39,.35));display:flex;flex-direction:column;justify-content:center}
+.safe-hero::after{content:"";position:absolute;right:-60px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(240,207,116,.22),transparent 70%)}
+.safe-hero .big{width:72px;height:72px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:38px;margin-bottom:18px;box-shadow:0 16px 36px -12px rgba(201,151,47,.8)}
+.safe-hero h3{font-family:"Noto Serif Bengali",serif;font-size:clamp(22px,2.6vw,28px);line-height:1.35}
+.safe-hero p{color:var(--muted);margin-top:8px;font-size:15.5px}
+.safe-list{display:grid;gap:12px}
+.sp{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px}
+.sp .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(74,222,128,.12);color:#4ade80;font-size:22px}
+.sp h4{font-size:16.5px;line-height:1.35}.sp p{color:var(--muted);font-size:14.5px;margin-top:2px}
+@media (max-width:960px){.safe{grid-template-columns:1fr}}
 .mbar{display:none}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -375,6 +386,31 @@ footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);fo
     <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-beads"/></svg></span><div><h3>ডিজিটাল তাসবিহ</h3><p>এক ট্যাপে গণনা, লক্ষ্য ঠিক করা ও প্রতিদিনের হিসাব।</p></div></div>
     <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-moon"/></svg></span><div><h3>রমজান ও জাকাত</h3><p>সেহরি-ইফতার কাউন্টডাউন, ৩০ দিনের ক্যালেন্ডার ও জাকাত হিসাব।</p></div></div>
     <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-quiz"/></svg></span><div><h3>কুইজ ও ইসলামিক জ্ঞান</h3><p>৫৫০+ প্রশ্নের কুইজ, ইসলাম A-Z ও হিজরি ক্যালেন্ডার।</p></div></div>
+  </div>
+</div></section>
+
+<section id="safe"><div class="wrap">
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-shield"/></svg>নিরাপদ ও নির্ভরযোগ্য</span></div>
+  <h2 class="reveal">নিশ্চিন্তে ব্যবহার করুন <span>Salah Time</span></h2>
+  <p class="sub reveal">প্রতিদিনের ইবাদতের সঙ্গী হিসেবে যত্ন নিয়ে বানানো, যাতে কোনো ঝামেলা ছাড়াই চলে</p>
+  <div class="safe">
+    <div class="safe-hero reveal">
+      <span class="big"><svg class="i"><use href="#i-shield"/></svg></span>
+      <h3>নিরাপদ, ঝামেলাহীন আর নিয়মিত আপডেট হওয়া অ্যাপ</h3>
+      <p>কোনো অ্যাকাউন্ট খুলতে হয় না, নাম বা ফোন নম্বর চায় না। ইনস্টল করুন, লোকেশন দিন, ব্যস। নামাজের সময় আর আজান নিজে থেকেই ঠিকঠাক চলবে, ইনশাআল্লাহ।</p>
+      <div class="trust" style="margin-top:18px">
+        <span><svg class="i"><use href="#i-check-circle"/></svg>সম্পূর্ণ ফ্রি</span>
+        <span><svg class="i"><use href="#i-check-circle"/></svg>অফলাইনেও চলে</span>
+        <span><svg class="i"><use href="#i-check-circle"/></svg>নিয়মিত আপডেট</span>
+      </div>
+    </div>
+    <div class="safe-list">
+      <div class="sp reveal"><span class="ico"><svg class="i"><use href="#i-check-circle"/></svg></span><div><h4>কোনো অ্যাকাউন্ট বা লগইন লাগে না</h4><p>নাম, ইমেইল বা ফোন নম্বর ছাড়াই পুরো অ্যাপ ব্যবহার করুন।</p></div></div>
+      <div class="sp reveal"><span class="ico"><svg class="i"><use href="#i-shield"/></svg></span><div><h4>প্রতিটা আপডেট একই চাবিতে সই করা</h4><p>সব ভার্সন একই ডিজিটাল সিগনেচারে সই করা, তাই আপডেট সরাসরি আগের অ্যাপের ওপর বসে, কোনো ডেটা হারায় না।</p></div></div>
+      <div class="sp reveal"><span class="ico"><svg class="i"><use href="#i-bell"/></svg></span><div><h4>নির্ভরযোগ্য আজান</h4><p>আজান ফোনের অ্যালার্ম দিয়ে আগে থেকে সেট থাকে, তাই নেট না থাকলে বা অ্যাপ বন্ধ থাকলেও সময়মতো বাজে।</p></div></div>
+      <div class="sp reveal"><span class="ico"><svg class="i"><use href="#i-zap"/></svg></span><div><h4>হালকা ও দ্রুত</h4><p>কম দামের ফোনেও মসৃণ চলে। পুরনো ফোনের জন্য আলাদা ছোট ভার্সনও আছে।</p></div></div>
+      <div class="sp reveal"><span class="ico"><svg class="i"><use href="#i-chat"/></svg></span><div><h4>সমস্যা হলে সরাসরি জানান</h4><p>অ্যাপের "মতামত ও সমস্যা" থেকে লিখুন। সমাধান হলে অ্যাপ খুললেই জানিয়ে দেওয়া হয়।</p></div></div>
+    </div>
   </div>
 </div></section>
 
