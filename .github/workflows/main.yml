@@ -2,6 +2,13 @@ name: Build APK
 on:
   push:
     branches: [main, master]
+    # website-only changes must not publish a new app release
+    paths-ignore:
+      - 'index.html'
+      - '*.png'
+      - '*.jpg'
+      - '*.mp4'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:

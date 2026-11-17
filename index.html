@@ -2,112 +2,141 @@
 <html lang="bn">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Salah Time — নামাজের সময় ও আজান অ্যাপ</title>
-<meta name="description" content="Salah Time: আপনার লোকেশন অনুযায়ী নামাজের নির্ভুল সময়, অফলাইন আজান, কুরআন, দোয়া, তাসবিহ, কিবলা ও রমজান ক্যালেন্ডার। সম্পূর্ণ ফ্রি।">
-<meta name="theme-color" content="#073b27">
+<meta name="description" content="Salah Time: আপনার লোকেশন অনুযায়ী নামাজের নির্ভুল সময়, অফলাইন আজান, হোম স্ক্রিন উইজেট, লাইভ কিবলা, কুরআন, দোয়া, তাসবিহ ও রমজান ক্যালেন্ডার। সম্পূর্ণ ফ্রি।">
+<meta name="theme-color" content="#04190e">
 <meta property="og:title" content="Salah Time — নামাজের সময় ও আজান অ্যাপ">
-<meta property="og:description" content="নামাজের নির্ভুল সময়, অফলাইন আজান, কুরআন, দোয়া, তাসবিহ ও আরও অনেক কিছু। সম্পূর্ণ ফ্রি।">
+<meta property="og:description" content="নামাজের নির্ভুল সময়, অফলাইন আজান, উইজেট, লাইভ কিবলা, কুরআন, দোয়া ও আরও অনেক কিছু। সম্পূর্ণ ফ্রি।">
 <meta property="og:image" content="og.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="icon-180.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#04190e;--g1:#0f5a3c;--g2:#073b27;--gold:#f0cf74;--gold2:#c9972f;--text:#f3f7f4;--muted:#b4cdbf;--line:rgba(230,195,106,.22);--card:rgba(255,255,255,.045)}
+:root{
+  --bg:#03150c;--gold:#f0cf74;--gold2:#c9972f;--gold3:#ffe7a6;--ink:#08321f;
+  --text:#f3f7f4;--muted:#a9c4b5;--line:rgba(240,207,116,.18);--line2:rgba(240,207,116,.38);
+  --card:rgba(255,255,255,.04);--card2:rgba(255,255,255,.07);--r:24px;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-.bgfx{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 80% 60% at 70% 0%,rgba(15,90,60,.75),transparent 70%),radial-gradient(ellipse 60% 50% at 0% 100%,rgba(15,90,60,.45),transparent 70%),var(--bg)}
-.bgfx::after{content:"";position:absolute;inset:0;opacity:.06;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><g fill='none' stroke='%23e6c36a' stroke-width='1.6'><path d='M60 6 L74 46 L114 60 L74 74 L60 114 L46 74 L6 60 L46 46 Z'/><circle cx='60' cy='60' r='22'/></g></svg>")}
-/* nav */
-nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(4,25,14,.72);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:20px}
-.brand img{width:38px;height:38px;border-radius:50%}
+img{display:block;max-width:100%}
+svg.i{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.bgfx{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(60% 50% at 80% -5%,rgba(15,90,60,.85),transparent 70%),
+  radial-gradient(45% 40% at -5% 35%,rgba(15,90,60,.5),transparent 70%),
+  radial-gradient(40% 35% at 105% 75%,rgba(201,151,47,.12),transparent 70%),var(--bg)}
+.bgfx::after{content:"";position:absolute;inset:0;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><g fill='none' stroke='%23e6c36a' stroke-width='1.4'><path d='M60 6 L74 46 L114 60 L74 74 L60 114 L46 74 L6 60 L46 46 Z'/><circle cx='60' cy='60' r='22'/></g></svg>");mask-image:linear-gradient(#000,transparent 85%);-webkit-mask-image:linear-gradient(#000,transparent 85%)}
+nav{position:sticky;top:0;z-index:50;padding:12px 0}
+nav .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px;padding:0 10px 0 14px;border:1px solid var(--line);border-radius:22px;background:rgba(4,25,14,.66);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);box-shadow:0 10px 40px -18px #000}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px}
+.brand img{width:38px;height:38px;border-radius:50%;box-shadow:0 0 0 2px rgba(240,207,116,.55)}
 .brand span{color:var(--gold)}
-.navbtn{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;font-weight:700;padding:8px 18px;border-radius:40px;font-size:15px}
-/* hero */
-.hero{padding:64px 0 40px}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:30px;font-size:14px;color:var(--gold)}
-.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80}
-h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(36px,5.6vw,62px);line-height:1.25;margin:18px 0 14px}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#ffe7a6,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:560px}
-.dl{margin-top:30px;display:flex;flex-direction:column;gap:12px;max-width:440px}
-.btn{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:18px;font-weight:700;transition:transform .15s,box-shadow .15s}
+.links{display:flex;gap:4px}
+.links a{color:var(--muted);font-weight:600;font-size:15px;padding:8px 14px;border-radius:14px;transition:color .2s,background .2s}
+.links a:hover{color:var(--text);background:var(--card2)}
+.navbtn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold3),var(--gold) 45%,var(--gold2));color:var(--ink);font-weight:700;padding:10px 18px;border-radius:16px;font-size:15px;box-shadow:0 8px 24px -8px rgba(201,151,47,.7)}
+.navbtn svg{font-size:18px}
+.hero{padding:40px 0 30px;overflow:hidden}
+.hero .top{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.badge{display:inline-flex;gap:9px;align-items:center;border:1px solid var(--line);background:var(--card);padding:7px 15px 7px 9px;border-radius:40px;font-size:14px;color:var(--gold)}
+.badge .new{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-weight:700;font-size:12px;padding:2px 10px;border-radius:20px}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.18)}
+h1{font-family:"Noto Serif Bengali",serif;font-weight:800;font-size:clamp(38px,5.8vw,66px);line-height:1.2;margin:20px 0 16px;letter-spacing:-.5px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--gold3) 50%,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16.5px,1.9vw,19.5px);color:var(--muted);max-width:560px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 22px;border-radius:18px;font-weight:700;font-size:17px;transition:transform .18s,box-shadow .18s,border-color .18s}
 .btn:active{transform:scale(.98)}
-.btn.primary{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;box-shadow:0 14px 40px rgba(201,151,47,.35)}
-.btn.primary:hover{box-shadow:0 18px 50px rgba(201,151,47,.5);transform:translateY(-2px)}
-.btn.ghost{border:1.5px solid var(--line);background:var(--card)}
-.btn svg{flex:none}
-.btn .t1{font-size:19px;line-height:1.2}
-.btn .t2{font-size:13.5px;font-weight:500;opacity:.8;line-height:1.3}
-.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:6px;font-size:14px;color:var(--muted)}
-.meta b{color:var(--text);font-weight:600}
-.phones{position:relative;height:560px}
-.phones img{position:absolute;width:250px;border-radius:34px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
-.phones .p1{right:150px;top:0;transform:rotate(-5deg);z-index:2}
-.phones .p2{right:0;top:60px;transform:rotate(6deg);opacity:.95}
-.glow{position:absolute;right:40px;top:80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(240,207,116,.3),transparent 65%)}
-/* sections */
-section{padding:56px 0}
-h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(28px,3.6vw,40px);text-align:center;line-height:1.3}
-h2 span{color:var(--gold)}
-.sub{text-align:center;color:var(--muted);margin:8px auto 34px;max-width:560px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.f{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;transition:border-color .2s,transform .2s}
-.f:hover{border-color:rgba(240,207,116,.55);transform:translateY(-3px)}
-.f .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(240,207,116,.12);margin-bottom:14px}
-.f h3{font-size:20px;margin-bottom:4px}
-.f p{color:var(--muted);font-size:15px}
-.video{max-width:900px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.video video{display:block;width:100%;height:auto;background:#000}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
-.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:22px;position:relative}
-.step::before{counter-increment:s;content:counter(s,bengali);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;
- background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;font-weight:700;font-size:20px;margin-bottom:12px}
-.step h3{font-size:18px;margin-bottom:4px}
-.step p{color:var(--muted);font-size:14.5px}
-.faq{max-width:780px;margin:0 auto}
-details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:600;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:10px}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";color:var(--gold);font-size:22px;line-height:1}
-details[open] summary::after{content:"−"}
-details p{color:var(--muted);margin-top:10px;font-size:15.5px}
-.cta{text-align:center;background:linear-gradient(135deg,rgba(15,90,60,.6),rgba(7,59,39,.4));border:1px solid var(--line);border-radius:30px;padding:48px 20px}
-.cta img{width:96px;height:96px;border-radius:50%;box-shadow:0 0 0 4px rgba(240,207,116,.4)}
-.cta .btn{display:inline-flex;margin-top:22px}
-footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-footer a{color:var(--gold)}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
-.reveal.in{opacity:1;transform:none}
-/* what's new */
-.navlinks{display:flex;align-items:center;gap:18px}.navlinks a.lk{color:var(--muted);font-weight:600;font-size:15px}.navlinks a.lk:hover{color:var(--gold)}
-.newtag{display:inline-block;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:6px;vertical-align:2px}
-.relhead{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:10px 0 30px}
-.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:30px;font-size:14px;color:var(--muted)}.chip b{color:var(--gold)}
-.newgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+.btn svg.i{font-size:24px}
+.btn.primary{background:linear-gradient(135deg,var(--gold3),var(--gold) 40%,var(--gold2));color:var(--ink);box-shadow:0 16px 40px -12px rgba(201,151,47,.75)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 22px 50px -12px rgba(201,151,47,.9)}
+.btn.ghost{border:1.5px solid var(--line2);background:var(--card)}
+.btn.ghost:hover{border-color:var(--gold)}
+.btn small{display:block;font-size:13px;font-weight:500;opacity:.8;line-height:1.2}
+.btn span{line-height:1.25;text-align:left}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:14.5px;color:var(--muted)}
+.trust span{display:inline-flex;align-items:center;gap:6px}
+.trust svg.i{color:#4ade80;font-size:17px}
+.visual{position:relative;height:600px}
+.halo{position:absolute;left:50%;top:48%;width:440px;height:440px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(240,207,116,.28),transparent 62%)}
+.ring{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);border-radius:50%;border:1px dashed rgba(240,207,116,.22)}
+.ring.r1{width:470px;height:470px;animation:spin 60s linear infinite}.ring.r2{width:340px;height:340px;border-style:solid;border-color:rgba(240,207,116,.1)}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.phone{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:270px;padding:10px;border-radius:44px;background:linear-gradient(160deg,#1b2b22,#07130c);box-shadow:0 0 0 1.5px rgba(240,207,116,.35),0 40px 80px -20px #000,inset 0 0 0 2px #000}
+.phone img{border-radius:34px;width:100%;aspect-ratio:9/19.5;object-fit:cover;object-position:top}
+.float{position:absolute;z-index:3;border-radius:20px;border:1px solid var(--line2);background:rgba(7,40,26,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 50px -15px #000;animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.fl1{left:-20px;bottom:90px;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.fl1 .ico{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:24px}
+.fl1 b{display:block;font-size:15px}.fl1 small{color:var(--muted);font-size:12.5px}
+.fl2{right:-4px;top:150px;padding:12px 16px;text-align:center;animation-delay:-3s}
+.fl2 small{display:block;color:var(--muted);font-size:12px}.fl2 b{font-size:24px;color:var(--gold);font-variant-numeric:tabular-nums;letter-spacing:.5px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.stat{padding:18px;border:1px solid var(--line);border-radius:20px;background:var(--card);display:flex;align-items:center;gap:14px}
+.stat .ico{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;background:rgba(240,207,116,.12);color:var(--gold);font-size:23px}
+.stat b{display:block;font-size:22px;line-height:1.15}.stat small{color:var(--muted);font-size:13.5px}
+section{padding:70px 0}
+.eyebrow{display:flex;justify-content:center}
+.eyebrow span{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--gold);border:1px solid var(--line);background:var(--card);padding:5px 14px;border-radius:30px}
+.eyebrow svg.i{font-size:16px}
+h2{font-family:"Noto Serif Bengali",serif;font-weight:800;font-size:clamp(28px,3.8vw,44px);text-align:center;line-height:1.3;margin-top:14px;letter-spacing:-.3px}
+h2 span{background:linear-gradient(90deg,var(--gold),var(--gold3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{text-align:center;color:var(--muted);margin:10px auto 38px;max-width:600px;font-size:16.5px}
+.ico{flex:none}
+.picker{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.pk{position:relative;display:flex;flex-direction:column;gap:12px;padding:24px;border-radius:var(--r);border:1px solid var(--line);background:var(--card);transition:transform .2s,border-color .2s,background .2s}
+.pk:hover{transform:translateY(-4px);border-color:var(--line2);background:var(--card2)}
+.pk.rec{border-color:var(--gold);background:linear-gradient(160deg,rgba(240,207,116,.13),rgba(255,255,255,.03))}
+.pk .tag{position:absolute;top:-12px;right:18px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:12.5px;font-weight:700;padding:3px 12px;border-radius:20px}
+.pk .ico{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:rgba(240,207,116,.12);color:var(--gold);font-size:27px}
+.pk.rec .ico{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink)}
+.pk h3{font-size:20px;line-height:1.3}
+.pk h3 small{color:var(--muted);font-weight:600;font-size:14px}
+.pk p{color:var(--muted);font-size:14.5px;flex:1}
+.pk .meta{display:flex;gap:8px;flex-wrap:wrap}
+.pill{font-size:12.5px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:20px;padding:2px 10px}
+.pk .go{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:15px;font-weight:700;border:1.5px solid var(--line2);transition:border-color .2s}
+.pk .go svg.i{font-size:20px}
+.pk:hover .go{border-color:var(--gold)}
+.pk.rec .go{background:linear-gradient(135deg,var(--gold3),var(--gold) 40%,var(--gold2));color:var(--ink);border:0}
+.hint{display:flex;gap:12px;align-items:flex-start;margin:18px auto 0;max-width:820px;padding:14px 18px;border-radius:18px;border:1px dashed var(--line2);color:var(--muted);font-size:14.5px}
+.hint svg.i{color:var(--gold);font-size:22px;margin-top:2px}
+.hint b{color:var(--text)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:-18px 0 34px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:30px;font-size:14px;color:var(--muted)}
+.chip b{color:var(--gold)}.chip svg.i{color:var(--gold);font-size:16px}
+.newgrid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
 .ups{display:grid;gap:12px}
 .up{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;transition:border-color .2s,transform .2s}
-.up:hover{border-color:rgba(240,207,116,.55);transform:translateX(4px)}
-.up .ic{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(240,207,116,.12);font-size:22px}
-.up h3{font-size:17.5px;line-height:1.35}.up p{color:var(--muted);font-size:14.5px;margin-top:2px}
-.more{margin-top:14px}.more summary{font-size:16px}.more ul{margin:12px 0 0 2px;list-style:none;display:grid;gap:7px}
-.more li{color:var(--muted);font-size:15px;padding-left:22px;position:relative}.more li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
-.more h4{color:var(--text);font-size:16px;margin:16px 0 4px}
-/* widget mock */
-.wmock{position:relative;padding:20px}
-.wmock::before{content:"";position:absolute;inset:-10px;border-radius:40px;background:radial-gradient(circle at 50% 40%,rgba(240,207,116,.22),transparent 65%);z-index:-1}
-.wg{border-radius:26px;padding:14px 14px 13px;box-shadow:0 26px 60px rgba(0,0,0,.5)}
-.wg.dk{background:linear-gradient(180deg,#0f5a3c,#073b27 55%,#042617);border:1px solid rgba(240,207,116,.35)}
+.up:hover{border-color:var(--line2);transform:translateX(4px)}
+.up .ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(240,207,116,.12);color:var(--gold);font-size:23px}
+.up h3{font-size:17.5px;line-height:1.35;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.up p{color:var(--muted);font-size:14.5px;margin-top:2px}
+.newtag{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:11.5px;font-weight:700;padding:1px 9px;border-radius:20px}
+details{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 20px;margin-bottom:10px;transition:border-color .2s}
+details[open]{border-color:var(--line2)}
+summary{cursor:pointer;font-weight:600;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:22px;height:22px;flex:none;background:var(--gold);-webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'><path d='M12 5v14M5 12h14'/></svg>") center/contain no-repeat;mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'><path d='M12 5v14M5 12h14'/></svg>") center/contain no-repeat;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--muted);margin-top:10px;font-size:15.5px}
+.more{margin-top:14px}
+.more ul{margin:10px 0 0;list-style:none;display:grid;gap:7px}
+.more li{color:var(--muted);font-size:15px;display:flex;gap:9px;align-items:flex-start}
+.more li svg.i{color:var(--gold);font-size:18px;margin-top:3px}
+.more h4{color:var(--text);font-size:15.5px;margin:16px 0 2px;display:flex;align-items:center;gap:8px}
+.more h4 svg.i{color:var(--gold)}
+.wmock{position:relative;padding:18px}
+.wmock::before{content:"";position:absolute;inset:-20px;border-radius:50px;background:radial-gradient(circle at 50% 45%,rgba(240,207,116,.2),transparent 65%);z-index:-1}
+.wg{border-radius:26px;padding:14px 14px 13px;box-shadow:0 26px 60px -12px rgba(0,0,0,.65)}
+.wg.dk{background:linear-gradient(180deg,#0f5a3c,#073b27 55%,#042617);border:1px solid rgba(240,207,116,.35);color:#fff}
 .wg.lt{background:linear-gradient(180deg,#fffef9,#fbf4e2 55%,#f1e3bc);border:1px solid rgba(201,151,47,.5);margin-top:16px;color:#073b27}
 .wh{display:flex;align-items:center;gap:10px}.wh img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 2px #f0cf74}
 .wh .tt{flex:1;min-width:0;line-height:1.3}.wh .tt b{display:block;font-size:13.5px}.wh .tt small{font-size:11.5px;opacity:.7}
@@ -115,183 +144,335 @@ footer a{color:var(--gold)}
 .wh .cd b{display:inline-block;margin-top:3px;font-size:16px;color:#f0cf74;border:1px solid rgba(240,207,116,.45);background:rgba(240,207,116,.12);padding:1px 10px;border-radius:12px;font-variant-numeric:tabular-nums}
 .wg.lt .wh .cd b{color:#9c6f1c;border-color:rgba(201,151,47,.5);background:rgba(201,151,47,.1)}
 .wp{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:11px}
-.wp div{text-align:center;border-radius:14px;padding:6px 2px;background:rgba(255,255,255,.08);border:1px solid rgba(240,207,116,.16);line-height:1.25}
+.wp div{display:flex;flex-direction:column;align-items:center;border-radius:14px;padding:7px 2px 6px;background:rgba(255,255,255,.08);border:1px solid rgba(240,207,116,.16);line-height:1.25}
 .wg.lt .wp div{background:rgba(255,255,255,.7);border-color:rgba(201,151,47,.25)}
-.wp i{display:block;font-style:normal;font-size:15px}.wp small{display:block;color:#f0cf74;font-weight:700;font-size:11.5px}.wg.lt .wp small{color:#9c6f1c}
+.wp svg{width:19px;height:19px;color:#f0cf74;margin-bottom:2px}.wg.lt .wp svg{color:#9c6f1c}
+.wp small{color:#f0cf74;font-weight:700;font-size:11.5px}.wg.lt .wp small{color:#9c6f1c}
 .wp b{font-size:13px}
-.wp div.on{background:linear-gradient(135deg,#fff1b8,#f0cf74,#c9972f);border-color:transparent;color:#2a1a00}.wp div.on small{color:#5a3d00}
-.wcap{text-align:center;color:var(--muted);font-size:14px;margin-top:14px}
-@media (max-width:860px){.newgrid{grid-template-columns:1fr}.newgrid .wmock{order:-1}.wmock{max-width:420px;margin:0 auto;width:100%;padding:6px}}
-@media (max-width:520px){.navlinks a.lk{display:none}}
-@media (max-width:860px){
- .hero{padding:36px 0 20px}
- .hero .wrap{grid-template-columns:1fr}
- .hero .txt{text-align:center}.lead{margin:0 auto}.dl{margin:26px auto 0}.meta{justify-content:center}
- .phones{height:430px;max-width:400px;margin:0 auto;width:100%}
- .phones img{width:195px}.phones .p1{right:auto;left:8%}.phones .p2{right:6%;top:50px}
- .glow{right:50%;margin-right:-190px}
- .grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}
- section{padding:40px 0}
+.wp div.on{background:linear-gradient(135deg,#fff1b8,#f0cf74,#c9972f);border-color:transparent;color:#2a1a00}
+.wp div.on small{color:#5a3d00}.wp div.on svg{color:#4a3200}
+.wcap{display:flex;gap:8px;justify-content:center;align-items:center;color:var(--muted);font-size:14px;margin-top:16px;text-align:center}
+.wcap svg.i{color:var(--gold);font-size:18px}
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.f{position:relative;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:border-color .2s,transform .2s}
+.f:hover{border-color:var(--line2);transform:translateY(-3px)}
+.f::after{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(240,207,116,.12),transparent 70%);pointer-events:none}
+.f .ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:rgba(240,207,116,.12);color:var(--gold);font-size:26px;margin-bottom:14px}
+.f h3{font-size:19px;margin-bottom:4px}
+.f p{color:var(--muted);font-size:15px}
+.f.big{grid-column:span 2;display:flex;gap:22px;align-items:center;background:linear-gradient(135deg,rgba(15,90,60,.55),rgba(255,255,255,.03))}
+.f.big .ico{width:64px;height:64px;font-size:32px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);margin:0}
+.f.big h3{font-size:22px}
+.video{max-width:920px;margin:0 auto;border-radius:28px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 30px 80px -20px rgba(0,0,0,.7)}
+.video video{display:block;width:100%;height:auto;background:#000}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;position:relative}
+.step .n{position:absolute;top:16px;right:18px;font-family:"Noto Serif Bengali",serif;font-size:34px;font-weight:800;color:rgba(240,207,116,.16);line-height:1}
+.step .ico{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:24px;margin-bottom:14px}
+.step h3{font-size:18px;margin-bottom:4px}
+.step p{color:var(--muted);font-size:14.5px}
+.faq{max-width:800px;margin:0 auto}
+.cta{position:relative;overflow:hidden;text-align:center;background:linear-gradient(135deg,rgba(15,90,60,.75),rgba(7,59,39,.5));border:1px solid var(--line2);border-radius:34px;padding:56px 22px}
+.cta::before{content:"";position:absolute;inset:auto -10% -60% -10%;height:120%;background:radial-gradient(50% 50% at 50% 50%,rgba(240,207,116,.18),transparent 70%)}
+.cta>*{position:relative}
+.cta img{width:92px;height:92px;margin:0 auto;border-radius:50%;box-shadow:0 0 0 4px rgba(240,207,116,.4),0 20px 40px -10px #000}
+.cta h2{margin-top:18px}
+.cta .btn{margin-top:24px}
+footer{border-top:1px solid var(--line);padding:28px 0 calc(36px + env(safe-area-inset-bottom));color:var(--muted);font-size:14px;margin-top:30px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px}
+footer .brand{font-size:16px;color:var(--text)}footer .brand img{width:30px;height:30px}
+footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);font-weight:600}
+.mbar{display:none}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (max-width:960px){
+ .links{display:none}
+ .hero .top{grid-template-columns:1fr;gap:10px}
+ .hero .txt{text-align:center}.lead{margin:0 auto}.cta-row,.trust{justify-content:center}
+ .visual{height:520px;max-width:420px;width:100%;margin:0 auto}
+ .phone{width:236px}.fl1{left:0;bottom:60px}.fl2{right:0;top:120px}
+ .halo{width:360px;height:360px}.ring.r1{width:390px;height:390px}.ring.r2{width:290px;height:290px}
+ .stats{grid-template-columns:1fr 1fr}
+ .picker{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+ .newgrid{grid-template-columns:1fr}.newgrid .wmock{order:-1;max-width:430px;margin:0 auto;width:100%;padding:6px}
+ .bento{grid-template-columns:1fr 1fr}.f.big{grid-column:span 2}
+ .steps{grid-template-columns:1fr 1fr}
+ section{padding:52px 0}
 }
-@media (max-width:520px){.grid,.steps{grid-template-columns:1fr}.f{display:flex;gap:14px;align-items:flex-start}.f .ic{flex:none;margin:0}
- .navbtn{display:none}}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (max-width:560px){
+ nav{padding:8px 0}nav .bar{height:56px;border-radius:18px}
+ .navbtn{padding:9px 14px;font-size:14px}
+ .hero{padding:22px 0 10px}
+ .btn{width:100%;justify-content:center}
+ .visual{height:470px}.phone{width:210px;border-radius:38px}.phone img{border-radius:30px}
+ .fl1{padding:10px 12px;bottom:40px}.fl1 .ico{width:38px;height:38px;font-size:20px}.fl1 b{font-size:13.5px}
+ .fl2 b{font-size:20px}
+ .stat{padding:14px;gap:10px}.stat .ico{width:40px;height:40px;font-size:20px}.stat b{font-size:18px}.stat small{font-size:12.5px}
+ .bento,.steps{grid-template-columns:1fr}
+ .f{display:flex;gap:14px;align-items:flex-start}.f .ico{margin:0}
+ .f.big{grid-column:auto;flex-direction:column;align-items:flex-start;gap:14px}
+ body{padding-bottom:78px}
+ .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+ .mbar.show{transform:none}
+ .mbar a{flex:1;justify-content:center;box-shadow:0 18px 40px -10px #000}
+}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.float,.ring.r1{animation:none}}
 </style>
 </head>
 <body>
 <div class="bgfx"></div>
 
-<nav><div class="wrap">
-  <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
-  <div class="navlinks"><a class="lk" href="#new">নতুন কী আছে</a><a class="lk" href="#features">ফিচার</a><a class="navbtn" href="#download">ডাউনলোড</a></div>
-</div></nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></symbol>
+ <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></symbol>
+ <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0"/><path d="M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
+ <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2.5"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+ <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+ <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+ <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+ <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+ <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+ <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6C9.5 4.3 6 4.2 3 5v14c3-.8 6.5-.7 9 1 2.5-1.7 6-1.8 9-1V5c-3-.8-6.5-.7-9 1z"/><path d="M12 6v14"/></symbol>
+ <symbol id="i-hands" viewBox="0 0 24 24"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V12"/><path d="M10 12V4.5a1.5 1.5 0 0 1 3 0V12"/><path d="M13 12V6.5a1.5 1.5 0 0 1 3 0V14"/><path d="M16 9.5a1.5 1.5 0 0 1 3 0V15a7 7 0 0 1-7 7h-1a7 7 0 0 1-5.6-2.8L3 16.5a1.6 1.6 0 0 1 2.4-2.1L7 16"/></symbol>
+ <symbol id="i-beads" viewBox="0 0 24 24"><circle cx="12" cy="4" r="1.6"/><circle cx="17" cy="6" r="1.6"/><circle cx="19.5" cy="11" r="1.6"/><circle cx="17" cy="16" r="1.6"/><circle cx="7" cy="16" r="1.6"/><circle cx="4.5" cy="11" r="1.6"/><circle cx="7" cy="6" r="1.6"/><path d="M12 18v4"/></symbol>
+ <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+ <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></symbol>
+ <symbol id="i-widget" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="8" rx="3"/><rect x="3" y="14" width="8" height="7" rx="2.5"/><rect x="14" y="14" width="7" height="7" rx="2.5"/></symbol>
+ <symbol id="i-quiz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5h.01"/></symbol>
+ <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/></symbol>
+ <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+ <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></symbol>
+ <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0 5.3 5.3l-8.7 8.7a2.1 2.1 0 0 1-3-3z"/><path d="M14.7 6.3 17 4"/></symbol>
+ <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+ <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M2 2l20 20"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M5 12.9a10 10 0 0 1 5.2-2.7M19 12.9a10 10 0 0 0-2.3-1.6"/><path d="M2 8.8a15 15 0 0 1 4.2-2.7M22 8.8A15 15 0 0 0 10.7 5"/><path d="M12 20h.01"/></symbol>
+ <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M12 12v5M9.5 14.5 12 17l2.5-2.5"/></symbol>
+ <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+ <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5.5 3.5-5.5 3.5z"/></symbol>
+ <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5h.01"/></symbol>
+ <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19.5 12.6 12 20l-7.5-7.4A5 5 0 0 1 12 6a5 5 0 0 1 7.5 6.6z"/></symbol>
+ <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5h.01"/></symbol>
+ <symbol id="i-touch" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M12 10.5a1.5 1.5 0 0 1 3 0V12M15 11.5a1.5 1.5 0 0 1 3 0V16a6 6 0 0 1-6 6h-.5a6 6 0 0 1-5-2.7L4 15.6a1.6 1.6 0 0 1 2.5-2L9 16"/></symbol>
+ <symbol id="p-fajr" viewBox="0 0 24 24"><path d="M3 17h18M6 17a6 6 0 0 1 12 0M12 6v3M5.2 9.8l2 1.6M18.8 9.8l-2 1.6M9 20h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+ <symbol id="p-dhuhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="currentColor"/><path d="M19.2 12h2.2M17.1 17.1l1.6 1.6M12 19.2v2.2M6.9 17.1l-1.6 1.6M4.8 12H2.6M6.9 6.9 5.3 5.3M12 4.8V2.6M17.1 6.9l1.6-1.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+ <symbol id="p-asr" viewBox="0 0 24 24"><circle cx="10" cy="9" r="3.6" fill="currentColor"/><path d="M10 2.5v1.6M3.5 9h1.6M5.4 4.4l1.1 1.1M14.6 4.4l-1.1 1.1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M8 19h9.5a3.5 3.5 0 0 0 0-7 4.5 4.5 0 0 0-8.4 1.6A2.7 2.7 0 0 0 8 19z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+ <symbol id="p-maghrib" viewBox="0 0 24 24"><path d="M3 15h18M7 15a5 5 0 0 1 10 0M12 4v5M9.5 6.8 12 9.3l2.5-2.5M7 19h10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="p-isha" viewBox="0 0 24 24"><path d="M15.5 3.5a8.5 8.5 0 1 0 5 13.7 7 7 0 0 1-5-13.7z" fill="currentColor"/><path d="m19 4 .7 1.6 1.6.7-1.6.7L19 8.6l-.7-1.6-1.6-.7 1.6-.7z" fill="currentColor"/></symbol>
+</defs></svg>
 
-<header class="hero" id="download"><div class="wrap">
+<nav><div class="wrap"><div class="bar">
+  <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
+  <div class="links"><a href="#download">ডাউনলোড</a><a href="#new">নতুন কী</a><a href="#features">ফিচার</a><a href="#faq">প্রশ্ন</a></div>
+  <a class="navbtn" href="#download"><svg class="i"><use href="#i-download"/></svg>ডাউনলোড</a>
+</div></div></nav>
+
+<header class="hero"><div class="wrap top">
   <div class="txt">
-    <div class="badge"><span class="dot"></span><span id="verBadge">সর্বশেষ ভার্সন</span></div>
-    <h1>নামাজের সময়, <em>সময়মতো আজান</em></h1>
-    <p class="lead">আপনার লোকেশন অনুযায়ী পাঁচ ওয়াক্ত নামাজের নির্ভুল সময়, ইন্টারনেট ছাড়াও আজান, সাথে কুরআন, দোয়া, তাসবিহ, কিবলা ও রমজান ক্যালেন্ডার। সবকিছু এক অ্যাপে।</p>
-    <div class="dl">
-      <a class="btn primary" id="dlMain" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-        <span><span class="t1">ফ্রি ডাউনলোড করুন</span><br><span class="t2">Android · সব ফোনে চলবে <span id="szMain"></span></span></span>
-      </a>
-      <a class="btn ghost" id="dlSmall" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time-arm64.apk">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
-        <span><span class="t1" style="font-size:16.5px">ছোট সাইজ: নতুন ফোনের জন্য</span><br><span class="t2">২০১৭ সালের পরের বেশিরভাগ ফোন <span id="szSmall"></span></span></span>
-      </a>
-      <div class="meta"><span>✓ <b>সম্পূর্ণ ফ্রি</b></span><span>✓ বাংলা ও English</span><span>✓ Android 6.0+</span></div>
-      <div class="meta" style="margin-top:0"><a href="#new" style="color:var(--gold)">🎉 নতুন আপডেটে কী আছে দেখুন →</a></div>
+    <a class="badge" href="#new"><span class="new">নতুন</span><span class="dot"></span><span id="verBadge">সর্বশেষ ভার্সন</span></a>
+    <h1>নামাজের সময়,<br><em>সময়মতো আজান</em></h1>
+    <p class="lead">লোকেশন অনুযায়ী পাঁচ ওয়াক্ত নামাজের নির্ভুল সময়, ইন্টারনেট ছাড়াও আজান, হোম স্ক্রিন উইজেট, লাইভ কিবলা, কুরআন, দোয়া ও তাসবিহ। সবকিছু এক অ্যাপে, সম্পূর্ণ ফ্রি।</p>
+    <div class="cta-row">
+      <a class="btn primary" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk"><svg class="i"><use href="#i-download"/></svg><span>ফ্রি ডাউনলোড<small>Android · সব ফোনে চলবে <span class="szAll"></span></small></span></a>
+      <a class="btn ghost" href="#download"><svg class="i"><use href="#i-cpu"/></svg><span>অন্য ভার্সন<small>নতুন ও পুরনো ফোনের ছোট APK</small></span></a>
+    </div>
+    <div class="trust">
+      <span><svg class="i"><use href="#i-check-circle"/></svg>সম্পূর্ণ ফ্রি</span>
+      <span><svg class="i"><use href="#i-check-circle"/></svg>বিজ্ঞাপন নেই</span>
+      <span><svg class="i"><use href="#i-check-circle"/></svg>বাংলা ও English</span>
+      <span><svg class="i"><use href="#i-check-circle"/></svg>Android 6.0+</span>
     </div>
   </div>
-  <div class="phones">
-    <div class="glow"></div>
-    <img class="p1" src="shot-times.jpg" alt="নামাজের সময়ের স্ক্রিন">
-    <img class="p2" src="shot-adhan.jpg" alt="আজানের নোটিফিকেশন">
+  <div class="visual">
+    <div class="halo"></div><div class="ring r1"></div><div class="ring r2"></div>
+    <div class="phone"><img src="shot-times.jpg" alt="Salah Time অ্যাপের নামাজের সময়ের স্ক্রিন"></div>
+    <div class="float fl1"><span class="ico"><svg class="i"><use href="#i-bell"/></svg></span><div><b>আজানের সময় হয়েছে</b><small>মাগরিব • ইন্টারনেট ছাড়াও</small></div></div>
+    <div class="float fl2"><small>পরবর্তী এশা</small><b id="heroCd">০১:১৫:২৬</b></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="stats">
+    <div class="stat reveal"><span class="ico"><svg class="i"><use href="#i-download"/></svg></span><div><b id="stDl">১০০+</b><small>মোট ডাউনলোড</small></div></div>
+    <div class="stat reveal"><span class="ico"><svg class="i"><use href="#i-wifi-off"/></svg></span><div><b>অফলাইন</b><small>নেট ছাড়াও আজান</small></div></div>
+    <div class="stat reveal"><span class="ico"><svg class="i"><use href="#i-gift"/></svg></span><div><b>১০০% ফ্রি</b><small>কোনো খরচ নেই</small></div></div>
+    <div class="stat reveal"><span class="ico"><svg class="i"><use href="#i-sparkles"/></svg></span><div><b id="stVer">নিয়মিত</b><small id="stVerSub">নতুন আপডেট</small></div></div>
   </div>
 </div></header>
 
+<section id="download"><div class="wrap">
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-download"/></svg>ডাউনলোড</span></div>
+  <h2 class="reveal">আপনার ফোনের জন্য <span>বেছে নিন</span></h2>
+  <p class="sub reveal">তিনটা ভার্সনেই একই অ্যাপ, শুধু সাইজ আলাদা। বুঝতে না পারলে প্রথমটাই নিন, সব ফোনে চলে।</p>
+  <div class="picker">
+    <a class="pk rec reveal" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk">
+      <span class="tag">প্রস্তাবিত</span>
+      <span class="ico"><svg class="i"><use href="#i-phone"/></svg></span>
+      <h3>সব ফোন</h3>
+      <p>যেকোনো Android ফোনে চলবে। কোনটা নেবেন বুঝতে না পারলে এটাই নিন।</p>
+      <div class="meta"><span class="pill">salah-time.apk</span><span class="pill szAll">—</span></div>
+      <span class="go"><svg class="i"><use href="#i-download"/></svg>ডাউনলোড করুন</span>
+    </a>
+    <a class="pk reveal" id="pk64" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time-arm64.apk">
+      <span class="ico"><svg class="i"><use href="#i-rocket"/></svg></span>
+      <h3>নতুন ফোন <small>(arm64)</small></h3>
+      <p>২০১৭ সালের পরের বেশিরভাগ ফোন। ছোট সাইজ, দ্রুত নামবে।</p>
+      <div class="meta"><span class="pill">salah-time-arm64.apk</span><span class="pill" id="sz64">—</span></div>
+      <span class="go"><svg class="i"><use href="#i-download"/></svg>ডাউনলোড করুন</span>
+    </a>
+    <a class="pk reveal" id="pkArm" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time-arm.apk">
+      <span class="ico"><svg class="i"><use href="#i-history"/></svg></span>
+      <h3>পুরনো ফোন <small>(arm)</small></h3>
+      <p>পুরনো বা কম দামের ফোন, যেখানে নতুন ফোনের ভার্সন ইনস্টল হয় না।</p>
+      <div class="meta"><span class="pill">salah-time-arm.apk</span><span class="pill" id="szArm">—</span></div>
+      <span class="go"><svg class="i"><use href="#i-download"/></svg>ডাউনলোড করুন</span>
+    </a>
+  </div>
+  <div class="hint reveal"><svg class="i"><use href="#i-info"/></svg><span>ছোট ভার্সনে <b>"App not installed"</b> দেখালে <b>"সব ফোন"</b> ভার্সনটা নিন। যেকোনো ভার্সন আগের অ্যাপের ওপরেই আপডেট হবে, কোনো ডেটা হারাবে না।</span></div>
+</div></section>
+
 <section id="new"><div class="wrap">
-  <h2 class="reveal">নতুন আপডেটে <span>কী এসেছে</span></h2>
-  <div class="relhead reveal"><span class="chip">ভার্সন <b id="relVer">নতুন</b></span><span class="chip" id="relDateWrap" style="display:none">প্রকাশ <b id="relDate"></b></span><span class="chip">পুরনো অ্যাপের ওপরেই আপডেট হবে</span></div>
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-sparkles"/></svg>নতুন আপডেট</span></div>
+  <h2 class="reveal">এই আপডেটে <span>কী এসেছে</span></h2>
+  <p class="sub reveal">অনেক নতুন ফিচার আর আগের চেয়ে দ্রুত, মসৃণ অ্যাপ</p>
+  <div class="chips reveal"><span class="chip"><svg class="i"><use href="#i-sparkles"/></svg>ভার্সন <b id="relVer">নতুন</b></span><span class="chip" id="relDateWrap" style="display:none"><svg class="i"><use href="#i-calendar"/></svg>প্রকাশ <b id="relDate"></b></span><span class="chip"><svg class="i"><use href="#i-shield"/></svg>পুরনো অ্যাপের ওপরেই আপডেট</span></div>
   <div class="newgrid">
     <div>
       <div class="ups">
-        <div class="up reveal"><div class="ic">📱</div><div><h3>নতুন হোম স্ক্রিন উইজেট <span class="newtag">নতুন</span></h3><p>সবুজ-সোনালি ও হালকা দুই ডিজাইন। প্রতিটা নামাজের আইকন, এখনের নামাজ সোনালি রঙে, সাথে কাউন্টডাউন।</p></div></div>
-        <div class="up reveal"><div class="ic">🧭</div><div><h3>লাইভ কিবলা কম্পাস <span class="newtag">নতুন</span></h3><p>ফোন ঘোরালেই কাবার দিক দেখাবে, ঠিক দিকে এলে ফোন হালকা কাঁপবে।</p></div></div>
-        <div class="up reveal"><div class="ic">🌙</div><div><h3>রমাদান ক্যালেন্ডার</h3><p>৩০ দিনের সুন্দর কার্ড: সেহরি-ইফতারের সময়, দিনের দোয়া আর রোজার হিসাব।</p></div></div>
-        <div class="up reveal"><div class="ic">💬</div><div><h3>মতামত ও সমস্যা জানান</h3><p>অ্যাপ থেকেই লিখে পাঠান। সমাধান হলে অ্যাপ খুললেই জানিয়ে দেবে।</p></div></div>
-        <div class="up reveal"><div class="ic">⚡</div><div><h3>আরও দ্রুত, আরও মসৃণ</h3><p>অ্যাপ দ্রুত খোলে, অ্যানিমেশন মসৃণ, টেনে রিফ্রেশ এক সেকেন্ডেরও কম সময়ে।</p></div></div>
+        <div class="up reveal"><span class="ico"><svg class="i"><use href="#i-widget"/></svg></span><div><h3>নতুন হোম স্ক্রিন উইজেট <span class="newtag">নতুন</span></h3><p>সবুজ-সোনালি ও হালকা দুই ডিজাইন। প্রতিটা নামাজের আইকন, এখনের নামাজ সোনালি রঙে, সাথে কাউন্টডাউন।</p></div></div>
+        <div class="up reveal"><span class="ico"><svg class="i"><use href="#i-compass"/></svg></span><div><h3>লাইভ কিবলা কম্পাস <span class="newtag">নতুন</span></h3><p>ফোন ঘোরালেই কাবার দিক দেখাবে, ঠিক দিকে এলে ফোন হালকা কাঁপবে।</p></div></div>
+        <div class="up reveal"><span class="ico"><svg class="i"><use href="#i-moon"/></svg></span><div><h3>রমাদান ক্যালেন্ডার</h3><p>৩০ দিনের সুন্দর কার্ড: সেহরি-ইফতারের সময়, দিনের দোয়া আর রোজার হিসাব।</p></div></div>
+        <div class="up reveal"><span class="ico"><svg class="i"><use href="#i-chat"/></svg></span><div><h3>মতামত ও সমস্যা জানান</h3><p>অ্যাপ থেকেই লিখে পাঠান। সমাধান হলে অ্যাপ খুললেই জানিয়ে দেবে।</p></div></div>
+        <div class="up reveal"><span class="ico"><svg class="i"><use href="#i-zap"/></svg></span><div><h3>আরও দ্রুত, আরও মসৃণ</h3><p>অ্যাপ দ্রুত খোলে, অ্যানিমেশন মসৃণ, টেনে রিফ্রেশ এক সেকেন্ডেরও কম সময়ে।</p></div></div>
       </div>
       <details class="more reveal"><summary>সব পরিবর্তনের তালিকা</summary>
-        <h4>✨ নতুন</h4><ul>
-          <li>নতুন নামাজের কার্ড আর ইসলামিক দিনের চলমান পট্টি</li>
-          <li>৫৫০+ ইসলামিক কুইজ আর নতুন দোয়া</li>
-          <li>বন্ধুদের সাথে অ্যাপ শেয়ার</li>
-          <li>নতুন মেনু, নিচের বার, হিজরি ক্যালেন্ডার, জাকাত ও ইসলাম A-Z</li>
-          <li>আজানের নোটিফিকেশনে অ্যাপের লোগো</li>
-          <li>লাইট, ডার্ক ও অটো থিমে সব পেজ সুন্দর</li></ul>
-        <h4>🛠 সমস্যার সমাধান</h4><ul>
-          <li>যেকোনো APK আগের অ্যাপের ওপর সরাসরি ইনস্টল হবে</li>
-          <li>ছোট উইজেট আর কেটে যাবে না</li>
-          <li>এশার পর উইজেটে তারিখ ঠিক দেখাবে</li></ul>
+        <h4><svg class="i"><use href="#i-sparkles"/></svg>নতুন</h4><ul>
+          <li><svg class="i"><use href="#i-check"/></svg>নতুন নামাজের কার্ড আর ইসলামিক দিনের চলমান পট্টি</li>
+          <li><svg class="i"><use href="#i-check"/></svg>৫৫০+ ইসলামিক কুইজ আর নতুন দোয়া</li>
+          <li><svg class="i"><use href="#i-check"/></svg>বন্ধুদের সাথে অ্যাপ শেয়ার</li>
+          <li><svg class="i"><use href="#i-check"/></svg>নতুন মেনু, নিচের বার, হিজরি ক্যালেন্ডার, জাকাত ও ইসলাম A-Z</li>
+          <li><svg class="i"><use href="#i-check"/></svg>আজানের নোটিফিকেশনে অ্যাপের লোগো</li>
+          <li><svg class="i"><use href="#i-check"/></svg>লাইট, ডার্ক ও অটো থিমে সব পেজ সুন্দর</li></ul>
+        <h4><svg class="i"><use href="#i-wrench"/></svg>সমস্যার সমাধান</h4><ul>
+          <li><svg class="i"><use href="#i-check"/></svg>যেকোনো APK আগের অ্যাপের ওপর সরাসরি ইনস্টল হবে</li>
+          <li><svg class="i"><use href="#i-check"/></svg>ছোট উইজেট আর কেটে যাবে না</li>
+          <li><svg class="i"><use href="#i-check"/></svg>এশার পর উইজেটে তারিখ ঠিক দেখাবে</li></ul>
       </details>
     </div>
-    <div class="wmock reveal">
-      <div class="wg dk"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>৭ জমাদিউস সানি ১৪৪৮</b><small>মঙ্গলবার, ১৭ নভেম্বর</small></div><div class="cd"><small>পরবর্তী এশা ৬:২৮</small><br><b>১:১৫:২৬</b></div></div>
-      <div class="wp"><div class=""><i>🌅</i><small>ফজর</small><b>৪:৫৪</b></div><div class=""><i>☀️</i><small>যোহর</small><b>১১:৪২</b></div><div class=""><i>⛅</i><small>আসর</small><b>৩:৩৩</b></div><div class="on"><i>🌇</i><small>মাগরিব</small><b>৫:০৯</b></div><div class=""><i>🌙</i><small>এশা</small><b>৬:২৮</b></div></div></div>
-      <div class="wg lt"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>৭ জমাদিউস সানি ১৪৪৮</b><small>মঙ্গলবার, ১৭ নভেম্বর</small></div><div class="cd"><small>পরবর্তী এশা ৬:২৮</small><br><b>১:১৫:২৬</b></div></div>
-      <div class="wp"><div class=""><i>🌅</i><small>ফজর</small><b>৪:৫৪</b></div><div class=""><i>☀️</i><small>যোহর</small><b>১১:৪২</b></div><div class=""><i>⛅</i><small>আসর</small><b>৩:৩৩</b></div><div class="on"><i>🌇</i><small>মাগরিব</small><b>৫:০৯</b></div><div class=""><i>🌙</i><small>এশা</small><b>৬:২৮</b></div></div></div>
-      <p class="wcap">নতুন উইজেট: হোম স্ক্রিনে চেপে ধরে Widgets থেকে Salah Time বেছে নিন</p>
-    </div>
+    <div class="wmock reveal" id="wmock"></div>
   </div>
 </div></section>
 
 <section id="features"><div class="wrap">
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-sparkles"/></svg>ফিচার</span></div>
   <h2 class="reveal">যা যা <span>পাবেন</span></h2>
   <p class="sub reveal">একজন মুসলমানের প্রতিদিনের প্রয়োজনীয় সবকিছু, এক জায়গায়</p>
-  <div class="grid">
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><h3>নির্ভুল নামাজের সময়</h3><p>আপনার লোকেশন অনুযায়ী প্রতিদিনের পাঁচ ওয়াক্ত, সাথে পরবর্তী নামাজের কাউন্টডাউন।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="#f0cf74"><path d="M12 3c-3.3 0-6 2.6-6 6v4l-2 3h16l-2-3V9c0-3.4-2.7-6-6-6zm0 19a2.5 2.5 0 0 0 2.4-2h-4.8a2.5 2.5 0 0 0 2.4 2z"/></svg></div><div><h3>অফলাইন আজান</h3><p>ইন্টারনেট না থাকলেও, অ্যাপ বন্ধ থাকলেও ঠিক সময়ে আজান বাজবে।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linejoin="round"><path d="M12 6C9.5 4.3 6 4.2 3 5v14c3-.8 6.5-.7 9 1 2.5-1.7 6-1.8 9-1V5c-3-.8-6.5-.7-9 1z"/><path d="M12 6v14"/></svg></div><div><h3>আল-কুরআন</h3><p>১১৪টি সূরা, তিলাওয়াতের অডিও ও বাংলা অনুবাদ। শেষ পড়া জায়গা থেকে আবার শুরু।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><path d="M8 21v-8c0-1.5 2-1.5 2 0v3M10 13V7c0-1.5 2-1.5 2 0v8M16 21v-8c0-1.5-2-1.5-2 0v3M14 13V7"/></svg></div><div><h3>দোয়া</h3><p>প্রতিদিনের প্রয়োজনীয় দোয়া, আরবি ও বাংলা অর্থসহ।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="#f0cf74"><circle cx="12" cy="4" r="1.6"/><circle cx="17" cy="6" r="1.6"/><circle cx="19.5" cy="11" r="1.6"/><circle cx="17" cy="16" r="1.6"/><circle cx="7" cy="16" r="1.6"/><circle cx="4.5" cy="11" r="1.6"/><circle cx="7" cy="6" r="1.6"/><rect x="11" y="17" width="2" height="5" rx="1"/></svg></div><div><h3>ডিজিটাল তাসবিহ</h3><p>এক ট্যাপে গণনা, লক্ষ্য ঠিক করা, প্রতিদিনের হিসাব ও ধারাবাহিকতা।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m12 5 3 7-3 7-3-7z" fill="#f0cf74"/></svg></div><div><h3>কিবলা ও রমজান</h3><p>কিবলার দিক, সেহরি-ইফতারের কাউন্টডাউন, রমজান ক্যালেন্ডার ও জাকাত হিসাব।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="8" rx="3"/><rect x="3" y="14" width="8" height="7" rx="2.5"/><rect x="14" y="14" width="7" height="7" rx="2.5"/></svg></div><div><h3>হোম স্ক্রিন উইজেট</h3><p>অ্যাপ না খুলেই নামাজের সময় ও কাউন্টডাউন। তিন সাইজের সুন্দর উইজেট।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5h.01"/></svg></div><div><h3>ইসলামিক কুইজ ও জ্ঞান</h3><p>৫৫০+ প্রশ্নের কুইজ, ইসলাম A-Z, হিজরি ক্যালেন্ডার ও গুরুত্বপূর্ণ দিন।</p></div></div>
-    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><div><h3>মতামত জানান</h3><p>সমস্যা বা নতুন আইডিয়া সরাসরি অ্যাপ থেকে পাঠান, উত্তর পাবেন অ্যাপেই।</p></div></div>
+  <div class="bento">
+    <div class="f big reveal"><span class="ico"><svg class="i"><use href="#i-bell"/></svg></span><div><h3>অফলাইন আজান, একদম সময়মতো</h3><p>ইন্টারনেট না থাকলেও, অ্যাপ বন্ধ থাকলেও ঠিক সময়ে আজান বাজবে। ১৪ দিনের আজান আগে থেকেই সেট থাকে, ফোন রিস্টার্ট হলেও।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-clock"/></svg></span><div><h3>নির্ভুল নামাজের সময়</h3><p>লোকেশন অনুযায়ী পাঁচ ওয়াক্ত, সাথে পরবর্তী নামাজের কাউন্টডাউন।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-widget"/></svg></span><div><h3>হোম স্ক্রিন উইজেট</h3><p>অ্যাপ না খুলেই নামাজের সময় ও কাউন্টডাউন। তিন সাইজের উইজেট।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-compass"/></svg></span><div><h3>লাইভ কিবলা</h3><p>ফোনের কম্পাস দিয়ে কাবার দিক, ঠিক দিকে এলে কম্পন।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-book"/></svg></span><div><h3>আল-কুরআন</h3><p>১১৪টি সূরা, তিলাওয়াতের অডিও ও বাংলা অনুবাদ।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-hands"/></svg></span><div><h3>দোয়া</h3><p>প্রতিদিনের দোয়া, আরবি ও বাংলা অর্থসহ। প্রিয় দোয়া সেভ করুন।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-beads"/></svg></span><div><h3>ডিজিটাল তাসবিহ</h3><p>এক ট্যাপে গণনা, লক্ষ্য ঠিক করা ও প্রতিদিনের হিসাব।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-moon"/></svg></span><div><h3>রমজান ও জাকাত</h3><p>সেহরি-ইফতার কাউন্টডাউন, ৩০ দিনের ক্যালেন্ডার ও জাকাত হিসাব।</p></div></div>
+    <div class="f reveal"><span class="ico"><svg class="i"><use href="#i-quiz"/></svg></span><div><h3>কুইজ ও ইসলামিক জ্ঞান</h3><p>৫৫০+ প্রশ্নের কুইজ, ইসলাম A-Z ও হিজরি ক্যালেন্ডার।</p></div></div>
   </div>
 </div></section>
 
 <section id="video"><div class="wrap">
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-play"/></svg>ভিডিও</span></div>
   <h2 class="reveal">এক নজরে <span>Salah Time</span></h2>
   <p class="sub reveal">৩৭ সেকেন্ডে দেখে নিন অ্যাপটি কীভাবে কাজ করে</p>
   <div class="video reveal"><video src="promo.mp4" poster="poster.jpg" controls playsinline preload="none"></video></div>
 </div></section>
 
 <section id="install"><div class="wrap">
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-shield"/></svg>ইনস্টল</span></div>
   <h2 class="reveal">ইনস্টল করার <span>নিয়ম</span></h2>
   <p class="sub reveal">অ্যাপটি Play Store-এর বাইরে থেকে দেওয়া, তাই প্রথমবার একটা অনুমতি দিতে হবে</p>
   <div class="steps">
-    <div class="step reveal"><h3>ডাউনলোড</h3><p>ওপরের "ফ্রি ডাউনলোড করুন" বাটনে চাপুন। ফাইল পুরোপুরি নামা পর্যন্ত অপেক্ষা করুন।</p></div>
-    <div class="step reveal"><h3>ফাইল খুলুন</h3><p>নোটিফিকেশন বা Downloads থেকে <b>salah-time.apk</b> ফাইলে চাপুন।</p></div>
-    <div class="step reveal"><h3>অনুমতি দিন</h3><p>"Install unknown apps" বা "অজানা অ্যাপ ইনস্টল" দেখালে <b>Settings</b> থেকে চালু করে ফিরে আসুন।</p></div>
-    <div class="step reveal"><h3>ইনস্টল</h3><p><b>Install</b> চাপুন, তারপর অ্যাপ খুলে লোকেশন ও নোটিফিকেশনের অনুমতি দিন।</p></div>
+    <div class="step reveal"><span class="n">১</span><span class="ico"><svg class="i"><use href="#i-download"/></svg></span><h3>ডাউনলোড</h3><p>ওপরের ডাউনলোড বাটনে চাপুন। ফাইল পুরোপুরি নামা পর্যন্ত অপেক্ষা করুন।</p></div>
+    <div class="step reveal"><span class="n">২</span><span class="ico"><svg class="i"><use href="#i-file"/></svg></span><h3>ফাইল খুলুন</h3><p>নোটিফিকেশন বা Downloads থেকে APK ফাইলে চাপুন।</p></div>
+    <div class="step reveal"><span class="n">৩</span><span class="ico"><svg class="i"><use href="#i-shield"/></svg></span><h3>অনুমতি দিন</h3><p>"Install unknown apps" দেখালে Settings থেকে চালু করে ফিরে আসুন।</p></div>
+    <div class="step reveal"><span class="n">৪</span><span class="ico"><svg class="i"><use href="#i-check"/></svg></span><h3>ইনস্টল</h3><p>Install চাপুন, তারপর লোকেশন ও নোটিফিকেশনের অনুমতি দিন।</p></div>
   </div>
 </div></section>
 
 <section id="faq"><div class="wrap">
+  <div class="eyebrow reveal"><span><svg class="i"><use href="#i-help"/></svg>প্রশ্ন-উত্তর</span></div>
   <h2 class="reveal">সাধারণ <span>প্রশ্ন</span></h2>
-  <p class="sub reveal"></p>
+  <p class="sub reveal">আরও কিছু জানতে চাইলে অ্যাপের "মতামত ও সমস্যা" থেকে লিখুন</p>
   <div class="faq">
-    <details class="reveal"><summary>অ্যাপটি কি সত্যিই ফ্রি?</summary><p>হ্যাঁ, Salah Time সম্পূর্ণ ফ্রি। কোনো সাবস্ক্রিপশন বা লুকানো খরচ নেই।</p></details>
-    <details class="reveal"><summary>"App not installed" বা "package appears to be invalid" দেখাচ্ছে কেন?</summary><p>সাধারণত ফাইল পুরো ডাউনলোড না হলে এটা হয়। ফাইলটি মুছে আবার ডাউনলোড করুন। তারপরও না হলে "ছোট সাইজ" বাটনের বদলে মূল "ফ্রি ডাউনলোড করুন" বাটন থেকে নামান, এটা সব ফোনে চলে।</p></details>
+    <details class="reveal"><summary>অ্যাপটি কি সত্যিই ফ্রি?</summary><p>হ্যাঁ, Salah Time সম্পূর্ণ ফ্রি। কোনো সাবস্ক্রিপশন, বিজ্ঞাপন বা লুকানো খরচ নেই।</p></details>
+    <details class="reveal"><summary>কোন ভার্সনটা নেব?</summary><p>বুঝতে না পারলে "সব ফোন" ভার্সনটা নিন, এটা সব Android ফোনে চলে। নতুন ফোনে "নতুন ফোন (arm64)" ছোট সাইজের, আর খুব পুরনো ফোনে "পুরনো ফোন (arm)"।</p></details>
+    <details class="reveal"><summary>"App not installed" বা "package appears to be invalid" দেখাচ্ছে কেন?</summary><p>সাধারণত ফাইল পুরো ডাউনলোড না হলে বা ফোনের সাথে না মিললে এটা হয়। ফাইলটি মুছে "সব ফোন" ভার্সনটা আবার ডাউনলোড করুন।</p></details>
     <details class="reveal"><summary>Play Protect সতর্কবার্তা দেখাচ্ছে, কী করব?</summary><p>Play Store-এর বাইরের অ্যাপে Google এমন সতর্কবার্তা দেখায়। "More details" থেকে "Install anyway" চাপলেই ইনস্টল হবে।</p></details>
-    <details class="reveal"><summary>উইজেট কীভাবে বসাব?</summary><p>হোম স্ক্রিনের খালি জায়গায় চেপে ধরুন, তারপর "Widgets" থেকে Salah Time খুঁজে পছন্দের সাইজটা টেনে বসান। একবার অ্যাপ খুললেই উইজেটে সময় চলে আসবে।</p></details>
+    <details class="reveal"><summary>উইজেট কীভাবে বসাব?</summary><p>হোম স্ক্রিনের খালি জায়গায় চেপে ধরুন, "Widgets" থেকে Salah Time খুঁজে পছন্দের সাইজটা টেনে বসান। একবার অ্যাপ খুললেই উইজেটে সময় চলে আসবে।</p></details>
     <details class="reveal"><summary>নতুন আপডেট কীভাবে পাব?</summary><p>নতুন ভার্সন এলে অ্যাপ নিজেই জানিয়ে দেবে। "এখন আপডেট করুন" চাপলে অ্যাপের ভেতরেই ডাউনলোড হয়ে ইনস্টল স্ক্রিন খুলবে।</p></details>
     <details class="reveal"><summary>আজান সময়মতো না বাজলে কী করব?</summary><p>অ্যাপের সেটিংস থেকে "আজান ডায়াগনস্টিক" খুলুন। নোটিফিকেশন, Alarms ও Battery-র অনুমতি সেখান থেকে এক চাপে ঠিক করা যায়।</p></details>
+    <details class="reveal"><summary>iPhone-এ চলবে?</summary><p>এখন শুধু Android-এর জন্য। iPhone ভার্সন এলে এই পেজেই জানানো হবে, ইনশাআল্লাহ।</p></details>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="cta reveal">
     <img src="logo.png" alt="Salah Time">
-    <h2 style="margin-top:16px">আজই শুরু করুন <span>Salah Time</span></h2>
+    <h2>আজই শুরু করুন <span>Salah Time</span></h2>
     <p class="sub" style="margin-bottom:0">নামাজের সময় নিয়ে আর কোনো চিন্তা নয়</p>
-    <a class="btn primary" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
-      <span class="t1">ফ্রি ডাউনলোড করুন</span>
-    </a>
+    <a class="btn primary" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk"><svg class="i"><use href="#i-download"/></svg><span>ফ্রি ডাউনলোড করুন<small class="szAll"></small></span></a>
   </div>
 </div></section>
 
 <footer><div class="wrap">
+  <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
   <span>© <span id="yr">2026</span> Salah Time · It's Bayzid</span>
-  <span><a href="https://dntsalah.netlify.app/">অ্যাপকে সহায়তা করুন</a></span>
+  <a class="sup" href="https://dntsalah.netlify.app/"><svg class="i"><use href="#i-heart"/></svg>অ্যাপকে সহায়তা করুন</a>
 </div></footer>
 
+<div class="mbar" id="mbar"><a class="btn primary" href="#download"><svg class="i"><use href="#i-download"/></svg><span>ফ্রি ডাউনলোড করুন</span></a></div>
+
 <script>
-// Bangla digits
 const bn=s=>String(s).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
-document.getElementById('yr').textContent=new Date().getFullYear();
-// latest version + file sizes from GitHub (fails quietly; the buttons work without it)
-fetch('https://api.github.com/repos/khanbhai19u-spec/salah.time/releases/latest')
- .then(r=>r.ok?r.json():Promise.reject())
- .then(j=>{
-   const v=(j.tag_name||'').replace(/^v/,'');
-   if(v){document.getElementById('verBadge').textContent='সর্বশেষ ভার্সন '+bn(v);document.getElementById('relVer').textContent=bn(v);}
-   if(j.published_at){const d=new Date(j.published_at),m=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
-     document.getElementById('relDate').textContent=bn(d.getDate())+' '+m[d.getMonth()]+' '+bn(d.getFullYear());document.getElementById('relDateWrap').style.display='';}
-   const mb=n=>'· '+bn((n/1048576).toFixed(0))+' MB';
-   for(const a of j.assets||[]){
-     if(a.name==='salah-time.apk')document.getElementById('szMain').textContent=mb(a.size);
-     if(a.name==='salah-time-arm64.apk')document.getElementById('szSmall').textContent=mb(a.size);
-   }
-   if(!(j.assets||[]).some(a=>a.name==='salah-time-arm64.apk'))document.getElementById('dlSmall').style.display='none';
- }).catch(()=>{});
+const $=id=>document.getElementById(id);
+$('yr').textContent=new Date().getFullYear();
+
+// widget preview: same prayer icons as the app widget
+(function(){
+  const P=[['fajr','ফজর','৪:৫৪'],['dhuhr','যোহর','১১:৪২'],['asr','আসর','৩:৩৩'],['maghrib','মাগরিব','৫:০৯'],['isha','এশা','৬:২৮']];
+  const w=(cls,on)=>`<div class="wg ${cls}"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>৭ জমাদিউস সানি ১৪৪৮</b><small>মঙ্গলবার, ১৭ নভেম্বর</small></div><div class="cd"><small>পরবর্তী এশা ৬:২৮</small><br><b class="wcd">১:১৫:২৬</b></div></div><div class="wp">${P.map((p,i)=>`<div class="${i===on?'on':''}"><svg><use href="#p-${p[0]}"/></svg><small>${p[1]}</small><b>${p[2]}</b></div>`).join('')}</div></div>`;
+  $('wmock').innerHTML=w('dk',3)+w('lt',3)+'<p class="wcap"><svg class="i"><use href="#i-touch"/></svg>হোম স্ক্রিনে চেপে ধরে Widgets থেকে Salah Time বেছে নিন</p>';
+  let s=4526;
+  const two=n=>String(n).padStart(2,'0');
+  setInterval(()=>{s=s>0?s-1:14400;const h=Math.floor(s/3600),m=Math.floor(s/60)%60,x=s%60;
+    $('heroCd').textContent=bn(two(h)+':'+two(m)+':'+two(x));
+    document.querySelectorAll('.wcd').forEach(e=>e.textContent=bn(h+':'+two(m)+':'+two(x)));},1000);
+})();
+
+// latest release (version, date, sizes) + total downloads of all releases
+const API='https://api.github.com/repos/khanbhai19u-spec/salah.time/releases';
+const MB=n=>bn((n/1048576).toFixed(0))+' MB';
+fetch(API+'/latest').then(r=>r.ok?r.json():Promise.reject()).then(j=>{
+  const v=(j.tag_name||'').replace(/^v/,'');
+  if(v){$('verBadge').textContent='সর্বশেষ ভার্সন '+bn(v);$('relVer').textContent=bn(v);$('stVer').textContent='v'+bn(v);$('stVerSub').textContent='সর্বশেষ ভার্সন';}
+  if(j.published_at){const d=new Date(j.published_at),m=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+    $('relDate').textContent=bn(d.getDate())+' '+m[d.getMonth()]+' '+bn(d.getFullYear());$('relDateWrap').style.display='';}
+  const a=Object.fromEntries((j.assets||[]).map(x=>[x.name,x.size]));
+  if(a['salah-time.apk'])document.querySelectorAll('.szAll').forEach(e=>e.textContent=(e.classList.contains('pill')?'':'· ')+MB(a['salah-time.apk']));
+  if(a['salah-time-arm64.apk'])$('sz64').textContent=MB(a['salah-time-arm64.apk']);else $('pk64').style.display='none';
+  if(a['salah-time-arm.apk'])$('szArm').textContent=MB(a['salah-time-arm.apk']);else $('pkArm').style.display='none';
+}).catch(()=>{});
+fetch(API+'?per_page=100').then(r=>r.ok?r.json():Promise.reject()).then(rs=>{
+  const t=rs.reduce((s,r)=>s+(r.assets||[]).reduce((p,a)=>p+(a.download_count||0),0),0);
+  if(t>0)$('stDl').textContent=bn(t)+'+';
+}).catch(()=>{});
+
 // scroll reveal
-const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12}):null;
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'}):null;
 document.querySelectorAll('.reveal').forEach(el=>io?io.observe(el):el.classList.add('in'));
+// phones: sticky download bar after the hero buttons scroll away (hidden over the download section)
+const mbar=$('mbar'),cta=document.querySelector('.cta-row'),dl=$('download');
+const vis=el=>{const b=el.getBoundingClientRect();return b.bottom>0&&b.top<innerHeight};
+const upd=()=>mbar.classList.toggle('show',!vis(cta)&&!vis(dl));
+addEventListener('scroll',upd,{passive:true});upd();
 </script>
 </body>
 </html>
