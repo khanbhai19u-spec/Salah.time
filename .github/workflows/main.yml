@@ -46,6 +46,9 @@ jobs:
         run: flutter create --platforms=android --org com.bgdph --project-name salah .
 
       - name: Patch Android config
+        env:
+          # AdMob App ID (not a secret): Settings > Secrets and variables > Actions > Variables
+          ADMOB_APP_ID: ${{ vars.ADMOB_APP_ID }}
         run: python3 tools/patch_android.py
 
       - name: Restore signing key
