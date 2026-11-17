@@ -111,6 +111,7 @@ jobs:
           tag_name: v1.0.${{ github.run_number }}
           name: Salah Time 1.0.${{ github.run_number }}
           make_latest: true
+          body_path: CHANGELOG.md
           files: |
             app/build/app/outputs/flutter-apk/salah-time.apk
             app/build/app/outputs/flutter-apk/salah-time-arm64.apk

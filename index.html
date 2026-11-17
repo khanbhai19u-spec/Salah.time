@@ -89,6 +89,40 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 footer a{color:var(--gold)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 .reveal.in{opacity:1;transform:none}
+/* what's new */
+.navlinks{display:flex;align-items:center;gap:18px}.navlinks a.lk{color:var(--muted);font-weight:600;font-size:15px}.navlinks a.lk:hover{color:var(--gold)}
+.newtag{display:inline-block;background:linear-gradient(90deg,var(--gold),var(--gold2));color:#08321f;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;margin-left:6px;vertical-align:2px}
+.relhead{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:10px 0 30px}
+.chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--card);padding:6px 14px;border-radius:30px;font-size:14px;color:var(--muted)}.chip b{color:var(--gold)}
+.newgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+.ups{display:grid;gap:12px}
+.up{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;transition:border-color .2s,transform .2s}
+.up:hover{border-color:rgba(240,207,116,.55);transform:translateX(4px)}
+.up .ic{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(240,207,116,.12);font-size:22px}
+.up h3{font-size:17.5px;line-height:1.35}.up p{color:var(--muted);font-size:14.5px;margin-top:2px}
+.more{margin-top:14px}.more summary{font-size:16px}.more ul{margin:12px 0 0 2px;list-style:none;display:grid;gap:7px}
+.more li{color:var(--muted);font-size:15px;padding-left:22px;position:relative}.more li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:700}
+.more h4{color:var(--text);font-size:16px;margin:16px 0 4px}
+/* widget mock */
+.wmock{position:relative;padding:20px}
+.wmock::before{content:"";position:absolute;inset:-10px;border-radius:40px;background:radial-gradient(circle at 50% 40%,rgba(240,207,116,.22),transparent 65%);z-index:-1}
+.wg{border-radius:26px;padding:14px 14px 13px;box-shadow:0 26px 60px rgba(0,0,0,.5)}
+.wg.dk{background:linear-gradient(180deg,#0f5a3c,#073b27 55%,#042617);border:1px solid rgba(240,207,116,.35)}
+.wg.lt{background:linear-gradient(180deg,#fffef9,#fbf4e2 55%,#f1e3bc);border:1px solid rgba(201,151,47,.5);margin-top:16px;color:#073b27}
+.wh{display:flex;align-items:center;gap:10px}.wh img{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 2px #f0cf74}
+.wh .tt{flex:1;min-width:0;line-height:1.3}.wh .tt b{display:block;font-size:13.5px}.wh .tt small{font-size:11.5px;opacity:.7}
+.wh .cd{text-align:right;line-height:1.2}.wh .cd small{font-size:11px;color:#f0cf74;font-weight:700}.wg.lt .wh .cd small{color:#9c6f1c}
+.wh .cd b{display:inline-block;margin-top:3px;font-size:16px;color:#f0cf74;border:1px solid rgba(240,207,116,.45);background:rgba(240,207,116,.12);padding:1px 10px;border-radius:12px;font-variant-numeric:tabular-nums}
+.wg.lt .wh .cd b{color:#9c6f1c;border-color:rgba(201,151,47,.5);background:rgba(201,151,47,.1)}
+.wp{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:11px}
+.wp div{text-align:center;border-radius:14px;padding:6px 2px;background:rgba(255,255,255,.08);border:1px solid rgba(240,207,116,.16);line-height:1.25}
+.wg.lt .wp div{background:rgba(255,255,255,.7);border-color:rgba(201,151,47,.25)}
+.wp i{display:block;font-style:normal;font-size:15px}.wp small{display:block;color:#f0cf74;font-weight:700;font-size:11.5px}.wg.lt .wp small{color:#9c6f1c}
+.wp b{font-size:13px}
+.wp div.on{background:linear-gradient(135deg,#fff1b8,#f0cf74,#c9972f);border-color:transparent;color:#2a1a00}.wp div.on small{color:#5a3d00}
+.wcap{text-align:center;color:var(--muted);font-size:14px;margin-top:14px}
+@media (max-width:860px){.newgrid{grid-template-columns:1fr}.newgrid .wmock{order:-1}.wmock{max-width:420px;margin:0 auto;width:100%;padding:6px}}
+@media (max-width:520px){.navlinks a.lk{display:none}}
 @media (max-width:860px){
  .hero{padding:36px 0 20px}
  .hero .wrap{grid-template-columns:1fr}
@@ -109,7 +143,7 @@ footer a{color:var(--gold)}
 
 <nav><div class="wrap">
   <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
-  <a class="navbtn" href="#download">ডাউনলোড</a>
+  <div class="navlinks"><a class="lk" href="#new">নতুন কী আছে</a><a class="lk" href="#features">ফিচার</a><a class="navbtn" href="#download">ডাউনলোড</a></div>
 </div></nav>
 
 <header class="hero" id="download"><div class="wrap">
@@ -127,6 +161,7 @@ footer a{color:var(--gold)}
         <span><span class="t1" style="font-size:16.5px">ছোট সাইজ: নতুন ফোনের জন্য</span><br><span class="t2">২০১৭ সালের পরের বেশিরভাগ ফোন <span id="szSmall"></span></span></span>
       </a>
       <div class="meta"><span>✓ <b>সম্পূর্ণ ফ্রি</b></span><span>✓ বাংলা ও English</span><span>✓ Android 6.0+</span></div>
+      <div class="meta" style="margin-top:0"><a href="#new" style="color:var(--gold)">🎉 নতুন আপডেটে কী আছে দেখুন →</a></div>
     </div>
   </div>
   <div class="phones">
@@ -135,6 +170,42 @@ footer a{color:var(--gold)}
     <img class="p2" src="shot-adhan.jpg" alt="আজানের নোটিফিকেশন">
   </div>
 </div></header>
+
+<section id="new"><div class="wrap">
+  <h2 class="reveal">নতুন আপডেটে <span>কী এসেছে</span></h2>
+  <div class="relhead reveal"><span class="chip">ভার্সন <b id="relVer">নতুন</b></span><span class="chip" id="relDateWrap" style="display:none">প্রকাশ <b id="relDate"></b></span><span class="chip">পুরনো অ্যাপের ওপরেই আপডেট হবে</span></div>
+  <div class="newgrid">
+    <div>
+      <div class="ups">
+        <div class="up reveal"><div class="ic">📱</div><div><h3>নতুন হোম স্ক্রিন উইজেট <span class="newtag">নতুন</span></h3><p>সবুজ-সোনালি ও হালকা দুই ডিজাইন। প্রতিটা নামাজের আইকন, এখনের নামাজ সোনালি রঙে, সাথে কাউন্টডাউন।</p></div></div>
+        <div class="up reveal"><div class="ic">🧭</div><div><h3>লাইভ কিবলা কম্পাস <span class="newtag">নতুন</span></h3><p>ফোন ঘোরালেই কাবার দিক দেখাবে, ঠিক দিকে এলে ফোন হালকা কাঁপবে।</p></div></div>
+        <div class="up reveal"><div class="ic">🌙</div><div><h3>রমাদান ক্যালেন্ডার</h3><p>৩০ দিনের সুন্দর কার্ড: সেহরি-ইফতারের সময়, দিনের দোয়া আর রোজার হিসাব।</p></div></div>
+        <div class="up reveal"><div class="ic">💬</div><div><h3>মতামত ও সমস্যা জানান</h3><p>অ্যাপ থেকেই লিখে পাঠান। সমাধান হলে অ্যাপ খুললেই জানিয়ে দেবে।</p></div></div>
+        <div class="up reveal"><div class="ic">⚡</div><div><h3>আরও দ্রুত, আরও মসৃণ</h3><p>অ্যাপ দ্রুত খোলে, অ্যানিমেশন মসৃণ, টেনে রিফ্রেশ এক সেকেন্ডেরও কম সময়ে।</p></div></div>
+      </div>
+      <details class="more reveal"><summary>সব পরিবর্তনের তালিকা</summary>
+        <h4>✨ নতুন</h4><ul>
+          <li>নতুন নামাজের কার্ড আর ইসলামিক দিনের চলমান পট্টি</li>
+          <li>৫৫০+ ইসলামিক কুইজ আর নতুন দোয়া</li>
+          <li>বন্ধুদের সাথে অ্যাপ শেয়ার</li>
+          <li>নতুন মেনু, নিচের বার, হিজরি ক্যালেন্ডার, জাকাত ও ইসলাম A-Z</li>
+          <li>আজানের নোটিফিকেশনে অ্যাপের লোগো</li>
+          <li>লাইট, ডার্ক ও অটো থিমে সব পেজ সুন্দর</li></ul>
+        <h4>🛠 সমস্যার সমাধান</h4><ul>
+          <li>যেকোনো APK আগের অ্যাপের ওপর সরাসরি ইনস্টল হবে</li>
+          <li>ছোট উইজেট আর কেটে যাবে না</li>
+          <li>এশার পর উইজেটে তারিখ ঠিক দেখাবে</li></ul>
+      </details>
+    </div>
+    <div class="wmock reveal">
+      <div class="wg dk"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>৭ জমাদিউস সানি ১৪৪৮</b><small>মঙ্গলবার, ১৭ নভেম্বর</small></div><div class="cd"><small>পরবর্তী এশা ৬:২৮</small><br><b>১:১৫:২৬</b></div></div>
+      <div class="wp"><div class=""><i>🌅</i><small>ফজর</small><b>৪:৫৪</b></div><div class=""><i>☀️</i><small>যোহর</small><b>১১:৪২</b></div><div class=""><i>⛅</i><small>আসর</small><b>৩:৩৩</b></div><div class="on"><i>🌇</i><small>মাগরিব</small><b>৫:০৯</b></div><div class=""><i>🌙</i><small>এশা</small><b>৬:২৮</b></div></div></div>
+      <div class="wg lt"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>৭ জমাদিউস সানি ১৪৪৮</b><small>মঙ্গলবার, ১৭ নভেম্বর</small></div><div class="cd"><small>পরবর্তী এশা ৬:২৮</small><br><b>১:১৫:২৬</b></div></div>
+      <div class="wp"><div class=""><i>🌅</i><small>ফজর</small><b>৪:৫৪</b></div><div class=""><i>☀️</i><small>যোহর</small><b>১১:৪২</b></div><div class=""><i>⛅</i><small>আসর</small><b>৩:৩৩</b></div><div class="on"><i>🌇</i><small>মাগরিব</small><b>৫:০৯</b></div><div class=""><i>🌙</i><small>এশা</small><b>৬:২৮</b></div></div></div>
+      <p class="wcap">নতুন উইজেট: হোম স্ক্রিনে চেপে ধরে Widgets থেকে Salah Time বেছে নিন</p>
+    </div>
+  </div>
+</div></section>
 
 <section id="features"><div class="wrap">
   <h2 class="reveal">যা যা <span>পাবেন</span></h2>
@@ -146,6 +217,9 @@ footer a{color:var(--gold)}
     <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><path d="M8 21v-8c0-1.5 2-1.5 2 0v3M10 13V7c0-1.5 2-1.5 2 0v8M16 21v-8c0-1.5-2-1.5-2 0v3M14 13V7"/></svg></div><div><h3>দোয়া</h3><p>প্রতিদিনের প্রয়োজনীয় দোয়া, আরবি ও বাংলা অর্থসহ।</p></div></div>
     <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="#f0cf74"><circle cx="12" cy="4" r="1.6"/><circle cx="17" cy="6" r="1.6"/><circle cx="19.5" cy="11" r="1.6"/><circle cx="17" cy="16" r="1.6"/><circle cx="7" cy="16" r="1.6"/><circle cx="4.5" cy="11" r="1.6"/><circle cx="7" cy="6" r="1.6"/><rect x="11" y="17" width="2" height="5" rx="1"/></svg></div><div><h3>ডিজিটাল তাসবিহ</h3><p>এক ট্যাপে গণনা, লক্ষ্য ঠিক করা, প্রতিদিনের হিসাব ও ধারাবাহিকতা।</p></div></div>
     <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m12 5 3 7-3 7-3-7z" fill="#f0cf74"/></svg></div><div><h3>কিবলা ও রমজান</h3><p>কিবলার দিক, সেহরি-ইফতারের কাউন্টডাউন, রমজান ক্যালেন্ডার ও জাকাত হিসাব।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="18" height="8" rx="3"/><rect x="3" y="14" width="8" height="7" rx="2.5"/><rect x="14" y="14" width="7" height="7" rx="2.5"/></svg></div><div><h3>হোম স্ক্রিন উইজেট</h3><p>অ্যাপ না খুলেই নামাজের সময় ও কাউন্টডাউন। তিন সাইজের সুন্দর উইজেট।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><path d="M12 17.5h.01"/></svg></div><div><h3>ইসলামিক কুইজ ও জ্ঞান</h3><p>৫৫০+ প্রশ্নের কুইজ, ইসলাম A-Z, হিজরি ক্যালেন্ডার ও গুরুত্বপূর্ণ দিন।</p></div></div>
+    <div class="f reveal"><div class="ic"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><div><h3>মতামত জানান</h3><p>সমস্যা বা নতুন আইডিয়া সরাসরি অ্যাপ থেকে পাঠান, উত্তর পাবেন অ্যাপেই।</p></div></div>
   </div>
 </div></section>
 
@@ -173,6 +247,7 @@ footer a{color:var(--gold)}
     <details class="reveal"><summary>অ্যাপটি কি সত্যিই ফ্রি?</summary><p>হ্যাঁ, Salah Time সম্পূর্ণ ফ্রি। কোনো সাবস্ক্রিপশন বা লুকানো খরচ নেই।</p></details>
     <details class="reveal"><summary>"App not installed" বা "package appears to be invalid" দেখাচ্ছে কেন?</summary><p>সাধারণত ফাইল পুরো ডাউনলোড না হলে এটা হয়। ফাইলটি মুছে আবার ডাউনলোড করুন। তারপরও না হলে "ছোট সাইজ" বাটনের বদলে মূল "ফ্রি ডাউনলোড করুন" বাটন থেকে নামান, এটা সব ফোনে চলে।</p></details>
     <details class="reveal"><summary>Play Protect সতর্কবার্তা দেখাচ্ছে, কী করব?</summary><p>Play Store-এর বাইরের অ্যাপে Google এমন সতর্কবার্তা দেখায়। "More details" থেকে "Install anyway" চাপলেই ইনস্টল হবে।</p></details>
+    <details class="reveal"><summary>উইজেট কীভাবে বসাব?</summary><p>হোম স্ক্রিনের খালি জায়গায় চেপে ধরুন, তারপর "Widgets" থেকে Salah Time খুঁজে পছন্দের সাইজটা টেনে বসান। একবার অ্যাপ খুললেই উইজেটে সময় চলে আসবে।</p></details>
     <details class="reveal"><summary>নতুন আপডেট কীভাবে পাব?</summary><p>নতুন ভার্সন এলে অ্যাপ নিজেই জানিয়ে দেবে। "এখন আপডেট করুন" চাপলে অ্যাপের ভেতরেই ডাউনলোড হয়ে ইনস্টল স্ক্রিন খুলবে।</p></details>
     <details class="reveal"><summary>আজান সময়মতো না বাজলে কী করব?</summary><p>অ্যাপের সেটিংস থেকে "আজান ডায়াগনস্টিক" খুলুন। নোটিফিকেশন, Alarms ও Battery-র অনুমতি সেখান থেকে এক চাপে ঠিক করা যায়।</p></details>
   </div>
@@ -204,7 +279,9 @@ fetch('https://api.github.com/repos/khanbhai19u-spec/salah.time/releases/latest'
  .then(r=>r.ok?r.json():Promise.reject())
  .then(j=>{
    const v=(j.tag_name||'').replace(/^v/,'');
-   if(v)document.getElementById('verBadge').textContent='সর্বশেষ ভার্সন '+bn(v);
+   if(v){document.getElementById('verBadge').textContent='সর্বশেষ ভার্সন '+bn(v);document.getElementById('relVer').textContent=bn(v);}
+   if(j.published_at){const d=new Date(j.published_at),m=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+     document.getElementById('relDate').textContent=bn(d.getDate())+' '+m[d.getMonth()]+' '+bn(d.getFullYear());document.getElementById('relDateWrap').style.display='';}
    const mb=n=>'· '+bn((n/1048576).toFixed(0))+' MB';
    for(const a of j.assets||[]){
      if(a.name==='salah-time.apk')document.getElementById('szMain').textContent=mb(a.size);
