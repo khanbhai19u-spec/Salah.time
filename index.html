@@ -233,6 +233,36 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
  .galhint{display:flex;justify-content:center;gap:6px;color:var(--muted);font-size:13px;margin-top:6px}}
 @media (max-width:980px){.phone.front{left:50%;transform:translateX(-62%)}.phone.back{width:180px;right:4%;top:60px}}
 @media (max-width:560px){.phone.back{width:150px;right:2%;top:50px}.phone.front{transform:translateX(-66%)}}
+.rate{display:grid;grid-template-columns:.9fr 1.1fr;gap:20px;align-items:stretch}
+.rsum,.rme{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:26px}
+.rsum{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.rbig{font-size:64px;font-weight:800;color:var(--deep);line-height:1}
+.stars{display:inline-flex;gap:3px;color:#f5b301;font-size:24px;margin-top:6px}
+.stars svg{width:1em;height:1em}
+.rcount{color:var(--muted);font-size:14.5px;margin-top:4px}
+.rbars{width:100%;max-width:320px;margin-top:16px;display:grid;gap:6px}
+.rb{display:grid;grid-template-columns:22px 1fr 36px;gap:8px;align-items:center;font-size:13px;color:var(--muted)}
+.rb .t{height:8px;border-radius:6px;background:var(--g3);overflow:hidden}.rb .t i{display:block;height:100%;background:linear-gradient(90deg,#f5b301,#f59e0b);border-radius:6px}
+.rme h3{font-size:19px;color:var(--deep)}
+.rme p.s{color:var(--muted);font-size:14.5px;margin-top:2px}
+.pick{display:flex;gap:8px;margin:16px 0 12px}
+.pick button{border:0;background:var(--g3);width:52px;height:52px;border-radius:16px;display:grid;place-items:center;cursor:pointer;color:#cbd5d0;transition:transform .15s,background .15s,color .15s}
+.pick button svg{width:28px;height:28px}
+.pick button.on{background:#fff6dc;color:#f5b301;box-shadow:0 6px 16px -8px rgba(245,179,1,.7)}
+.pick button:active{transform:scale(.9)}
+.rme textarea{width:100%;min-height:86px;resize:vertical;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;font:inherit;font-size:15px;color:var(--text);background:var(--bg)}
+.rme textarea:focus{outline:none;border-color:var(--g4)}
+.rme .row{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.rme .btn.pri{padding:13px 22px;font-size:16px;border:0;cursor:pointer;font-family:inherit}
+.rme .btn.pri:disabled{opacity:.55;cursor:default}
+.rmsg{font-size:14px;color:var(--g)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.rv{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.rv .stars{font-size:16px;margin:0}
+.rv p{color:var(--text);font-size:15px;margin-top:8px}
+.rv small{display:block;color:var(--muted);font-size:12.5px;margin-top:8px}
+@media (max-width:980px){.rate{grid-template-columns:1fr}.reviews{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.reviews{grid-template-columns:1fr}.pick button{width:48px;height:48px}}
 .mbar{display:none}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -310,7 +340,7 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
 
 <nav><div class="wrap">
   <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
-  <div class="links"><a href="#download">ডাউনলোড</a><a href="#new">নতুন কী</a><a href="#screens">স্ক্রিনশট</a><a href="#features">ফিচার</a><a href="#privacy">গোপনীয়তা</a><a href="#faq">প্রশ্ন</a></div>
+  <div class="links"><a href="#download">ডাউনলোড</a><a href="#new">নতুন কী</a><a href="#screens">স্ক্রিনশট</a><a href="#features">ফিচার</a><a href="#privacy">গোপনীয়তা</a><a href="#rate">রেটিং</a><a href="#faq">প্রশ্ন</a></div>
   <a class="btn pri nb" href="#download"><svg class="i"><use href="#i-download"/></svg>ডাউনলোড</a>
 </div></nav>
 
@@ -328,6 +358,7 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
       <span><svg class="i"><use href="#i-check-circle"/></svg>অফলাইনেও চলে</span>
       <span><svg class="i"><use href="#i-check-circle"/></svg>বাংলা ও English</span>
       <span><svg class="i"><use href="#i-check-circle"/></svg>Android 6.0+</span>
+      <a id="heroRate" href="#rate" style="display:none;align-items:center;gap:6px;color:#b98500;font-weight:700"><span style="color:#f5b301">★</span><b></b></a>
     </div>
   </div>
   <div class="visual">
@@ -488,7 +519,29 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
   </div>
 </div></section>
 
-<section id="faq"><div class="wrap">
+<section id="rate"><div class="wrap">
+  <div class="eb reveal"><span><svg class="i"><use href="#i-sparkles"/></svg>রেটিং</span></div>
+  <h2 class="reveal">অ্যাপটা কেমন <span>লাগছে?</span></h2>
+  <p class="sub reveal">আপনার রেটিং আর মতামত Salah Time-কে আরও ভালো করতে সাহায্য করে</p>
+  <div class="rate">
+    <div class="rsum reveal">
+      <div class="rbig" id="rAvg">—</div>
+      <div class="stars" id="rStars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></div>
+      <div class="rcount" id="rCount">এখনো কোনো রেটিং নেই, প্রথম রেটিং দিন</div>
+      <div class="rbars" id="rBars"></div>
+    </div>
+    <div class="rme reveal">
+      <h3 id="rTitle">আপনার রেটিং দিন</h3>
+      <p class="s">একটা ফোন বা ব্রাউজার থেকে একটাই রেটিং, পরে বদলানো যায়</p>
+      <div class="pick" id="rPick"><button type="button" data-v="1" aria-label="1 তারা"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></button><button type="button" data-v="2" aria-label="2 তারা"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></button><button type="button" data-v="3" aria-label="3 তারা"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></button><button type="button" data-v="4" aria-label="4 তারা"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></button><button type="button" data-v="5" aria-label="5 তারা"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg></button></div>
+      <textarea id="rText" maxlength="300" placeholder="কী ভালো লাগলো বা কী উন্নতি চান লিখুন (ঐচ্ছিক)"></textarea>
+      <div class="row"><button class="btn pri" id="rSend" disabled>রেটিং পাঠান</button><span class="rmsg" id="rMsg"></span></div>
+    </div>
+  </div>
+  <div class="reviews" id="rList"></div>
+</div></section>
+
+<section id="faq" class="alt"><div class="wrap">
   <div class="eb reveal"><span><svg class="i"><use href="#i-help"/></svg>প্রশ্ন-উত্তর</span></div>
   <h2 class="reveal">সাধারণ <span>প্রশ্ন</span></h2>
   <p class="sub reveal">আরও কিছু জানতে চাইলে Salah Time Team-কে অ্যাপ থেকেই লিখুন</p>
@@ -559,6 +612,60 @@ const mbar=$('mbar'),cta=document.querySelector('.cta'),dl=$('download');
 const vis=el=>{const b=el.getBoundingClientRect();return b.bottom>0&&b.top<innerHeight};
 const upd=()=>mbar.classList.toggle('show',!vis(cta)&&!vis(dl));
 addEventListener('scroll',upd,{passive:true});upd();
+</script>
+
+<script type="module">
+// Ratings: Firestore ratings/{uid} = {stars 1-5, comment, createdAt, updatedAt, hidden}
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {getAuth, signInAnonymously, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {getFirestore, collection, query, where, getDocs, doc, getDoc, setDoc, serverTimestamp} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+const app = initializeApp({apiKey:"AIzaSyBqOH5D8Mqyu-o6zLrpoVVbbS-46pK4siA",authDomain:"salah-time-fe99b.firebaseapp.com",projectId:"salah-time-fe99b",appId:"1:938332923259:web:5012f060eb8f62954e89de"});
+const auth = getAuth(app), db = getFirestore(app);
+const bn = s => String(s).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const STAR = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3 6.1 20.6l1.3-6.6L2.5 9.4l6.6-.8z"/></svg>';
+const starsHTML = n => [1,2,3,4,5].map(i => `<span style="opacity:${i <= Math.round(n) ? 1 : .22}">${STAR}</span>`).join('');
+let pick = 0, mine = null;
+function paintPick(){ document.querySelectorAll('#rPick button').forEach(b => b.classList.toggle('on', +b.dataset.v <= pick)); $('rSend').disabled = !pick; }
+document.querySelectorAll('#rPick button').forEach(b => b.onclick = () => { pick = +b.dataset.v; paintPick(); });
+async function loadAll(){
+  try {
+    const snap = await getDocs(query(collection(db, 'ratings'), where('hidden', '==', false)));
+    const rs = snap.docs.map(d => d.data()).filter(r => r.stars >= 1 && r.stars <= 5);
+    const n = rs.length; if (!n) return;
+    const avg = rs.reduce((p, r) => p + r.stars, 0) / n;
+    $('rAvg').textContent = bn(avg.toFixed(1));
+    $('rStars').innerHTML = starsHTML(avg);
+    $('rCount').textContent = bn(n) + ' জনের রেটিং';
+    $('rBars').innerHTML = [5,4,3,2,1].map(k => { const c = rs.filter(r => r.stars === k).length; return `<div class="rb"><span>${bn(k)}★</span><span class="t"><i style="width:${c / n * 100}%"></i></span><span>${bn(c)}</span></div>`; }).join('');
+    const hr = $('heroRate'); if (hr) { hr.style.display = ''; hr.querySelector('b').textContent = bn(avg.toFixed(1)) + ' (' + bn(n) + ')'; }
+    const ts = r => (r.updatedAt || r.createdAt)?.toMillis?.() || 0;
+    const withText = rs.filter(r => (r.comment || '').trim()).sort((a, b) => ts(b) - ts(a)).slice(0, 6);
+    $('rList').innerHTML = withText.map(r => `<div class="rv"><div class="stars">${starsHTML(r.stars)}</div><p>${esc(r.comment)}</p><small>Salah Time ইউজার${ts(r) ? ' · ' + new Date(ts(r)).toLocaleDateString('bn-BD') : ''}</small></div>`).join('');
+  } catch (e) {}
+}
+onAuthStateChanged(auth, async u => {
+  if (!u) return;
+  try { const d = await getDoc(doc(db, 'ratings', u.uid)); if (d.exists()) { mine = d.data(); pick = mine.stars; $('rText').value = mine.comment || ''; paintPick(); $('rTitle').textContent = 'আপনার রেটিং (বদলাতে পারেন)'; $('rSend').textContent = 'রেটিং আপডেট করুন'; } } catch (e) {}
+});
+$('rSend').onclick = async () => {
+  if (!pick) return;
+  const btn = $('rSend'); btn.disabled = true; $('rMsg').textContent = 'পাঠানো হচ্ছে…';
+  try {
+    if (!auth.currentUser) await signInAnonymously(auth);
+    const ref = doc(db, 'ratings', auth.currentUser.uid);
+    const old = await getDoc(ref);
+    const data = {stars: pick, comment: $('rText').value.trim().slice(0, 300), updatedAt: serverTimestamp()};
+    if (!old.exists()) { data.createdAt = serverTimestamp(); data.hidden = false; } else { data.hidden = old.data().hidden === true; data.createdAt = old.data().createdAt || serverTimestamp(); }
+    await setDoc(ref, data);
+    $('rMsg').textContent = 'জাযাকাল্লাহু খাইরান! আপনার রেটিং সেভ হয়েছে ✓';
+    $('rTitle').textContent = 'আপনার রেটিং (বদলাতে পারেন)'; btn.textContent = 'রেটিং আপডেট করুন';
+    loadAll();
+  } catch (e) { $('rMsg').textContent = 'পাঠানো যায়নি, একটু পরে আবার চেষ্টা করুন'; }
+  btn.disabled = false;
+};
+loadAll();
 </script>
 </body>
 </html>
