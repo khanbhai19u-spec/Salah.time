@@ -142,9 +142,9 @@ h2 span{color:var(--g2)}
 .wp svg{width:19px;height:19px;color:#f0cf74;margin-bottom:2px}.wg.lt .wp svg{color:#9c6f1c}
 .wp small{color:#f0cf74;font-weight:700;font-size:11.5px}.wg.lt .wp small{color:#9c6f1c}
 .wp b{font-size:13px}
-.wp div.on{background:linear-gradient(135deg,#fff1b8,#f0cf74,#c9972f);border-color:transparent;color:#2a1a00}
+.wp div.on,.wg.lt .wp div.on{background:linear-gradient(135deg,#fff1b8,#f0cf74,#c9972f);border-color:transparent;color:#2a1a00}
 .wp div.on small{color:#5a3d00}.wp div.on svg{color:#4a3200}
-.wcap{display:flex;gap:8px;justify-content:center;align-items:center;color:var(--muted);font-size:14px;margin-top:16px;text-align:center}
+.wcap{display:flex;gap:8px;justify-content:center;align-items:flex-start;color:var(--muted);font-size:14px;margin-top:16px;text-align:center}
 .wcap svg.i{color:var(--g2);font-size:18px}
 details.more{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 18px;box-shadow:var(--shadow)}
 .more ul{list-style:none;display:grid;gap:7px;margin-top:10px}
@@ -627,13 +627,49 @@ const bn=s=>String(s).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d]);
 const $=id=>document.getElementById(id);
 $('yr').textContent=new Date().getFullYear();
 (function(){
-  const P=[['fajr','ফজর','৪:৫৪'],['dhuhr','যোহর','১১:৪২'],['asr','আসর','৩:৩৩'],['maghrib','মাগরিব','৫:০৯'],['isha','এশা','৬:২৮']];
-  const w=(cls,on)=>`<div class="wg ${cls}"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>৭ জমাদিউস সানি ১৪৪৮</b><small>মঙ্গলবার, ১৭ নভেম্বর</small></div><div class="cd"><small>পরবর্তী এশা ৬:২৮</small><br><b class="wcd">১:১৫:২৬</b></div></div><div class="wp">${P.map((p,i)=>`<div class="${i===on?'on':''}"><svg><use href="#p-${p[0]}"/></svg><small>${p[1]}</small><b>${p[2]}</b></div>`).join('')}</div></div>`;
-  $('wmock').innerHTML=w('dk',3)+w('lt',3)+'<p class="wcap"><svg class="i"><use href="#i-touch"/></svg>হোম স্ক্রিনে চেপে ধরে Widgets থেকে Salah Time বেছে নিন</p>';
-  let s=4526;const two=n=>String(n).padStart(2,'0');
-  setInterval(()=>{s=s>0?s-1:14400;const h=Math.floor(s/3600),m=Math.floor(s/60)%60,x=s%60;
-    $('heroCd').textContent=bn(two(h)+':'+two(m)+':'+two(x));
-    document.querySelectorAll('.wcd').forEach(e=>e.textContent=bn(h+':'+two(m)+':'+two(x)));},1000);
+  // real prayer times for Dhaka today (same method as the app: Karachi 18°/18°, Hanafi asr)
+  function times(y,m,d,lat,lng,tz){
+    const rad=Math.PI/180,deg=180/Math.PI;
+    const jd=Date.UTC(y,m-1,d,12)/86400000+2440587.5-lng/360, n=jd-2451545.0;
+    const g=(357.529+0.98560028*n)*rad, q=280.459+0.98564736*n;
+    const L=(q+1.915*Math.sin(g)+0.020*Math.sin(2*g))*rad, e=(23.439-0.00000036*n)*rad;
+    const RA=Math.atan2(Math.cos(e)*Math.sin(L),Math.cos(L))*deg/15, D=Math.asin(Math.sin(e)*Math.sin(L));
+    let eqt=q/15-(((RA%24)+24)%24); eqt=((eqt%24)+36)%24-12;
+    const noon=12+tz-lng/15-eqt, la=lat*rad;
+    const T=a=>Math.acos((-Math.sin(a*rad)-Math.sin(D)*Math.sin(la))/(Math.cos(D)*Math.cos(la)))*deg/15;
+    const asrA=-Math.atan(1/(2+Math.tan(Math.abs(la-D))))*deg;
+    return {fajr:noon-T(18),dhuhr:noon,asr:noon+T(asrA),maghrib:noon+T(0.833),isha:noon+T(18)};
+  }
+  const LAT=23.8103,LNG=90.4125,TZ=6;
+  const NAMES={fajr:'ফজর',dhuhr:'যোহর',asr:'আসর',maghrib:'মাগরিব',isha:'এশা'}, KEYS=Object.keys(NAMES);
+  const dhaka=()=>{const n=new Date(Date.now()+TZ*3600e3);return {y:n.getUTCFullYear(),m:n.getUTCMonth()+1,d:n.getUTCDate(),mins:n.getUTCHours()*60+n.getUTCMinutes()+n.getUTCSeconds()/60,date:n};};
+  const two=n=>String(n).padStart(2,'0');
+  const hm=h=>{let mm=Math.round(h*60)%1440,H=Math.floor(mm/60),M=mm%60,h12=H%12||12;return bn(h12+':'+two(M));};
+  const BDAY=['রবিবার','সোমবার','মঙ্গলবার','বুধবার','বৃহস্পতিবার','শুক্রবার','শনিবার'];
+  const BMON=['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+  const HMON=['মুহাররম','সফর','রবিউল আউয়াল','রবিউস সানি','জমাদিউল আউয়াল','জমাদিউস সানি','রজব','শাবান','রমাদান','শাওয়াল','জিলকদ','জিলহজ'];
+  function hijri(dt){try{const p=new Intl.DateTimeFormat('en-u-ca-islamic-umalqura',{day:'numeric',month:'numeric',year:'numeric',timeZone:'UTC'}).formatToParts(dt);
+    const g=t=>+(p.find(x=>x.type===t)||{}).value;return bn(g('day'))+' '+HMON[g('month')-1]+' '+bn(String(g('year')).replace(/\D/g,''));}catch(e){return '';}}
+  function state(){
+    const t=dhaka(), tt=times(t.y,t.m,t.d,LAT,LNG,TZ);
+    let next=KEYS.find(k=>tt[k]*60>t.mins), nextMin, cur;
+    if(next){nextMin=tt[next]*60-t.mins;cur=KEYS[KEYS.indexOf(next)-1]||'isha';}
+    else{const tm=new Date(t.date.getTime()+86400e3), t2=times(tm.getUTCFullYear(),tm.getUTCMonth()+1,tm.getUTCDate(),LAT,LNG,TZ);next='fajr';nextMin=t2.fajr*60+1440-t.mins;cur='isha';}
+    return {t,tt,next,cur,secs:Math.max(0,Math.round(nextMin*60))};
+  }
+  const P=KEYS;
+  const w=(cls,st)=>`<div class="wg ${cls}"><div class="wh"><img src="logo.png" alt=""><div class="tt"><b>${hijri(st.t.date)}</b><small>${BDAY[st.t.date.getUTCDay()]}, ${bn(st.t.d)} ${BMON[st.t.m-1]}</small></div><div class="cd"><small>পরবর্তী ${NAMES[st.next]} ${hm(st.tt[st.next]%24)}</small><br><b class="wcd"></b></div></div><div class="wp">${P.map(k=>`<div class="${k===st.cur?'on':''}"><svg><use href="#p-${k}"/></svg><small>${NAMES[k]}</small><b>${hm(st.tt[k])}</b></div>`).join('')}</div></div>`;
+  let st=state();
+  const paint=()=>{$('wmock').innerHTML=w('dk',st)+w('lt',st)+'<p class="wcap"><svg class="i"><use href="#i-touch"/></svg>ঢাকার আজকের আসল সময় · অ্যাপে আপনার এলাকার সময় দেখাবে</p>';
+    const fc=document.querySelector('.fc2 small'); if(fc) fc.textContent='পরবর্তী '+NAMES[st.next]+' · ঢাকা';};
+  paint();
+  const tick=()=>{st=state(); const s=st.secs,h=Math.floor(s/3600),m=Math.floor(s/60)%60,x=s%60;
+    if(s<=1){paint();}
+    const v=bn(two(h)+':'+two(m)+':'+two(x));
+    const hc=$('heroCd'); if(hc) hc.textContent=v;
+    document.querySelectorAll('.wcd').forEach(e=>e.textContent=bn(h+':'+two(m)+':'+two(x)));};
+  tick(); setInterval(tick,1000);
+  let lastNext=st.next; setInterval(()=>{if(state().next!==lastNext){lastNext=state().next;st=state();paint();}},30000);
 })();
 const API='https://api.github.com/repos/khanbhai19u-spec/salah.time/releases';
 const MB=n=>bn((n/1048576).toFixed(0))+' MB';
