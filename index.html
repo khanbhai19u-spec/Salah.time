@@ -263,6 +263,28 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
 .rv small{display:block;color:var(--muted);font-size:12.5px;margin-top:8px}
 @media (max-width:980px){.rate{grid-template-columns:1fr}.reviews{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.reviews{grid-template-columns:1fr}.pick button{width:48px;height:48px}}
+.pp{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px;align-items:center;margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:24px}
+.ppm{background:#2b2d31;color:#e8eaed;border-radius:26px;padding:20px 18px;font-family:system-ui,sans-serif;max-width:330px;margin:0 auto;width:100%;box-shadow:0 20px 40px -18px #0008}
+.ppm .h{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;color:#c4c7c5}
+.ppm .t{text-align:center;font-size:21px;margin:8px 0 12px}
+.ppm .app{display:flex;align-items:center;gap:10px;background:#1f2023;border-radius:18px;padding:10px 12px;font-size:15px}
+.ppm .app img{width:30px;height:30px;border-radius:6px}
+.ppm .d{text-align:center;font-size:12px;color:#c4c7c5;margin:12px 4px}
+.ppm .lnk{text-align:center;font-size:13px;margin:6px 0 10px;position:relative}
+.ppm .b{display:block;text-align:center;background:#d3e3fd;color:#0b1d3a;border-radius:12px;padding:11px;font-size:14px;margin-top:6px;position:relative}
+.ppm .hl{outline:3px solid #22c55e;outline-offset:3px}
+.ppm .tag{position:absolute;right:-6px;top:-12px;background:#16a34a;color:#fff;font-size:11px;font-weight:700;border-radius:20px;padding:1px 8px;font-family:"Hind Siliguri",sans-serif}
+.pp h3{font-size:21px;color:var(--deep);display:flex;align-items:center;gap:10px}
+.pp h3 svg.i{color:var(--g2)}
+.pp ol{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:10px;counter-reset:p}
+.pp li{display:flex;gap:12px;align-items:flex-start;color:var(--text);font-size:15.5px}
+.pp li::before{counter-increment:p;content:counter(p,bengali);flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--g3);color:var(--g);font-weight:800;font-size:14px}
+.pp li b{color:var(--deep)}
+.pp .ok{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--g3);color:var(--g);font-size:14.5px;display:flex;gap:10px;align-items:flex-start}
+.pp .ok svg.i{flex:none;margin-top:3px}
+.final .btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.final .btn.rt{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.35);box-shadow:none}
+@media (max-width:980px){.pp{grid-template-columns:1fr}}
 .mbar{display:none}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -417,23 +439,23 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
   <div class="newgrid">
     <div>
       <div class="ups">
-        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-widget"/></svg></span><div><h3>নতুন হোম স্ক্রিন উইজেট <span class="nt">নতুন</span></h3><p>সবুজ-সোনালি ও হালকা দুই ডিজাইন, প্রতিটা নামাজের আইকন আর কাউন্টডাউন।</p></div></div>
-        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-download"/></svg></span><div><h3>ধীর নেটেও আপডেট <span class="nt">নতুন</span></h3><p>নেট আটকে গেলে নিজে আবার চেষ্টা করে, যেখানে থেমেছিল সেখান থেকে চালায়।</p></div></div>
-        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-compass"/></svg></span><div><h3>লাইভ কিবলা কম্পাস</h3><p>ফোন ঘোরালেই কাবার দিক, ঠিক দিকে এলে ফোন হালকা কাঁপে।</p></div></div>
-        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-moon"/></svg></span><div><h3>রমাদান ক্যালেন্ডার</h3><p>৩০ দিনের কার্ড: সেহরি-ইফতারের সময়, দিনের দোয়া আর রোজার হিসাব।</p></div></div>
-        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-chat"/></svg></span><div><h3>মতামত ও সমস্যা জানান</h3><p>অ্যাপ থেকেই লিখুন, সমাধান হলে অ্যাপ খুললেই জানিয়ে দেবে।</p></div></div>
+        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-bell"/></svg></span><div><h3>ফুলস্ক্রিন আজান <span class="nt">নতুন</span></h3><p>আজানের সময় লক স্ক্রিনেও পুরো পেজ খোলে, স্লাইড করে বন্ধ, চাইলে ৫ মিনিট পরে আবার।</p></div></div>
+        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-clock"/></svg></span><div><h3>অ্যাপের সময় বা অটো সময় <span class="nt">নতুন</span></h3><p>লোকেশন অনুযায়ী অটো সময়, অথবা Salah Time Team-এর দেওয়া সময়: সেটিংস থেকে বেছে নিন।</p></div></div>
+        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-gift"/></svg></span><div><h3>বন্ধুকে আমন্ত্রণ, উপহার <span class="nt">নতুন</span></h3><p>নিজের কোড শেয়ার করুন, বন্ধু যোগ দিলে দুজনেই ৭ দিন বিজ্ঞাপন ছাড়া অ্যাপ।</p></div></div>
+        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-download"/></svg></span><div><h3>যেকোনো নেটে আপডেট</h3><p>ধীর নেটে আটকে গেলে নিজে আবার চেষ্টা করে, ভাঙা ফাইল হলে নিজেই আবার নামায়।</p></div></div>
+        <div class="up reveal"><span class="ic"><svg class="i"><use href="#i-sparkles"/></svg></span><div><h3>রেট দিন ও মতামত</h3><p>অ্যাপ থেকে এক চাপে রেটিং, আর নোটিফিকেশন চাপলে সরাসরি সেই পেজ (কুইজ, দোয়া, কুরআন…)।</p></div></div>
       </div>
       <details class="more reveal"><summary>সব পরিবর্তনের তালিকা</summary>
         <h4><svg class="i"><use href="#i-sparkles"/></svg>নতুন</h4><ul>
-          <li><svg class="i"><use href="#i-check"/></svg>ইনস্টলের আগে আপডেট ফাইল যাচাই, ভাঙা হলে নিজে আবার নামায়</li>
-          <li><svg class="i"><use href="#i-check"/></svg>নতুন নামাজের কার্ড আর ইসলামিক দিনের চলমান পট্টি</li>
-          <li><svg class="i"><use href="#i-check"/></svg>৫৫০+ ইসলামিক কুইজ আর নতুন দোয়া</li>
-          <li><svg class="i"><use href="#i-check"/></svg>নতুন মেনু, হিজরি ক্যালেন্ডার, জাকাত ও ইসলাম A-Z</li>
-          <li><svg class="i"><use href="#i-check"/></svg>আজানের নোটিফিকেশনে অ্যাপের লোগো</li></ul>
+          <li><svg class="i"><use href="#i-check"/></svg>নোটিফিকেশন চাপলে নির্দিষ্ট পেজ: কুইজ, দোয়া, কুরআন, তাসবিহ, কিবলা, জাকাত…</li>
+          <li><svg class="i"><use href="#i-check"/></svg>গোপনীয়তা নীতি এখন অ্যাপের ভেতরেই</li>
+          <li><svg class="i"><use href="#i-check"/></svg>নতুন, সাদামাটা মেনু; পরবর্তী নামাজ এক নজরে</li>
+          <li><svg class="i"><use href="#i-check"/></svg>হোম স্ক্রিন উইজেটের নতুন ডিজাইন</li>
+          <li><svg class="i"><use href="#i-check"/></svg>ফোনের মডেলসহ সমস্যার রিপোর্ট, তাই দ্রুত সমাধান</li></ul>
         <h4><svg class="i"><use href="#i-wrench"/></svg>সমস্যার সমাধান</h4><ul>
-          <li><svg class="i"><use href="#i-check"/></svg>যেকোনো APK আগের অ্যাপের ওপর সরাসরি ইনস্টল হবে</li>
-          <li><svg class="i"><use href="#i-check"/></svg>ছোট উইজেট আর কেটে যাবে না</li>
-          <li><svg class="i"><use href="#i-check"/></svg>বারবার আপডেট দেখানো বন্ধ</li></ul>
+          <li><svg class="i"><use href="#i-check"/></svg>"problem parsing the package" আর দেখাবে না</li>
+          <li><svg class="i"><use href="#i-check"/></svg>বারবার আপডেট দেখানো বন্ধ</li>
+          <li><svg class="i"><use href="#i-check"/></svg>যেকোনো APK আগের অ্যাপের ওপর সরাসরি ইনস্টল হবে</li></ul>
       </details>
     </div>
     <div class="wmock reveal" id="wmock"></div>
@@ -514,8 +536,29 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
   <div class="steps">
     <div class="step reveal"><span class="n">১</span><span class="ic"><svg class="i"><use href="#i-download"/></svg></span><h3>ডাউনলোড</h3><p>ডাউনলোড বাটনে চাপুন, ফাইল পুরো নামা পর্যন্ত অপেক্ষা করুন।</p></div>
     <div class="step reveal"><span class="n">২</span><span class="ic"><svg class="i"><use href="#i-file"/></svg></span><h3>ফাইল খুলুন</h3><p>নোটিফিকেশন বা Downloads থেকে APK ফাইলে চাপুন।</p></div>
-    <div class="step reveal"><span class="n">৩</span><span class="ic"><svg class="i"><use href="#i-shield"/></svg></span><h3>অনুমতি দিন</h3><p>"Install unknown apps" দেখালে Settings থেকে চালু করুন।</p></div>
+    <div class="step reveal"><span class="n">৩</span><span class="ic"><svg class="i"><use href="#i-shield"/></svg></span><h3>অনুমতি দিন</h3><p>"Install unknown apps" দেখালে Settings থেকে চালু করুন। Play Protect দেখালে নিচের নিয়ম দেখুন।</p></div>
     <div class="step reveal"><span class="n">৪</span><span class="ic"><svg class="i"><use href="#i-check"/></svg></span><h3>ইনস্টল</h3><p>Install চাপুন, তারপর লোকেশন ও নোটিফিকেশনের অনুমতি দিন।</p></div>
+  </div>
+  <div class="pp reveal" id="playprotect">
+    <div class="ppm" aria-hidden="true">
+      <div class="h"><svg class="i"><use href="#i-shield"/></svg>Google Play Protect</div>
+      <div class="t">App scan recommended</div>
+      <div class="app"><img src="logo.png" alt="">Salah Time</div>
+      <div class="d">Play Protect hasn't seen this app before. To protect your device and data, send this app to Google for a security scan.</div>
+      <div class="lnk">Install without scanning<span class="tag">২</span></div>
+      <span class="b hl">Scan app<span class="tag">১</span></span>
+      <span class="b">Don't install app</span>
+    </div>
+    <div>
+      <h3><svg class="i"><use href="#i-shield"/></svg>"App scan recommended" দেখালে কী করবেন</h3>
+      <p class="muted" style="color:var(--muted);margin-top:4px">Play Store-এর বাইরের নতুন অ্যাপ হলে Google এই বার্তা দেখায়। এর মানে অ্যাপে সমস্যা আছে তা না, শুধু Google এখনো অ্যাপটা চেনে না।</p>
+      <ol>
+        <li><span><b>"Scan app" চাপুন (প্রস্তাবিত)।</b> Google কয়েক সেকেন্ডে অ্যাপটা পরীক্ষা করে "Install" করতে দেবে।</span></li>
+        <li><span>তাড়া থাকলে <b>"More details" → "Install without scanning"</b> চাপলেও সরাসরি ইনস্টল হবে।</span></li>
+        <li><span><b>"Don't install app"</b> চাপবেন না, তাহলে ইনস্টল বাতিল হয়ে যাবে।</span></li>
+      </ol>
+      <div class="ok"><svg class="i"><use href="#i-check-circle"/></svg><span>সব ভার্সন একই চাবিতে সই করা। আপডেট আগের অ্যাপের ওপরেই বসে, কোনো ডেটা হারায় না।</span></div>
+    </div>
   </div>
 </div></section>
 
@@ -549,7 +592,7 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
     <details class="reveal"><summary>অ্যাপটি কি সত্যিই ফ্রি?</summary><p>হ্যাঁ, Salah Time সম্পূর্ণ ফ্রি। কোনো সাবস্ক্রিপশন বা লুকানো খরচ নেই। অ্যাপ চালু রাখতে কিছু জায়গায় ছোট বিজ্ঞাপন দেখাতে পারে।</p></details>
     <details class="reveal"><summary>কোন ভার্সনটা নেব?</summary><p>বুঝতে না পারলে "সব ফোন" ভার্সনটা নিন, এটা সব Android ফোনে চলে। নতুন ফোনে "নতুন ফোন (arm64)" ছোট সাইজের, আর খুব পুরনো ফোনে "পুরনো ফোন (arm)"।</p></details>
     <details class="reveal"><summary>"App not installed" বা "problem parsing the package" দেখাচ্ছে কেন?</summary><p>সাধারণত ফাইল পুরো না নামলে এটা হয়। ফাইলটি মুছে Wi-Fi বা ভালো নেটে "সব ফোন" ভার্সনটা আবার নামান।</p></details>
-    <details class="reveal"><summary>Play Protect সতর্কবার্তা দেখাচ্ছে, কী করব?</summary><p>Play Store-এর বাইরের অ্যাপে Google এমন সতর্কবার্তা দেখায়। "More details" থেকে "Install anyway" চাপলেই ইনস্টল হবে।</p></details>
+    <details class="reveal"><summary>"App scan recommended" বা Play Protect দেখাচ্ছে, কী করব?</summary><p>Play Store-এর বাইরের নতুন অ্যাপে Google এই বার্তা দেখায়, এতে ভয়ের কিছু নেই। <b>"Scan app"</b> চাপুন, পরীক্ষা শেষে Install করতে দেবে। চাইলে "More details" → <b>"Install without scanning"</b> চাপলেও ইনস্টল হবে। <a href="#playprotect" style="color:var(--g);font-weight:700">ছবিসহ নিয়ম দেখুন</a></p></details>
     <details class="reveal"><summary>উইজেট কীভাবে বসাব?</summary><p>হোম স্ক্রিনের খালি জায়গায় চেপে ধরুন, "Widgets" থেকে Salah Time খুঁজে পছন্দের সাইজটা টেনে বসান।</p></details>
     <details class="reveal"><summary>নতুন আপডেট কীভাবে পাব?</summary><p>নতুন ভার্সন এলে অ্যাপ নিজেই জানিয়ে দেবে। "এখন আপডেট করুন" চাপলে অ্যাপের ভেতরেই নেমে ইনস্টল স্ক্রিন খুলবে।</p></details>
     <details class="reveal"><summary>আজান সময়মতো না বাজলে কী করব?</summary><p>অ্যাপের সেটিংস থেকে "আজান ডায়াগনস্টিক" খুলুন। নোটিফিকেশন, Alarms ও Battery-র অনুমতি সেখান থেকে এক চাপে ঠিক করা যায়।</p></details>
@@ -564,14 +607,17 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
     <img src="logo.png" alt="Salah Time">
     <h2>আজই শুরু করুন <span>Salah Time</span></h2>
     <p>নামাজের সময় নিয়ে আর কোনো চিন্তা নয়</p>
-    <a class="btn" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk"><svg class="i"><use href="#i-download"/></svg><span>ফ্রি ডাউনলোড করুন<small class="szAll"></small></span></a>
+    <div class="btns">
+      <a class="btn" href="https://github.com/khanbhai19u-spec/salah.time/releases/latest/download/salah-time.apk"><svg class="i"><use href="#i-download"/></svg><span>ফ্রি ডাউনলোড করুন<small class="szAll"></small></span></a>
+      <a class="btn rt" href="#rate"><svg class="i"><use href="#i-sparkles"/></svg><span>রেট দিন</span></a>
+    </div>
   </div>
 </div></section>
 
 <footer><div class="wrap">
   <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
   <span>© <span id="yr">2026</span> Salah Time Team</span>
-  <div class="fl"><a href="privacy.html"><svg class="i"><use href="#i-lock"/></svg>গোপনীয়তা</a><a href="https://dntsalah.netlify.app/"><svg class="i"><use href="#i-heart"/></svg>সহায়তা করুন</a></div>
+  <div class="fl"><a href="#rate"><svg class="i"><use href="#i-sparkles"/></svg>রেট দিন</a><a href="privacy.html"><svg class="i"><use href="#i-lock"/></svg>গোপনীয়তা</a><a href="https://dntsalah.netlify.app/"><svg class="i"><use href="#i-heart"/></svg>সহায়তা করুন</a></div>
 </div></footer>
 
 <div class="mbar" id="mbar"><a class="btn pri" href="#download"><svg class="i"><use href="#i-download"/></svg>ফ্রি ডাউনলোড করুন</a></div>
