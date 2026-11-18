@@ -205,6 +205,13 @@ footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);fo
 .pvc.ok li svg.i{color:#4ade80}.pvc.why li svg.i{color:var(--gold)}.pvc.no li svg.i{color:#f87171}
 .pvmore{display:flex;justify-content:center;margin-top:20px}
 @media (max-width:960px){.pv{grid-template-columns:1fr}}
+.team{display:flex;align-items:center;gap:22px;margin:26px auto 0;max-width:800px;padding:22px 24px;border-radius:24px;border:1px solid var(--line2);background:linear-gradient(140deg,rgba(15,90,60,.65),rgba(255,255,255,.03))}
+.team .ico{width:60px;height:60px;border-radius:19px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold3),var(--gold) 45%,var(--gold2));color:var(--ink);font-size:30px}
+.team h3{font-size:19px;line-height:1.35}.team p{color:var(--muted);font-size:14.5px;margin-top:3px}
+.team .how{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px}
+.team .how span{font-size:13px;font-weight:700;background:rgba(0,0,0,.25);border:1px solid var(--line2);border-radius:12px;padding:4px 11px}
+.team .how i{font-style:normal;color:var(--gold)}
+@media (max-width:560px){.team{flex-direction:column;align-items:flex-start;gap:14px}}
 .mbar{display:none}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -475,7 +482,7 @@ footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);fo
 <section id="faq"><div class="wrap">
   <div class="eyebrow reveal"><span><svg class="i"><use href="#i-help"/></svg>প্রশ্ন-উত্তর</span></div>
   <h2 class="reveal">সাধারণ <span>প্রশ্ন</span></h2>
-  <p class="sub reveal">আরও কিছু জানতে চাইলে অ্যাপের "মতামত ও সমস্যা" থেকে লিখুন</p>
+  <p class="sub reveal">আরও কিছু জানতে চাইলে Salah Time Team-কে অ্যাপ থেকেই লিখুন</p>
   <div class="faq">
     <details class="reveal"><summary>অ্যাপটি কি সত্যিই ফ্রি?</summary><p>হ্যাঁ, Salah Time সম্পূর্ণ ফ্রি। কোনো সাবস্ক্রিপশন বা লুকানো খরচ নেই। অ্যাপ চালু রাখতে কিছু জায়গায় ছোট বিজ্ঞাপন দেখাতে পারে।</p></details>
     <details class="reveal"><summary>কোন ভার্সনটা নেব?</summary><p>বুঝতে না পারলে "সব ফোন" ভার্সনটা নিন, এটা সব Android ফোনে চলে। নতুন ফোনে "নতুন ফোন (arm64)" ছোট সাইজের, আর খুব পুরনো ফোনে "পুরনো ফোন (arm)"।</p></details>
@@ -484,8 +491,10 @@ footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);fo
     <details class="reveal"><summary>উইজেট কীভাবে বসাব?</summary><p>হোম স্ক্রিনের খালি জায়গায় চেপে ধরুন, "Widgets" থেকে Salah Time খুঁজে পছন্দের সাইজটা টেনে বসান। একবার অ্যাপ খুললেই উইজেটে সময় চলে আসবে।</p></details>
     <details class="reveal"><summary>নতুন আপডেট কীভাবে পাব?</summary><p>নতুন ভার্সন এলে অ্যাপ নিজেই জানিয়ে দেবে। "এখন আপডেট করুন" চাপলে অ্যাপের ভেতরেই ডাউনলোড হয়ে ইনস্টল স্ক্রিন খুলবে।</p></details>
     <details class="reveal"><summary>আজান সময়মতো না বাজলে কী করব?</summary><p>অ্যাপের সেটিংস থেকে "আজান ডায়াগনস্টিক" খুলুন। নোটিফিকেশন, Alarms ও Battery-র অনুমতি সেখান থেকে এক চাপে ঠিক করা যায়।</p></details>
+    <details class="reveal"><summary>কোনো সমস্যা হলে কার সাথে যোগাযোগ করব?</summary><p>Salah Time Team-এর সাথে সরাসরি অ্যাপ থেকে যোগাযোগ করুন: অ্যাপ খুলে উপরের ৩ ডট মেনু থেকে "মতামত ও সমস্যা" চাপুন, সমস্যাটা লিখে পাঠান। সমাধান হলে অ্যাপ খুললেই আপনাকে জানানো হবে।</p></details>
     <details class="reveal"><summary>iPhone-এ চলবে?</summary><p>এখন শুধু Android-এর জন্য। iPhone ভার্সন এলে এই পেজেই জানানো হবে, ইনশাআল্লাহ।</p></details>
   </div>
+  <div class="team reveal"><span class="ico"><svg class="i"><use href="#i-chat"/></svg></span><div><h3>কোনো সমস্যা হলে Salah Time Team-এর সাথে যোগাযোগ করুন</h3><p>অ্যাপ থেকেই আমাদের লিখুন। আমরা পড়ে সমাধান করি, আর সমাধান হলে অ্যাপ খুললেই আপনাকে জানানো হয়।</p><div class="how"><span>Salah Time খুলুন</span><i>›</i><span>৩ ডট মেনু</span><i>›</i><span>মতামত ও সমস্যা</span></div></div></div>
 </div></section>
 
 <section><div class="wrap">
@@ -499,7 +508,7 @@ footer a.sup{display:inline-flex;align-items:center;gap:7px;color:var(--gold);fo
 
 <footer><div class="wrap">
   <a class="brand" href="#"><img src="logo.png" alt="">Salah <span>Time</span></a>
-  <span>© <span id="yr">2026</span> Salah Time · It's Bayzid</span>
+  <span>© <span id="yr">2026</span> Salah Time Team · It's Bayzid</span>
   <a class="sup" href="privacy.html"><svg class="i"><use href="#i-lock"/></svg>গোপনীয়তা নীতি</a>
   <a class="sup" href="https://dntsalah.netlify.app/"><svg class="i"><use href="#i-heart"/></svg>অ্যাপকে সহায়তা করুন</a>
 </div></footer>
