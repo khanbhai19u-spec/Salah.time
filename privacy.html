@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>গোপনীয়তা নীতি — Salah Time</title>
+<meta name="description" content="Salah Time অ্যাপ কোন অনুমতি নেয়, কেন নেয়, কোন তথ্য যায় আর কোনটা যায় না: সহজ ভাষায় পুরোটা।">
+<meta name="theme-color" content="#04190e">
+<link rel="icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#03150c;--gold:#f0cf74;--gold2:#c9972f;--ink:#08321f;--text:#f3f7f4;--muted:#a9c4b5;--line:rgba(240,207,116,.18);--line2:rgba(240,207,116,.38);--card:rgba(255,255,255,.04);--ok:#4ade80;--no:#f87171}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:radial-gradient(60% 40% at 80% -5%,rgba(15,90,60,.8),transparent 70%),var(--bg);background-attachment:fixed;color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--gold)}
+.wrap{max-width:860px;margin:0 auto;padding:0 18px}
+nav{position:sticky;top:0;z-index:10;padding:10px 0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(4,25,14,.7);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--text);text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:50%;box-shadow:0 0 0 2px rgba(240,207,116,.55)}
+.brand span{color:var(--gold)}
+.back{font-weight:700;font-size:14.5px;text-decoration:none;border:1px solid var(--line2);padding:7px 14px;border-radius:14px}
+header{padding:44px 0 10px;text-align:center}
+.tag{display:inline-block;font-size:13.5px;font-weight:700;color:var(--gold);border:1px solid var(--line);background:var(--card);padding:4px 14px;border-radius:30px}
+h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(30px,5vw,44px);line-height:1.3;margin:14px 0 8px}
+.lead{color:var(--muted);font-size:17px;max-width:640px;margin:0 auto}
+.updated{color:var(--muted);font-size:13.5px;margin-top:10px}
+h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(22px,3.2vw,28px);margin:40px 0 14px;display:flex;align-items:center;gap:10px}
+h2 .n{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--ink);font-size:18px}
+p{margin:8px 0}
+.box{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;margin:12px 0}
+.short{border-color:var(--line2);background:linear-gradient(150deg,rgba(15,90,60,.55),rgba(255,255,255,.03))}
+.short ul{list-style:none;display:grid;gap:8px;margin-top:6px}
+.short li{display:flex;gap:10px}
+.short li b{color:var(--gold)}
+.perm{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pm{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px 16px}
+.pm h3{font-size:16.5px;display:flex;align-items:center;gap:8px}
+.pm .k{font-size:11.5px;font-weight:600;color:var(--muted);font-family:ui-monospace,monospace;display:block;margin-top:1px;word-break:break-all}
+.pm p{color:var(--muted);font-size:14.5px;margin:6px 0 0}
+.pm .ask{display:inline-block;margin-top:8px;font-size:12px;font-weight:700;padding:2px 10px;border-radius:20px;border:1px solid var(--line2);color:var(--gold)}
+.pm .ask.auto{color:var(--muted);border-color:var(--line)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--gold);font-size:14px}
+td small{color:var(--muted)}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.no li{color:var(--text)}
+ul.dot{margin:6px 0 0 20px}ul.dot li{margin:4px 0}
+.yes{color:var(--ok);font-weight:700}.nope{color:var(--no);font-weight:700}
+footer{border-top:1px solid var(--line);margin-top:50px;padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center}
+@media(max-width:640px){.perm{grid-template-columns:1fr}th,td{padding:9px 8px;font-size:14px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="./"><img src="logo.png" alt="">Salah <span>Time</span></a><a class="back" href="./">← হোম</a></div></nav>
+
+<header><div class="wrap">
+  <span class="tag">গোপনীয়তা নীতি</span>
+  <h1>আপনার তথ্য, আপনার নিয়ন্ত্রণ</h1>
+  <p class="lead">Salah Time কোন অনুমতি নেয়, কেন নেয়, কোন তথ্য আমাদের কাছে আসে আর কোনটা কখনো আসে না: সহজ ভাষায় সবকিছু।</p>
+  <p class="updated">সর্বশেষ হালনাগাদ: ১৮ নভেম্বর ২০২৬ · অ্যাপ ভার্সন ১.০.৬৯ থেকে প্রযোজ্য</p>
+</div></header>
+
+<main class="wrap">
+  <div class="box short">
+    <b style="font-size:17px">এক নজরে</b>
+    <ul>
+      <li><span class="yes">✓</span><span>কোনো অ্যাকাউন্ট, নাম, ইমেইল বা ফোন নম্বর <b>লাগে না</b>।</span></li>
+      <li><span class="yes">✓</span><span>আপনার সঠিক লোকেশন (GPS) <b>শুধু ফোনেই থাকে</b>, নামাজের সময় ও কিবলা হিসাব করতে। আমাদের সার্ভারে পাঠানো হয় না।</span></li>
+      <li><span class="yes">✓</span><span>অ্যাপ উন্নত করতে কিছু <b>সাধারণ তথ্য</b> আসে: দেশ ও শহর (আনুমানিক), ফোনের মডেল, অ্যাপের ভার্সন। নিচে পুরো তালিকা আছে।</span></li>
+      <li><span class="yes">✓</span><span>আমরা কারো তথ্য <b>বিক্রি করি না</b>।</span></li>
+    </ul>
+  </div>
+
+  <h2><span class="n">১</span>অ্যাপ যে অনুমতিগুলো নেয় এবং কেন</h2>
+  <p>"অনুমতি চায়" লেখা মানে অ্যাপ প্রথমবার আপনাকে জিজ্ঞেস করবে, আপনি না-ও দিতে পারেন। "নিজে থেকে" লেখাগুলো Android ইনস্টলের সময়েই দিয়ে দেয়, এগুলো দিয়ে ব্যক্তিগত কিছু দেখা যায় না।</p>
+  <div class="perm">
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>লোকেশন</h3><span class="k">ACCESS_FINE_LOCATION · ACCESS_COARSE_LOCATION</span><p>আপনার এলাকার নামাজের সঠিক সময় আর কিবলার দিক বের করতে। না দিলে ঢাকার সময় দেখাবে।</p><span class="ask">অনুমতি চায়</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>নোটিফিকেশন</h3><span class="k">POST_NOTIFICATIONS</span><p>আজান আর জরুরি ঘোষণা দেখাতে। না দিলে আজান বাজবে না।</p><span class="ask">অনুমতি চায়</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M5 3 2 6M19 3l3 3"/></svg>সঠিক সময়ে অ্যালার্ম</h3><span class="k">SCHEDULE_EXACT_ALARM · USE_EXACT_ALARM</span><p>আজান যেন এক মিনিটও দেরি না করে, ফোনের অ্যালার্ম দিয়ে ঠিক সময়ে বাজাতে।</p><span class="ask">অনুমতি চায়</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="17" height="10" rx="2.5"/><path d="M22 11v2M6 10v4M10 10v4"/></svg>ব্যাটারি সেভার থেকে ছাড়</h3><span class="k">REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</span><p>কিছু ফোনের ব্যাটারি সেভার অ্যাপ বন্ধ করে আজান আটকে দেয়। আপনি চাইলে "আজান ডায়াগনস্টিক" থেকে এটা দিতে পারেন।</p><span class="ask">অনুমতি চায়</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>অ্যাপ আপডেট ইনস্টল</h3><span class="k">REQUEST_INSTALL_PACKAGES</span><p>অ্যাপের ভেতর থেকে নতুন ভার্সন নামিয়ে ইনস্টল স্ক্রিন খুলতে। ইনস্টল আপনি নিজে "Install" চাপলে তবেই হয়।</p><span class="ask">প্রথম আপডেটে চায়</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>ফোন চালু হলে</h3><span class="k">RECEIVE_BOOT_COMPLETED</span><p>ফোন রিস্টার্ট হলে আজানের অ্যালার্মগুলো আবার সেট করতে।</p><span class="ask auto">নিজে থেকে</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>ইন্টারনেট</h3><span class="k">INTERNET</span><p>দোয়া, কুইজ, ঘোষণা, আপডেট আর বিজ্ঞাপন আনতে। নামাজের সময় ও আজান ইন্টারনেট ছাড়াই চলে।</p><span class="ask auto">নিজে থেকে</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M3 8v8M21 8v8"/></svg>কম্পন ও স্ক্রিন জাগানো</h3><span class="k">VIBRATE · WAKE_LOCK</span><p>তাসবিহ গোনায় ও কিবলা ঠিক হলে হালকা কম্পন, আর স্ক্রিন বন্ধ থাকলেও আজান বাজাতে।</p><span class="ask auto">নিজে থেকে</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>বিজ্ঞাপনের আইডি</h3><span class="k">AD_ID (Google Mobile Ads)</span><p>Google-এর বিজ্ঞাপন চালু থাকলে Google এটা ব্যবহার করে। ফোনের Settings → Google → Ads থেকে আপনি এটা মুছে বা বন্ধ করতে পারেন।</p><span class="ask auto">নিজে থেকে</span></div>
+    <div class="pm"><h3><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#f0cf74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></svg>কম্পাস সেন্সর</h3><span class="k">কোনো অনুমতি লাগে না</span><p>লাইভ কিবলার জন্য ফোনের কম্পাস ব্যবহার হয়। এর কোনো তথ্য কোথাও যায় না।</p><span class="ask auto">অনুমতি লাগে না</span></div>
+  </div>
+  <p style="margin-top:12px"><b>অ্যাপ যা কখনো চায় না:</b> কন্টাক্ট, ছবি বা গ্যালারি, ক্যামেরা, মাইক্রোফোন, SMS, কল লগ, অন্য অ্যাপের তথ্য।</p>
+
+  <h2><span class="n">২</span>কোন তথ্য আমাদের কাছে আসে</h2>
+  <div class="scroll"><table>
+    <tr><th>তথ্য</th><th>কেন</th></tr>
+    <tr><td><b>একটা এলোমেলো ইনস্টল আইডি</b><br><small>যেমন a8k2…, আপনার নাম বা নম্বরের সাথে যুক্ত না</small></td><td>কতজন অ্যাপ ব্যবহার করছে গুনতে</td></tr>
+    <tr><td><b>দেশ, শহর ও IP ঠিকানা</b><br><small>ইন্টারনেট সংযোগ থেকে আনুমানিক, ipwho.is সেবার মাধ্যমে; GPS থেকে না</small></td><td>কোন দেশ ও এলাকা থেকে মানুষ ব্যবহার করছে বুঝতে</td></tr>
+    <tr><td><b>ফোনের মডেল ও Android ভার্সন</b><br><small>যেমন Redmi Note 12 · Android 14</small></td><td>কোনো নির্দিষ্ট ফোনে সমস্যা হলে খুঁজে ঠিক করতে</td></tr>
+    <tr><td><b>অ্যাপের ভার্সন, ভাষা, কতবার খুলেছেন, প্রথম ও শেষ ব্যবহারের সময়</b></td><td>কোন ভার্সন চলছে আর আপডেট ঠিকমতো পৌঁছাচ্ছে কিনা দেখতে</td></tr>
+    <tr><td><b>আপনি নিজে যা পাঠান</b><br><small>"মতামত ও সমস্যা"-তে লেখা বার্তা, আর ইচ্ছা হলে যোগাযোগের নম্বর বা ইমেইল</small></td><td>আপনার সমস্যার সমাধান করে উত্তর দিতে</td></tr>
+  </table></div>
+
+  <h2><span class="n">৩</span>যে তথ্য কখনো আসে না</h2>
+  <div class="box no"><ul class="dot">
+    <li>আপনার সঠিক লোকেশন বা GPS অবস্থান</li>
+    <li>নাম, ফোন নম্বর, ইমেইল (আপনি নিজে মতামতে না লিখলে)</li>
+    <li>কন্টাক্ট, ছবি, মেসেজ বা অন্য কোনো ব্যক্তিগত ফাইল</li>
+    <li>তাসবিহের হিসাব, প্রিয় দোয়া, সেটিংস: এগুলো শুধু আপনার ফোনে থাকে</li>
+  </ul></div>
+
+  <h2><span class="n">৪</span>অন্য যে সেবাগুলো ব্যবহার হয়</h2>
+  <div class="box"><ul class="dot">
+    <li><b>Google Firebase:</b> উপরের তথ্য রাখা, ঘোষণা পাঠানো (নোটিফিকেশন) আর নামহীন লগইনের জন্য।</li>
+    <li><b>Google Mobile Ads (AdMob):</b> Google-এর বিজ্ঞাপন চালু থাকলে, Google নিজের <a href="https://policies.google.com/technologies/ads?hl=bn" target="_blank" rel="noopener">নীতি অনুযায়ী</a> বিজ্ঞাপন দেখায়।</li>
+    <li><b>ipwho.is:</b> IP থেকে দেশ ও শহর জানতে, দিনে সর্বোচ্চ একবার।</li>
+    <li><b>GitHub:</b> অ্যাপের আপডেট ফাইল এখান থেকে নামে।</li>
+    <li><b>নিজের বিজ্ঞাপন:</b> অ্যাপের ভেতরের স্পন্সর বিজ্ঞাপন আপনার কোনো তথ্য নেয় না। চাপলে শুধু বিজ্ঞাপনদাতার লিংক খোলে।</li>
+  </ul></div>
+
+  <h2><span class="n">৫</span>আপনার নিয়ন্ত্রণ</h2>
+  <div class="box"><ul class="dot">
+    <li><b>লোকেশন বন্ধ:</b> ফোনের Settings → Apps → Salah Time → Permissions → Location।</li>
+    <li><b>আজান বা নোটিফিকেশন বন্ধ:</b> অ্যাপের সেটিংসে প্রতিটা ওয়াক্ত আলাদা করে বন্ধ করা যায়।</li>
+    <li><b>বিজ্ঞাপনের আইডি:</b> ফোনের Settings → Google → Ads → "Delete advertising ID"।</li>
+    <li><b>সব তথ্য মুছতে:</b> অ্যাপ আনইনস্টল করলে ফোনের সব তথ্য মুছে যায়। আমাদের কাছে থাকা তথ্য মুছতে চাইলে অ্যাপের "মতামত ও সমস্যা" থেকে লিখুন।</li>
+  </ul></div>
+
+  <h2><span class="n">৬</span>শিশুদের গোপনীয়তা</h2>
+  <p>অ্যাপটি সব বয়সের জন্য। আমরা জেনেশুনে কোনো শিশুর ব্যক্তিগত তথ্য সংগ্রহ করি না।</p>
+
+  <h2><span class="n">৭</span>এই নীতি বদলালে</h2>
+  <p>নতুন কোনো তথ্য নেওয়া শুরু করলে আগে এই পেজ হালনাগাদ করা হবে, আর উপরের তারিখ বদলে যাবে।</p>
+</main>
+
+<footer><div class="wrap">© <span id="yr">2026</span> Salah Time · <a href="./">হোম</a> · প্রশ্ন থাকলে অ্যাপের "মতামত ও সমস্যা" থেকে লিখুন</div></footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

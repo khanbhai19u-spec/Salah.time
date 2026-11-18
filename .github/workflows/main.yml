@@ -4,7 +4,7 @@ on:
     branches: [main, master]
     # website-only changes must not publish a new app release
     paths-ignore:
-      - 'index.html'
+      - '*.html'
       - '*.png'
       - '*.jpg'
       - '*.mp4'
