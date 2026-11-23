@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ডেভেলপার API — Salah Time</title>
+<meta name="description" content="Salah Time API দিয়ে নিজের অ্যাপে নামাজের সময়, সেহরি-ইফতার, হিজরি তারিখ, কিবলা আর দোয়া দেখান। কী পাবেন, কী পাবেন না, আর কীভাবে key নেবেন, সব এক পাতায়।">
+<meta name="theme-color" content="#021009">
+<meta property="og:title" content="Salah Time API">
+<meta property="og:description" content="নিজের অ্যাপে নামাজের সময়, সেহরি-ইফতার, হিজরি তারিখ ও কিবলা।">
+<meta property="og:image" content="og-share.jpg">
+<link rel="icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#021009;--bg2:#06180f;--gold:#f0cf74;--gold2:#c9972f;--gold3:#ffe9ad;--ink:#08321f;--text:#f4f8f5;--muted:#9fbcad;--line:rgba(240,207,116,.16);--line2:rgba(240,207,116,.4);--glass:rgba(255,255,255,.045);--ok:#34d399;--no:#f87171;--r:22px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+svg.i{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--bg)}
+.bg i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5}
+.bg i:nth-child(1){width:520px;height:520px;left:-180px;top:-180px;background:#0f5a3c}
+.bg i:nth-child(2){width:420px;height:420px;right:-160px;top:280px;background:#0b4a32}
+.bg i:nth-child(3){width:360px;height:360px;left:30%;bottom:-200px;background:#3a2c08;opacity:.35}
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(2,16,9,.7);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:62px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+.brand img{width:34px;height:34px;border-radius:50%}
+.brand span{color:var(--gold)}
+.links{display:flex;gap:6px;align-items:center}
+.links a{padding:7px 12px;border-radius:99px;color:var(--muted);font-weight:600;font-size:14.5px}
+.links a:hover{color:var(--text);background:var(--glass)}
+.pill-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:99px;background:linear-gradient(135deg,var(--gold3),var(--gold) 50%,var(--gold2));color:#2a1a00!important;font-weight:700;font-size:14.5px}
+@media(max-width:720px){.links a:not(.pill-btn){display:none}}
+.hero{padding:70px 0 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:44px}}
+.kicker{display:inline-flex;gap:10px;align-items:center;font-size:13.5px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:5px 14px 5px 6px;background:var(--glass)}
+.kicker b{background:var(--gold);color:#2a1a00;border-radius:99px;padding:2px 10px;font-size:12.5px}
+h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(34px,6vw,56px);line-height:1.2;margin:18px 0 14px}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold3),var(--gold),var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:18px;max-width:560px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;font-weight:700;font-size:16px;border:1px solid var(--line2);background:var(--glass);color:var(--text);cursor:pointer;font-family:inherit}
+.btn.pri{background:linear-gradient(135deg,var(--gold3),var(--gold) 50%,var(--gold2));color:#2a1a00;border:0}
+.term{border:1px solid var(--line);border-radius:var(--r);background:rgba(0,0,0,.35);overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.8)}
+.term .tb{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.term .tb i{width:10px;height:10px;border-radius:50%;background:#2a3a31}
+.term pre{padding:16px 18px;font:13px/1.65 "JetBrains Mono",monospace;color:#cfe3d7;overflow:auto;white-space:pre}
+.k{color:var(--gold)} .s{color:#8be0b4} .c{color:#6f8a7c}
+section{padding:46px 0}
+h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(26px,4vw,36px);line-height:1.3;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:26px;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{border:1px solid var(--line);background:var(--glass);border-radius:var(--r);padding:20px}
+.card .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(240,207,116,.22),rgba(240,207,116,.06));color:var(--gold);font-size:21px;margin-bottom:12px}
+.card b{display:block;font-size:17px;margin-bottom:4px}
+.card p{color:var(--muted);font-size:14.5px}
+.card code{font:12.5px "JetBrains Mono",monospace;color:var(--gold3)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;counter-reset:s}
+.step{position:relative;padding-left:58px}
+.step:before{counter-increment:s;content:counter(s,bengali);position:absolute;left:18px;top:18px;width:30px;height:30px;border-radius:50%;background:var(--gold);color:#2a1a00;font-weight:800;display:grid;place-items:center}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.list{list-style:none;display:grid;gap:10px}
+.list li{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.list li svg{margin-top:5px;font-size:17px}
+.yes h3{color:var(--ok)} .no h3{color:var(--no)}
+.yes li svg{color:var(--ok)} .no li svg{color:var(--no)}
+.card h3{font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.note{border-left:3px solid var(--gold);background:rgba(240,207,116,.07);padding:14px 16px;border-radius:0 14px 14px 0;color:#e6efe9;font-size:14.5px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:13px}
+td code,.mono{font:13px "JetBrains Mono",monospace;color:var(--gold3);word-break:break-all}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;background:rgba(240,207,116,.14);color:var(--gold)}
+.scroll{overflow-x:auto}
+.tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:var(--glass);color:var(--muted);padding:7px 14px;border-radius:99px;font:600 14px "Hind Siliguri";cursor:pointer}
+.tabs button.on{background:var(--gold);color:#2a1a00;border-color:var(--gold)}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){form .row{grid-template-columns:1fr}}
+label.f{display:block;font-size:14px;color:var(--muted);font-weight:600}
+label.f input,label.f select,label.f textarea{display:block;width:100%;margin-top:6px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.3);color:var(--text);font:16px "Hind Siliguri";outline:none}
+label.f input:focus,label.f select:focus,label.f textarea:focus{border-color:var(--gold)}
+.checks{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.checks label{display:flex;gap:7px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:7px 13px;font-size:14px;cursor:pointer;background:var(--glass)}
+.checks input{accent-color:var(--gold)}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:#dfe9e3}
+.agree input{margin-top:6px;accent-color:var(--gold);width:18px;height:18px}
+.msg{margin-top:12px;padding:12px 14px;border-radius:14px;display:none;font-size:15px}
+.msg.ok{display:block;background:rgba(52,211,153,.12);color:#a7f3d0}
+.msg.err{display:block;background:rgba(248,113,113,.12);color:#fecaca}
+.hp{position:absolute;left:-9999px}
+details{border:1px solid var(--line);border-radius:16px;padding:14px 16px;background:var(--glass);margin-bottom:10px}
+details summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:10px}
+details summary:after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+details[open] summary:after{content:"−"}
+details p{color:var(--muted);margin-top:8px;font-size:15px}
+@media(max-width:640px){table.ep tr{display:block;padding:12px 0;border-bottom:1px solid var(--line)}table.ep td,table.ep th{display:block;border:0;padding:2px 0}table.ep tr:first-child{display:none}table.ep td:first-child code{font-size:14px;font-weight:600}}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+footer a:hover{color:var(--text)}
+</style>
+</head>
+<body>
+<div class="bg"><i></i><i></i><i></i></div>
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
+  <symbol id="book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M19 19v2H6"/></symbol>
+  <symbol id="ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+  <symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3M14 9l2 2"/></symbol>
+  <symbol id="send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
+  <symbol id="code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></symbol>
+  <symbol id="gauge" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4-5"/></symbol>
+</svg>
+
+<nav><div class="wrap"><div class="bar">
+  <a class="brand" href="./"><img src="logo.png" alt="">Salah <span>Time</span></a>
+  <div class="links"><a href="#what">কী পাবেন</a><a href="#rules">নিয়ম</a><a href="#docs">ডকুমেন্টেশন</a><a class="pill-btn" href="#request"><svg class="i"><use href="#key"/></svg>API key নিন</a></div>
+</div></div></nav>
+
+<main class="wrap">
+  <header class="hero">
+    <div>
+      <span class="kicker"><b>ডেভেলপার</b>Salah Time API · সংস্করণ ১</span>
+      <h1>আপনার অ্যাপে<br><em>নামাজের সময়</em></h1>
+      <p class="lead">যে হিসাবে Salah Time অ্যাপ চলে, সেই একই নির্ভুল নামাজের সময়, সেহরি-ইফতার, হিজরি তারিখ আর কিবলা এখন আপনার অ্যাপেও। ডিজাইন আপনার, ডেটা আমাদের।</p>
+      <div class="cta"><a class="btn pri" href="#request"><svg class="i"><use href="#key"/></svg>API key চান</a><a class="btn" href="#docs"><svg class="i"><use href="#code"/></svg>ডকুমেন্টেশন</a></div>
+    </div>
+    <div class="term"><div class="tb"><i></i><i></i><i></i></div><pre><span class="c"># ঢাকার আজকের নামাজের সময়</span>
+curl <span class="s">"<span class="base">https://salah-api…workers.dev</span>/v1/prayer-times?district=dhaka"</span> \
+  -H <span class="s">"X-API-Key: st_live_…"</span>
+
+{
+  <span class="k">"date"</span>: <span class="s">"2026-11-23"</span>,
+  <span class="k">"fajr"</span>:    { <span class="k">"time"</span>: <span class="s">"04:59"</span> },
+  <span class="k">"dhuhr"</span>:   { <span class="k">"time"</span>: <span class="s">"11:46"</span> },
+  <span class="k">"asr"</span>:     { <span class="k">"time"</span>: <span class="s">"15:35"</span> },
+  <span class="k">"maghrib"</span>: { <span class="k">"time"</span>: <span class="s">"17:11"</span> },
+  <span class="k">"isha"</span>:    { <span class="k">"time"</span>: <span class="s">"18:30"</span> }
+}</pre></div>
+  </header>
+
+  <section id="what">
+    <h2>কী কী পাবেন</h2>
+    <p class="sub">key দেওয়ার সময় আমরা ঠিক করে দিই আপনি কোন কোন অংশ ব্যবহার করতে পারবেন। দরকার মতো চেয়ে নিন।</p>
+    <div class="grid">
+      <div class="card"><div class="ic"><svg class="i"><use href="#clock"/></svg></div><b>নামাজের সময়</b><p>যেকোনো জায়গার এক দিনের বা পুরো মাসের ছয় ওয়াক্ত। হানাফি/শাফেয়ি, পাঁচটা হিসাব পদ্ধতি।</p><p><code>prayer</code></p></div>
+      <div class="card"><div class="ic"><svg class="i"><use href="#moon"/></svg></div><b>রমজান</b><p>৬৪ জেলার সেহরি ও ইফতারের পুরো মাসের সময়সূচি, জেলার তালিকা সহ।</p><p><code>ramadan</code></p></div>
+      <div class="card"><div class="ic"><svg class="i"><use href="#cal"/></svg></div><b>হিজরি তারিখ</b><p>যেকোনো দিনের হিজরি তারিখ, বাংলা মাসের নাম সহ। বাংলাদেশের চাঁদ দেখার জন্য সমন্বয়।</p><p><code>calendar</code></p></div>
+      <div class="card"><div class="ic"><svg class="i"><use href="#compass"/></svg></div><b>কিবলা</b><p>যেকোনো জায়গা থেকে কাবার দিক (ডিগ্রি) আর দূরত্ব।</p><p><code>qibla</code></p></div>
+      <div class="card"><div class="ic"><svg class="i"><use href="#book"/></svg></div><b>অ্যাপের কনটেন্ট</b><p>দোয়া, আল্লাহর ৯৯ নাম, আজকের হাদিস আর ইসলামিক লেখা, উৎসসহ।</p><p><code>content</code></p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>key পাওয়ার নিয়ম</h2>
+    <p class="sub">পুরোটা হাতে দেখে দেওয়া হয়, যাতে শুধু সঠিক কাজে ব্যবহার হয়।</p>
+    <div class="steps">
+      <div class="card step"><b>ফর্ম পূরণ করুন</b><p>নিচের ফর্মে আপনার নাম, ইমেইল, অ্যাপের নাম আর কী কাজে লাগবে লিখুন।</p></div>
+      <div class="card step"><b>আমরা দেখি</b><p>সাধারণত ১ থেকে ৩ দিনের মধ্যে অনুরোধ যাচাই করে দেখা হয়।</p></div>
+      <div class="card step"><b>ইমেইলে key</b><p>অনুমোদন হলে key ইমেইলে পাঠানো হয়। তারপর থেকেই ব্যবহার শুরু।</p></div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>কী করতে পারবেন, কী পারবেন না</h2>
+    <p class="sub">key নেওয়ার মানে আপনি নিচের সব নিয়ম মেনে নিচ্ছেন। নিয়ম ভাঙলে কোনো নোটিশ ছাড়াই key বন্ধ করা হবে।</p>
+    <div class="two">
+      <div class="card yes"><h3><svg class="i"><use href="#ok"/></svg>যা করতে পারবেন</h3><ul class="list">
+        <li><svg class="i"><use href="#ok"/></svg>নিজের অ্যাপ, ওয়েবসাইট, স্মার্ট ঘড়ি বা মসজিদের ডিসপ্লেতে ডেটা দেখানো।</li>
+        <li><svg class="i"><use href="#ok"/></svg>নিজের মতো ডিজাইন, নিজের নাম আর নিজের লোগো দিয়ে অ্যাপ বানানো।</li>
+        <li><svg class="i"><use href="#ok"/></svg>ফ্রি অ্যাপে বা বিজ্ঞাপনসহ অ্যাপে ব্যবহার করা।</li>
+        <li><svg class="i"><use href="#ok"/></svg>ফোনে ২৪ ঘণ্টা পর্যন্ত ডেটা জমা (cache) রাখা, যাতে অফলাইনেও চলে।</li>
+        <li><svg class="i"><use href="#ok"/></svg>দরকার হলে বেশি limit বা নতুন অংশের জন্য আবার অনুরোধ করা।</li>
+      </ul></div>
+      <div class="card no"><h3><svg class="i"><use href="#x"/></svg>যা করতে পারবেন না</h3><ul class="list">
+        <li><svg class="i"><use href="#x"/></svg>"Salah Time" নাম, লোগো, আইকন বা আমাদের অ্যাপের হুবহু ডিজাইন ব্যবহার করা, বা নিজেকে Salah Time বলে দেখানো।</li>
+        <li><svg class="i"><use href="#x"/></svg>key অন্য কাউকে দেওয়া, বিক্রি করা, বা খোলা জায়গায় (GitHub ইত্যাদি) রেখে দেওয়া।</li>
+        <li><svg class="i"><use href="#x"/></svg>সব ডেটা একসাথে নামিয়ে নিজের API বানিয়ে আবার বিক্রি করা।</li>
+        <li><svg class="i"><use href="#x"/></svg>দোয়া, হাদিস বা আয়াতের লেখা বদলে দেওয়া, বা উৎস মুছে দেওয়া।</li>
+        <li><svg class="i"><use href="#x"/></svg>ইসলামের পরিপন্থী, ঘৃণা ছড়ানো, প্রতারণা বা জুয়ার কাজে ব্যবহার করা।</li>
+        <li><svg class="i"><use href="#x"/></svg>দিনের সীমার বেশি request পাঠাতে একাধিক key বা কৌশল ব্যবহার করা।</li>
+      </ul></div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><div class="ic"><svg class="i"><use href="#shield"/></svg></div><b>যা আমরা কখনো দিই না</b><p>Salah Time-এর ব্যবহারকারীদের কোনো তথ্য (লোকেশন, ফোন, মতামত, কিছুই না), এডমিন প্যানেলে ঢোকার সুযোগ, অ্যাপের সোর্স কোড, আজানের অডিও ফাইল আর আমাদের ডিজাইন।</p></div>
+      <div class="card"><div class="ic"><svg class="i"><use href="#gauge"/></svg></div><b>সীমা</b><p>সাধারণত প্রতি key দিনে ৫,০০০ request। রাত ১২টায় (UTC) আবার শুরু হয়। বেশি লাগলে কারণ লিখে জানান।</p></div>
+      <div class="card"><div class="ic"><svg class="i"><use href="#book"/></svg></div><b>নাম উল্লেখ করুন</b><p>যেখানে ডেটা দেখাবেন, সেখানে ছোট করে লিখুন: "তথ্য: Salah Time"। কনটেন্টের ক্ষেত্রে মূল উৎসও রাখুন।</p></div>
+    </div>
+    <p class="note" style="margin-top:14px">নামাজের সময় জ্যোতির্বিজ্ঞানের হিসাবে বের করা। এলাকার মসজিদের জামাতের সময় কয়েক মিনিট আলাদা হতে পারে। রমজান আর হিজরি তারিখ শেষ পর্যন্ত চাঁদ দেখার উপর নির্ভর করে। API যেমন আছে তেমনভাবে দেওয়া হয়, আর যেকোনো সময় বদলাতে বা বন্ধ হতে পারে।</p>
+  </section>
+
+  <section id="docs">
+    <h2>ডকুমেন্টেশন</h2>
+    <p class="sub">সব request <b>GET</b>, উত্তর আসে JSON-এ। key পাঠাবেন <span class="mono">X-API-Key</span> header-এ।</p>
+    <div class="card" style="margin-bottom:14px">
+      <table><tr><th>Base URL</th><td><code class="base">লোড হচ্ছে…</code></td></tr>
+      <tr><th>Header</th><td><code>X-API-Key: st_live_xxxxxxxx</code></td></tr>
+      <tr><th>সময় অঞ্চল</th><td><code>tz</code> দিন (যেমন <code>Asia/Dhaka</code>, এটাই ডিফল্ট)। প্রতিটা সময়ের সাথে <code>iso</code> (UTC) থাকে।</td></tr></table>
+    </div>
+    <div class="card scroll">
+      <table class="ep">
+        <tr><th>Endpoint</th><th>কী দেয়</th><th>প্যারামিটার</th><th>অংশ</th></tr>
+        <tr><td><code>/v1/prayer-times</code></td><td>এক দিনের ছয় ওয়াক্ত</td><td><code>lat, lng</code> অথবা <code>district</code>; <code>date</code>, <code>tz</code>, <code>method</code>, <code>madhab</code></td><td><span class="tag">prayer</span></td></tr>
+        <tr><td><code>/v1/prayer-times/month</code></td><td>পুরো মাসের সময়</td><td>উপরের মতো, সাথে <code>year</code>, <code>month</code></td><td><span class="tag">prayer</span></td></tr>
+        <tr><td><code>/v1/ramadan</code></td><td>রমজানের সেহরি-ইফতার</td><td><code>district</code> বা <code>lat, lng</code>; <code>year</code>, <code>adjust</code> (ডিফল্ট -১)</td><td><span class="tag">ramadan</span></td></tr>
+        <tr><td><code>/v1/districts</code></td><td>৬৪ জেলা, বাংলা নাম ও স্থানাঙ্ক</td><td>নেই</td><td><span class="tag">ramadan</span></td></tr>
+        <tr><td><code>/v1/hijri</code></td><td>হিজরি তারিখ</td><td><code>date</code>, <code>adjust</code> (-২ থেকে ২)</td><td><span class="tag">calendar</span></td></tr>
+        <tr><td><code>/v1/qibla</code></td><td>কিবলার দিক ও দূরত্ব</td><td><code>lat, lng</code></td><td><span class="tag">qibla</span></td></tr>
+        <tr><td><code>/v1/duas</code></td><td>দোয়া</td><td><code>q</code> (খোঁজা), <code>limit</code>, <code>offset</code></td><td><span class="tag">content</span></td></tr>
+        <tr><td><code>/v1/names99</code></td><td>আল্লাহর ৯৯ নাম</td><td><code>limit</code>, <code>offset</code></td><td><span class="tag">content</span></td></tr>
+        <tr><td><code>/v1/hadith</code></td><td>আজকের হাদিস</td><td><code>limit</code>, <code>offset</code></td><td><span class="tag">content</span></td></tr>
+        <tr><td><code>/v1/articles</code></td><td>ইসলামিক লেখা</td><td><code>q</code>, <code>limit</code>, <code>offset</code></td><td><span class="tag">content</span></td></tr>
+        <tr><td><code>/v1/me</code></td><td>আপনার key, অংশ ও আজকের ব্যবহার</td><td>নেই</td><td>যেকোনো</td></tr>
+        <tr><td><code>/v1/status</code></td><td>API চালু আছে কিনা</td><td>key লাগে না</td><td>-</td></tr>
+      </table>
+    </div>
+    <p class="note" style="margin-top:14px"><b>method:</b> <code>karachi</code> (ডিফল্ট, বাংলাদেশে প্রচলিত), <code>mwl</code>, <code>isna</code>, <code>egypt</code>, <code>makkah</code>। <b>madhab:</b> <code>hanafi</code> (ডিফল্ট) বা <code>shafi</code>। <b>date:</b> <code>2027-02-18</code> এভাবে, না দিলে আজকের দিন।</p>
+
+    <h3 style="margin:30px 0 10px;font-size:20px">উদাহরণ</h3>
+    <div class="tabs" id="exTabs"><button class="on" data-ex="curl">cURL</button><button data-ex="js">JavaScript</button><button data-ex="dart">Flutter</button><button data-ex="kt">Kotlin</button></div>
+    <div class="term"><div class="tb"><i></i><i></i><i></i></div><pre id="ex"></pre></div>
+
+    <h3 style="margin:30px 0 10px;font-size:20px">ভুল হলে যা আসে</h3>
+    <div class="card scroll"><table class="ep">
+      <tr><th>HTTP</th><th>code</th><th>মানে</th></tr>
+      <tr><td>400</td><td><code>missing_param</code> / <code>bad_param</code></td><td>প্যারামিটার নেই বা ভুল</td></tr>
+      <tr><td>401</td><td><code>missing_key</code> / <code>invalid_key</code></td><td>key দেওয়া হয়নি বা ভুল key</td></tr>
+      <tr><td>403</td><td><code>scope_denied</code> / <code>key_disabled</code> / <code>origin_denied</code></td><td>এই অংশের অনুমতি নেই, key বন্ধ, বা অন্য ওয়েবসাইট থেকে</td></tr>
+      <tr><td>429</td><td><code>rate_limited</code></td><td>আজকের সীমা শেষ</td></tr>
+    </table></div>
+    <p style="color:var(--muted);margin-top:10px;font-size:14.5px">প্রতিটা উত্তরের header-এ <span class="mono">X-RateLimit-Remaining</span> থাকে, আজ আর কতবার চালানো যাবে।</p>
+  </section>
+
+  <section id="request">
+    <h2>API key চান</h2>
+    <p class="sub">সঠিক তথ্য দিন। আপনার ইমেইলেই key পাঠানো হবে।</p>
+    <form class="card" id="reqForm" novalidate>
+      <div class="row">
+        <label class="f">আপনার নাম *<input name="name" required maxlength="80" autocomplete="name"></label>
+        <label class="f">ইমেইল *<input name="email" type="email" required maxlength="120" autocomplete="email"></label>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <label class="f">অ্যাপ বা প্রজেক্টের নাম *<input name="app" required maxlength="100"></label>
+        <label class="f">প্রতিষ্ঠান (ঐচ্ছিক)<input name="org" maxlength="100"></label>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <label class="f">প্ল্যাটফর্ম<select name="platform"><option>Android</option><option>iOS</option><option>Android ও iOS</option><option>ওয়েবসাইট</option><option>মসজিদের ডিসপ্লে</option><option>অন্য কিছু</option></select></label>
+        <label class="f">আনুমানিক ব্যবহারকারী<select name="users"><option>১০০-এর কম</option><option>১০০ থেকে ১,০০০</option><option>১,০০০ থেকে ১০,০০০</option><option>১০,০০০-এর বেশি</option></select></label>
+      </div>
+      <label class="f" style="margin-top:12px">অ্যাপ বা ওয়েবসাইটের লিংক (থাকলে)<input name="website" maxlength="200" placeholder="https://"></label>
+      <div style="margin-top:14px"><span class="f" style="font-size:14px;color:var(--muted);font-weight:600">কোন অংশগুলো লাগবে</span>
+        <div class="checks">
+          <label><input type="checkbox" name="scopes" value="prayer" checked>নামাজের সময়</label>
+          <label><input type="checkbox" name="scopes" value="ramadan">রমজান</label>
+          <label><input type="checkbox" name="scopes" value="calendar">হিজরি তারিখ</label>
+          <label><input type="checkbox" name="scopes" value="qibla">কিবলা</label>
+          <label><input type="checkbox" name="scopes" value="content">দোয়া ও কনটেন্ট</label>
+        </div></div>
+      <label class="f" style="margin-top:14px">কী কাজে লাগবে, একটু খুলে লিখুন *<textarea name="purpose" rows="4" maxlength="1500" required placeholder="যেমন: আমাদের এলাকার মসজিদের জন্য একটা অ্যাপ বানাচ্ছি, সেখানে প্রতিদিনের নামাজের সময় দেখাব।"></textarea></label>
+      <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="agree" style="margin-top:14px"><input type="checkbox" name="agree">উপরের "কী করতে পারবেন, কী পারবেন না" সব নিয়ম পড়েছি এবং মেনে চলব।</label>
+      <button class="btn pri" type="submit" style="margin-top:16px;width:100%;justify-content:center"><svg class="i"><use href="#send"/></svg>অনুরোধ পাঠান</button>
+      <div class="msg" id="msg"></div>
+    </form>
+  </section>
+
+  <section>
+    <h2>প্রশ্ন ও উত্তর</h2>
+    <details><summary>API কি ফ্রি?</summary><p>হ্যাঁ, এখন সাধারণ ব্যবহারের জন্য ফ্রি। খুব বেশি ব্যবহার হলে আলাদা করে কথা বলা হবে।</p></details>
+    <details><summary>key হারিয়ে ফেললে কী করব?</summary><p>নিরাপত্তার জন্য key আমরাও আর দেখতে পারি না। আবার ফর্ম পূরণ করে জানান যে আগের key হারিয়েছে, পুরানটা বন্ধ করে নতুন key দেওয়া হবে।</p></details>
+    <details><summary>ওয়েবসাইটের JavaScript-এ key রাখলে অন্যরা দেখে ফেলবে না?</summary><p>দেখতে পারে। তাই ওয়েবসাইটে ব্যবহার করলে অনুরোধে লিংক দিন। আমরা key-টা শুধু আপনার ওয়েবসাইট থেকে চলার মতো করে দেব। মোবাইল অ্যাপে key কোডের ভেতরে রাখুন, প্রকাশ্যে রাখবেন না।</p></details>
+    <details><summary>নামাজের সময় কতটা ঠিক?</summary><p>Salah Time অ্যাপ যে হিসাব ব্যবহার করে, এটাও হুবহু তাই (করাচি পদ্ধতি, হানাফি আসর)। তবু এলাকার মসজিদের জামাতের সময় আলাদা হতে পারে।</p></details>
+    <details><summary>Salah Time-এর মতো একটা অ্যাপ বানাতে পারব?</summary><p>হ্যাঁ, নিজের নাম, নিজের ডিজাইন আর নিজের লোগো দিয়ে। শুধু আমাদের নাম, লোগো বা হুবহু ডিজাইন ব্যবহার করবেন না।</p></details>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <a class="brand" href="./"><img src="logo.png" alt="">Salah <span>Time</span></a>
+  <span>© <span id="yr">2026</span> Salah Time Team</span>
+  <div style="display:flex;gap:16px"><a href="./">হোম</a><a href="privacy.html">গোপনীয়তা</a><a href="#request">API key</a></div>
+</div></footer>
+
+<script>
+document.getElementById("yr").textContent = new Date().getFullYear();
+let API = "";
+const EX = {
+  curl: b => `curl "${b}/v1/prayer-times?lat=23.81&lng=90.41&tz=Asia/Dhaka" \\\n  -H "X-API-Key: YOUR_KEY"`,
+  js: b => `const r = await fetch("${b}/v1/prayer-times?district=dhaka", {\n  headers: { "X-API-Key": "YOUR_KEY" }\n});\nconst t = await r.json();\nconsole.log(t.fajr.time, t.maghrib.time);`,
+  dart: b => `import 'dart:convert';\nimport 'package:http/http.dart' as http;\n\nfinal r = await http.get(\n  Uri.parse('${b}/v1/ramadan?district=dhaka&year=2027'),\n  headers: {'X-API-Key': 'YOUR_KEY'},\n);\nfinal days = jsonDecode(r.body)['days'] as List;\nprint(days.first['iftar']['time']);`,
+  kt: b => `val req = Request.Builder()\n    .url("${b}/v1/qibla?lat=23.81&lng=90.41")\n    .header("X-API-Key", "YOUR_KEY")\n    .build()\nval body = OkHttpClient().newCall(req).execute().body!!.string()\nval bearing = JSONObject(body).getDouble("bearing")`,
+};
+let ex = "curl";
+const esc = s => s.replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+function showEx() { document.getElementById("ex").innerHTML = esc(EX[ex](API || "https://salah-api.example.workers.dev")); }
+document.getElementById("exTabs").onclick = e => {
+  const b = e.target.closest("[data-ex]"); if (!b) return;
+  ex = b.dataset.ex; document.querySelectorAll("#exTabs button").forEach(x => x.classList.toggle("on", x === b)); showEx();
+};
+showEx();
+// the API address is set in Salah Console and stored in the app's public config
+fetch("https://firestore.googleapis.com/v1/projects/salah-time-fe99b/databases/(default)/documents/config/app")
+  .then(r => r.json()).then(d => {
+    API = (d.fields?.apiUrl?.stringValue || "").replace(/\/+$/, "");
+    document.querySelectorAll(".base").forEach(el => el.textContent = API || "শীঘ্রই চালু হবে");
+    showEx();
+  }).catch(() => document.querySelectorAll(".base").forEach(el => el.textContent = "শীঘ্রই চালু হবে"));
+
+const f = document.getElementById("reqForm"), msg = document.getElementById("msg");
+const say = (t, ok) => { msg.textContent = t; msg.className = "msg " + (ok ? "ok" : "err"); };
+f.onsubmit = async e => {
+  e.preventDefault();
+  const fd = new FormData(f);
+  const o = Object.fromEntries([...fd.entries()].filter(([k]) => k !== "scopes"));
+  o.scopes = fd.getAll("scopes"); o.agree = fd.get("agree") === "on";
+  if (!o.name || !o.app || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(o.email || "")) return say("নাম, সঠিক ইমেইল আর অ্যাপের নাম দিন।");
+  if ((o.purpose || "").trim().length < 20) return say("কী কাজে লাগবে, অন্তত এক-দুই লাইন লিখুন।");
+  if (!o.scopes.length) return say("অন্তত একটা অংশ বেছে নিন।");
+  if (!o.agree) return say("নিয়মগুলো মেনে নেওয়ার ঘরে টিক দিন।");
+  if (!API) return say("API এখনো চালু হয়নি। কিছুদিন পর আবার চেষ্টা করুন।");
+  const btn = f.querySelector("button[type=submit]"); btn.disabled = true;
+  try {
+    const r = await fetch(API + "/v1/request", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(o) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error?.message || "পাঠানো যায়নি");
+    f.reset(); say("অনুরোধ পৌঁছেছে। যাচাই করে আপনার ইমেইলে উত্তর দেওয়া হবে, ইনশাআল্লাহ।", true);
+  } catch (err) { say("পাঠানো যায়নি: " + err.message); }
+  btn.disabled = false;
+};
+</script>
+</body>
+</html>
