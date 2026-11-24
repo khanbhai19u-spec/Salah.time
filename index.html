@@ -109,6 +109,14 @@ h2 span{color:var(--g2)}
 .sub{text-align:center;color:var(--muted);margin:10px auto 40px;max-width:600px;font-size:16.5px}
 /* download picker */
 .picker{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ios{display:flex;align-items:center;gap:16px;margin-top:18px;padding:20px 22px;border-radius:var(--r);background:linear-gradient(135deg,var(--deep),var(--g));color:#fff;box-shadow:var(--shadow2);transition:transform .2s}
+.ios:hover{transform:translateY(-2px)}
+.ios .ic{width:52px;height:52px;flex:none;border-radius:16px;display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:26px}
+.ios .tx{flex:1;display:flex;flex-direction:column;gap:2px}.ios .tx b{font-size:18px}.ios .tx span{opacity:.85;font-size:14.5px}
+.ios .go{display:inline-flex;align-items:center;gap:8px;flex:none;background:linear-gradient(135deg,#fff1b8,var(--gold2));color:#2a1a00;font-weight:700;padding:10px 16px;border-radius:99px;font-size:14.5px}
+.ios .go svg{transform:rotate(-90deg)}
+@media(max-width:640px){.ios{flex-wrap:wrap}.ios .go{width:100%;justify-content:center}}
+.ios.me{outline:3px solid var(--gold2);outline-offset:3px}
 .pk{position:relative;display:flex;flex-direction:column;gap:12px;padding:26px;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s,border-color .2s}
 .pk:hover{transform:translateY(-4px);box-shadow:var(--shadow2);border-color:var(--g4)}
 .pk.rec{border-color:var(--g2);background:linear-gradient(180deg,var(--g3),#fff 45%)}
@@ -439,6 +447,11 @@ footer .fl a{display:inline-flex;align-items:center;gap:6px;color:var(--g);font-
     </a>
   </div>
   <div class="hint reveal"><svg class="i"><use href="#i-info"/></svg><span>ছোট ভার্সনে <b>"App not installed"</b> দেখালে <b>"সব ফোন"</b> ভার্সনটা নিন। যেকোনো ভার্সন আগের অ্যাপের ওপরেই আপডেট হবে, কোনো ডেটা হারাবে না।</span></div>
+  <a class="ios reveal" id="ios" href="iphone.html">
+    <span class="ic"><svg class="i"><use href="#i-phone"/></svg></span>
+    <span class="tx"><b>iPhone ব্যবহার করেন?</b><span>App Store বা টাকা লাগবে না। Safari দিয়ে খুলে হোম স্ক্রিনে রাখুন, আসল অ্যাপের মতো চলবে।</span></span>
+    <span class="go">কীভাবে বসাবেন<svg class="i"><use href="#i-download"/></svg></span>
+  </a>
 </div></section>
 
 <section id="new"><div class="wrap">
@@ -758,6 +771,9 @@ $('rSend').onclick = async () => {
   btn.disabled = false;
 };
 loadAll();
+</script>
+<script>
+(function(){var ua=navigator.userAgent||"";if(/iPhone|iPad|iPod/.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1)){var c=document.getElementById("ios");if(c){c.classList.add("me");}document.querySelectorAll('a[href="#download"]').forEach(function(a){a.setAttribute("href","iphone.html");});}})();
 </script>
 </body>
 </html>

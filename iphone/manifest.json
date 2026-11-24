@@ -1,0 +1,20 @@
+{
+  "name": "Salah Time — নামাজের সময়",
+  "short_name": "Salah Time",
+  "id": "/iphone/",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#063d29",
+  "theme_color": "#063d29",
+  "description": "নামাজের সময়, কুরআন, দোয়া, তাসবিহ, কিবলা ও রমজান — এক অ্যাপে।",
+  "lang": "bn",
+  "orientation": "portrait",
+  "prefer_related_applications": false,
+  "icons": [
+    {"src": "icons/Icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/Icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/Icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable"},
+    {"src": "icons/Icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
