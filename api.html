@@ -5,157 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Salah Time API</title>
 <meta name="description" content="নিজের অ্যাপে নামাজের সময়, সেহরি-ইফতার, হিজরি তারিখ, কিবলা আর দোয়া। ফ্রি API key নিন।">
-<meta name="theme-color" content="#063d29">
+<meta name="theme-color" content="#031726">
 <meta property="og:title" content="Salah Time API">
-<meta property="og:description" content="নিজের অ্যাপে নামাজের সময়, সেহরি-ইফতার, হিজরি তারিখ ও কিবলা।">
+<meta property="og:description" content="নিজের অ্যাপে নামাজের সময়। ফ্রি API key।">
 <meta property="og:image" content="og-share.jpg">
 <link rel="icon" href="icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f7faf8;--g:#0b6b47;--g2:#0f8a5c;--g3:#e7f5ee;--g4:#cdeadb;--deep:#063d29;--gold:#c9972f;--gold2:#e9bf5c;--text:#0f2a1f;--muted:#5b7468;--line:#e3ece7;--ok:#0f8a5c;--no:#c2410c;--r:26px;
-  --shadow:0 1px 2px rgba(6,61,41,.04),0 14px 34px -14px rgba(6,61,41,.18)}
+:root{--ink:#031726;--sky2:#0a3546;--teal:#1c6459;--glow:#d9945a;--gold:#f3d98b;--gold2:#c9972f;--text:#f4f8f5;--muted:#a9c3b8;--card:rgba(255,255,255,.06);--line:rgba(243,217,139,.18);--r:28px}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 html,body{overflow-x:hidden}
-main{overflow-x:clip}
-.dev,.req>*,.rules>*,.hero>*{min-width:0}
-pre{max-width:100%}
-body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:"Hind Siliguri",system-ui,sans-serif;background:var(--ink);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 svg.i{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .wrap{max-width:1080px;margin:0 auto;padding:0 18px}
-nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);background:rgba(247,250,248,.86);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;justify-content:space-between;height:64px;gap:10px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--deep)}
-.brand img{width:36px;height:36px;border-radius:50%}.brand span{color:var(--gold)}
-.links{display:flex;gap:4px;align-items:center}
-.links a{padding:8px 13px;border-radius:99px;color:var(--muted);font-weight:600;font-size:14.5px}
-.links a:hover{background:var(--g3);color:var(--deep)}
-@media(max-width:720px){.links a:not(.btn){display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:99px;font-weight:700;font-size:16px;border:1.5px solid var(--line);background:#fff;color:var(--deep);cursor:pointer;font-family:inherit;transition:transform .15s}
+nav{position:absolute;top:0;left:0;right:0;z-index:20}
+.bar{display:flex;align-items:center;justify-content:space-between;height:70px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px}
+.brand img{width:38px;height:38px;border-radius:50%;box-shadow:0 0 0 2px rgba(243,217,139,.6)}
+.brand span{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 24px;border-radius:99px;font-weight:700;font-size:16.5px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;font-family:inherit;transition:transform .15s}
 .btn:active{transform:scale(.97)}
-.btn.pri{background:linear-gradient(135deg,var(--g2),var(--deep));color:#fff;border:0;box-shadow:0 16px 32px -14px rgba(6,61,41,.6)}
-.btn.gold{background:linear-gradient(135deg,#fff1b8,var(--gold2) 60%,var(--gold));color:#2a1a00;border:0}
-.links .btn{padding:9px 16px;font-size:14.5px}
-/* hero */
-.hero{position:relative;padding:54px 0 30px;display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
-.hero:before{content:"";position:absolute;width:720px;height:720px;right:-300px;top:-320px;border-radius:50%;background:radial-gradient(circle,rgba(15,138,92,.15),transparent 62%);z-index:-1}
-@media(max-width:860px){.hero{grid-template-columns:1fr;text-align:center;padding-top:30px}.hero .cta{justify-content:center}}
-.kick{display:inline-flex;align-items:center;gap:8px;background:var(--g3);color:var(--g);font-weight:700;font-size:13.5px;border-radius:99px;padding:6px 14px}
-.kick b{width:8px;height:8px;border-radius:50%;background:var(--g2);box-shadow:0 0 0 4px rgba(15,138,92,.2)}
-h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(34px,6.2vw,58px);line-height:1.18;margin:16px 0 12px;color:var(--deep)}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--g2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{color:var(--muted);font-size:18.5px}
-.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-.free{display:flex;gap:18px;margin-top:22px;color:var(--muted);font-size:14px;font-weight:600;flex-wrap:wrap}
-@media(max-width:860px){.free{justify-content:center}}
-.free span{display:inline-flex;gap:6px;align-items:center}.free svg{color:var(--g2)}
-/* hero art: an app built with the API */
-.art{position:relative;height:440px}
-@media(max-width:860px){.art{height:420px;max-width:380px;margin:0 auto;width:100%}}
-.ph{position:absolute;left:50%;top:0;transform:translateX(-50%);width:230px;height:430px;border-radius:40px;background:#0d1512;padding:10px;box-shadow:0 40px 80px -30px rgba(6,61,41,.6)}
-.ph .s{width:100%;height:100%;border-radius:31px;overflow:hidden;background:linear-gradient(180deg,#0e5c41,#0a3d2c);color:#fff;padding:34px 14px 14px;position:relative}
-.ph .nt{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:80px;height:22px;border-radius:12px;background:#0d1512}
-.ph .t1{font-size:11px;opacity:.75}.ph .t2{font-size:24px;font-weight:700;line-height:1.2}.ph .t3{font:600 26px "JetBrains Mono",monospace;color:#f3d98b;margin:2px 0 10px}
-.ph .row{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.08);border-radius:12px;padding:8px 10px;margin-bottom:6px;font-size:13px}
-.ph .row b{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:12.5px}
-.ph .row.on{background:linear-gradient(135deg,#fff1b8,#e9bf5c);color:#2a1a00}
-.code{position:absolute;left:0;bottom:-6px;width:200px;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:12px 14px;box-shadow:var(--shadow);font:12px/1.6 "JetBrains Mono",monospace;color:#30473d;transform:rotate(-4deg)}
-.code .k{color:var(--g)}.code .s2{color:var(--gold)}
-.chip{position:absolute;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);border-radius:99px;padding:8px 14px;font-weight:700;font-size:13.5px;color:var(--deep);box-shadow:var(--shadow);animation:fl 5s ease-in-out infinite}
-.chip svg{color:var(--g2);font-size:17px}
-.c1{right:0;top:40px}.c2{right:-6px;top:200px;animation-delay:-1.5s}.c3{left:0;top:70px;animation-delay:-3s}
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.btn.gold{background:linear-gradient(135deg,#ffe7a6,#e9c46a 55%,#c9972f);color:#2a1a00;border:0;box-shadow:0 18px 40px -16px rgba(233,196,106,.7)}
+.btn.sm{padding:9px 16px;font-size:14.5px}
+/* night scene */
+.scene{position:relative;overflow:hidden;background:linear-gradient(180deg,#031726 0%,#0a3546 46%,#1c6459 72%,#d9945a 100%);padding:110px 0 0}
+.stars,.stars:after{position:absolute;inset:0;content:"";background-image:radial-gradient(1.4px 1.4px at 12% 18%,#fff,transparent),radial-gradient(1px 1px at 28% 8%,#fff,transparent),radial-gradient(1.6px 1.6px at 45% 22%,#fff,transparent),radial-gradient(1px 1px at 63% 12%,#fff,transparent),radial-gradient(1.3px 1.3px at 78% 28%,#fff,transparent),radial-gradient(1px 1px at 90% 6%,#fff,transparent),radial-gradient(1.2px 1.2px at 8% 40%,#fff,transparent),radial-gradient(1px 1px at 36% 36%,#fff,transparent),radial-gradient(1.5px 1.5px at 56% 44%,#fff,transparent),radial-gradient(1px 1px at 86% 46%,#fff,transparent),radial-gradient(1px 1px at 20% 54%,#fff,transparent),radial-gradient(1.2px 1.2px at 70% 58%,#fff,transparent);opacity:.75;animation:tw 4s ease-in-out infinite}
+.stars:after{transform:translate(37px,23px);opacity:.6;animation-delay:-2s}
+@keyframes tw{0%,100%{opacity:.8}50%{opacity:.35}}
+.moon{position:absolute;top:84px;left:7%;width:84px;height:84px;border-radius:50%;box-shadow:22px 10px 0 0 #f6e3a9;transform:rotate(-20deg);filter:drop-shadow(0 0 26px rgba(255,233,176,.45))}
+.mosque{position:absolute;left:0;right:0;bottom:0;height:46%;pointer-events:none}
+.mosque svg{width:100%;height:100%}
+.hero{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center;min-height:560px;padding-bottom:40px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;text-align:center;min-height:0}.hero .cta{justify-content:center}}
+.hero h1{font-family:"Noto Serif Bengali",serif;font-size:clamp(38px,7vw,64px);line-height:1.15;text-shadow:0 6px 30px rgba(0,0,0,.4)}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#dce9e3;font-size:19px;margin-top:12px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+@media(max-width:860px){.pills{justify-content:center}}
+.pills span{display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:6px 13px;font-size:13.5px;font-weight:600}
+.pills svg{color:var(--gold)}
+/* phone with a real screenshot */
+.phone{position:relative;width:250px;margin:0 auto;border-radius:42px;background:#0b0f0e;padding:9px;box-shadow:0 0 0 2px rgba(243,217,139,.35),0 50px 90px -30px rgba(0,0,0,.8)}
+.phone img{display:block;width:100%;border-radius:34px}
+.phone:before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:12px;background:#0b0f0e;z-index:2}
+.duo{position:relative;height:540px}
+.duo .phone{position:absolute;left:50%;top:0;transform:translateX(-62%) rotate(-4deg)}
+.duo .phone.b{transform:translateX(-18%) translateY(40px) rotate(5deg);width:220px;opacity:.95}
+@media(max-width:860px){.duo{height:500px;max-width:380px;margin:20px auto 0}}
 /* sections */
-section{padding:46px 0}
-.sh{text-align:center;margin-bottom:26px}
-.sh h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(26px,4.2vw,38px);color:var(--deep);line-height:1.3}
+section{padding:56px 0;position:relative}
+.sh{text-align:center;margin-bottom:28px}
+.sh h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(28px,4.5vw,40px);line-height:1.3}
+.sh h2 em{font-style:normal;color:var(--gold)}
 .sh p{color:var(--muted);margin-top:6px}
-.tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-@media(max-width:900px){.tiles{grid-template-columns:repeat(2,1fr)}}
-.tile{background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:20px 16px;text-align:center;box-shadow:var(--shadow);transition:transform .2s}
-.tile:hover{transform:translateY(-3px)}
-.tile .ic{width:58px;height:58px;margin:0 auto 12px;border-radius:18px;display:grid;place-items:center;font-size:27px;color:#fff;background:linear-gradient(135deg,var(--g2),var(--deep))}
-.tile b{display:block;font-size:16.5px;color:var(--deep)}
-.tile span{font-size:13.5px;color:var(--muted)}
-.tile:nth-child(5){grid-column:auto}
-@media(max-width:900px){.tile:nth-child(5){grid-column:1/-1}}
-.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+.glass{background:var(--card);border:1px solid var(--line);border-radius:var(--r);backdrop-filter:blur(6px)}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:760px){.icons{grid-template-columns:repeat(2,1fr)}}
+.icon{padding:20px 12px;text-align:center}
+.icon .c{width:56px;height:56px;margin:0 auto 10px;border-radius:18px;display:grid;place-items:center;font-size:25px;color:#2a1a00;background:linear-gradient(135deg,#ffe7a6,#c9972f)}
+.icon b{font-size:15.5px}
+.foot{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);font-size:14px}
+.foot .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+.foot a:hover{color:#fff}
+.final{position:relative;overflow:hidden;text-align:center;border-radius:32px;padding:46px 20px 150px;background:linear-gradient(180deg,#0a3546,#1c6459 70%,#d9945a)}
+.final h2{font-family:"Noto Serif Bengali",serif;font-size:clamp(28px,5vw,40px)}
+.final p{color:#dce9e3;margin:6px 0 20px}
+.final .mosque{height:120px}
+@media(max-width:860px){.moon{left:auto;right:7%;top:80px;width:46px;height:46px;box-shadow:12px 5px 0 0 #f6e3a9}.scene{padding-top:96px}}
+
+.app{position:relative;width:250px;margin:0 auto;border-radius:42px;background:#0b0f0e;padding:9px;box-shadow:0 0 0 2px rgba(243,217,139,.35),0 50px 90px -30px rgba(0,0,0,.8)}
+.app .s{border-radius:34px;overflow:hidden;background:linear-gradient(180deg,#0e5c41,#073626);padding:40px 14px 16px;min-height:440px}
+.app:before{content:"";position:absolute;top:16px;left:50%;transform:translateX(-50%);width:76px;height:20px;border-radius:12px;background:#0b0f0e}
+.app .t1{font-size:11.5px;opacity:.7}.app .t2{font-size:26px;font-weight:700;line-height:1.2}.app .t3{font:600 27px "JetBrains Mono",monospace;color:var(--gold);margin:2px 0 12px}
+.app .row{display:flex;justify-content:space-between;background:rgba(255,255,255,.08);border-radius:12px;padding:9px 11px;margin-bottom:7px;font-size:13.5px}
+.app .row b{font:600 13px "JetBrains Mono",monospace}
+.app .row.on{background:linear-gradient(135deg,#ffe7a6,#e9c46a);color:#2a1a00}
+.artbox{position:relative;padding:10px 0 30px}
+.codec{position:absolute;left:4%;bottom:0;background:rgba(3,23,38,.92);border:1px solid var(--line);border-radius:16px;padding:12px 14px;font:12.5px/1.6 "JetBrains Mono",monospace;color:#cfe3d7;transform:rotate(-4deg);box-shadow:0 20px 40px -14px rgba(0,0,0,.7)}
+.codec .k{color:#9fe2bf}.codec .v{color:var(--gold)}
+.chip{position:absolute;display:flex;gap:7px;align-items:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(6px);border-radius:99px;padding:7px 13px;font-weight:700;font-size:13.5px;animation:fl 5s ease-in-out infinite}
+.chip svg{color:var(--gold)}
+.c1{right:2%;top:40px}.c2{right:0;top:230px;animation-delay:-2s}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.icons5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:860px){.icons5{grid-template-columns:repeat(2,1fr)}.icons5 .icon:last-child{grid-column:1/-1}}
+.icon span{display:block;color:var(--muted);font-size:13px}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:760px){.flow{grid-template-columns:1fr}}
-.st{background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center}
-.st .n{width:48px;height:48px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--g3);color:var(--g);font-size:22px}
-.st b{display:block;color:var(--deep);font-size:17px}.st span{color:var(--muted);font-size:14px}
-.rules{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.st{display:flex;gap:12px;align-items:center;padding:16px}
+.st .c{width:46px;height:46px;flex:none;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffe7a6,#c9972f);color:#2a1a00;font-size:20px}
+.st b{display:block}.st span{color:var(--muted);font-size:13.5px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:760px){.rules{grid-template-columns:1fr}}
-.rc{border-radius:var(--r);padding:22px;border:1.5px solid var(--line);background:#fff;box-shadow:var(--shadow)}
-.rc h3{display:flex;align-items:center;gap:10px;font-size:18px;margin-bottom:14px}
-.rc h3 i{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font-size:18px;color:#fff;font-style:normal}
-.rc.y h3{color:var(--ok)}.rc.y h3 i{background:var(--ok)}
-.rc.n h3{color:var(--no)}.rc.n h3 i{background:var(--no)}
-.rc ul{list-style:none;display:grid;gap:10px}
-.rc li{display:flex;gap:10px;align-items:flex-start;font-size:15px}
-.rc li svg{margin-top:4px;flex:none;font-size:17px}
-.rc.y li svg{color:var(--ok)}.rc.n li svg{color:var(--no)}
-.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
-@media(max-width:760px){.facts{grid-template-columns:1fr}}
-.fact{display:flex;gap:12px;align-items:center;background:var(--g3);border-radius:20px;padding:16px}
-.fact .ic{width:42px;height:42px;flex:none;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--g);font-size:20px}
-.fact b{display:block;color:var(--deep);font-size:15px}.fact span{color:var(--muted);font-size:13px}
-/* developers */
-.dev{background:linear-gradient(160deg,#08281d,#0b3d2c);border-radius:32px;padding:30px;color:#e6f2ec}
-.dev .sh h2{color:#fff}.dev .sh p{color:#a9c7b8}
-.basebar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:18px}
-.basebar span{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:99px;padding:7px 14px;font-size:13.5px}
-.basebar code,.mono{font:13px "JetBrains Mono",monospace;color:#f3d98b;word-break:break-all}
+.rc{padding:20px}
+.rc h3{display:flex;gap:10px;align-items:center;font-size:18px;margin-bottom:12px}
+.rc ul{list-style:none;display:grid;gap:9px}
+.rc li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#dce9e3}
+.rc li svg{margin-top:4px;flex:none}
+.rc.y h3,.rc.y li svg{color:#7ee2ad}.rc.n h3,.rc.n li svg{color:#ff9a8a}
+.dev{padding:22px}
+.basebar{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:14px}
+.basebar span{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:99px;padding:6px 13px;font-size:13.5px}
+.basebar code,.mono{font:13px "JetBrains Mono",monospace;color:var(--gold);word-break:break-all}
 .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.tabs button{border:1px solid rgba(255,255,255,.15);background:transparent;color:#bcd6c9;padding:7px 14px;border-radius:99px;font:600 14px "Hind Siliguri";cursor:pointer}
-.tabs button.on{background:#f3d98b;color:#2a1a00;border-color:#f3d98b}
-pre{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;font:13px/1.65 "JetBrains Mono",monospace;color:#d6eadf;overflow:auto;white-space:pre}
-.eps{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
-@media(max-width:760px){.eps{grid-template-columns:1fr}}
-.ep{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:11px 13px}
-.ep code{font:600 13px "JetBrains Mono",monospace;color:#f3d98b;flex:none}
-.ep span{font-size:13.5px;color:#bcd6c9}
-.ep .tag{margin-left:auto;font-size:11.5px;font-weight:700;color:#0b3d2c;background:#9fe2bf;border-radius:99px;padding:1px 9px;flex:none}
-details.more{margin-top:14px;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px 14px}
-details.more summary{cursor:pointer;font-weight:700;color:#fff}
+.tabs button{border:1px solid rgba(255,255,255,.18);background:transparent;color:#bcd6c9;padding:7px 14px;border-radius:99px;font:600 14px "Hind Siliguri";cursor:pointer}
+.tabs button.on{background:var(--gold);color:#2a1a00;border-color:var(--gold)}
+pre{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:14px;font:13px/1.65 "JetBrains Mono",monospace;color:#d6eadf;overflow:auto;white-space:pre;max-width:100%}
+.eps{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
+.eps code{font:600 12.5px "JetBrains Mono",monospace;color:var(--gold);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:99px;padding:6px 12px}
+details.more{margin-top:14px;border-top:1px solid rgba(255,255,255,.1);padding-top:12px}
+details.more summary{cursor:pointer;font-weight:700;text-align:center}
 details.more p{font-size:14px;color:#bcd6c9;margin-top:8px}
-/* form */
-.req{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px;align-items:start}
-@media(max-width:860px){.req{grid-template-columns:1fr}}
-.side{background:linear-gradient(160deg,var(--g2),var(--deep));color:#fff;border-radius:var(--r);padding:26px;position:relative;overflow:hidden}
-.side:after{content:"";position:absolute;width:220px;height:220px;right:-70px;bottom:-70px;border-radius:50%;background:rgba(255,255,255,.07)}
-.side h3{font-family:"Noto Serif Bengali",serif;font-size:26px;line-height:1.3;margin-bottom:10px}
-.side p{opacity:.85;font-size:15px}
-.side ul{list-style:none;margin-top:16px;display:grid;gap:10px}
-.side li{display:flex;gap:10px;align-items:center;font-weight:600}
-.side li i{width:28px;height:28px;border-radius:10px;background:rgba(255,255,255,.15);display:grid;place-items:center;font-style:normal;font-size:15px}
-form.card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+form.glass{padding:22px;max-width:720px;margin:0 auto}
 form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){form .row{grid-template-columns:1fr}}
 label.f{display:block;font-size:13.5px;color:var(--muted);font-weight:600;margin-bottom:12px}
-label.f input,label.f select,label.f textarea{display:block;width:100%;margin-top:5px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--line);background:#fbfdfc;color:var(--text);font:16px "Hind Siliguri";outline:none}
-label.f input:focus,label.f select:focus,label.f textarea:focus{border-color:var(--g2);background:#fff}
+label.f input,label.f select,label.f textarea{display:block;width:100%;margin-top:5px;padding:12px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.25);color:#fff;font:16px "Hind Siliguri";outline:none}
+label.f select option{color:#000}
+label.f input:focus,label.f select:focus,label.f textarea:focus{border-color:var(--gold)}
 .lbl{font-size:13.5px;color:var(--muted);font-weight:600}
 .checks{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 14px}
-.checks label{display:flex;gap:7px;align-items:center;border:1.5px solid var(--line);border-radius:99px;padding:7px 13px;font-size:14px;cursor:pointer;background:#fbfdfc}
-.checks input{accent-color:var(--g2)}
+.checks label{display:flex;gap:7px;align-items:center;border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:7px 13px;font-size:14px;cursor:pointer}
+.checks input,.agree input{accent-color:#e9c46a}
 .agree{display:flex;gap:10px;align-items:flex-start;font-size:14.5px}
-.agree input{margin-top:5px;accent-color:var(--g2);width:18px;height:18px}
+.agree input{margin-top:5px;width:18px;height:18px}
 .msg{margin-top:12px;padding:12px 14px;border-radius:14px;display:none;font-size:15px}
-.msg.ok{display:block;background:#e7f5ee;color:var(--g)}.msg.err{display:block;background:#fdecea;color:#b42318}
+.msg.ok{display:block;background:rgba(126,226,173,.15);color:#b7f0d1}.msg.err{display:block;background:rgba(255,120,100,.15);color:#ffc6bd}
 .hp{position:absolute;left:-9999px}
-details.q{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;margin-bottom:10px}
-details.q summary{cursor:pointer;font-weight:700;color:var(--deep);list-style:none;display:flex;justify-content:space-between;gap:10px}
-details.q summary:after{content:"+";color:var(--g2);font-size:20px;line-height:1}
-details.q[open] summary:after{content:"−"}
-details.q p{color:var(--muted);margin-top:8px;font-size:15px}
-.faq{max-width:760px;margin:0 auto}
-footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px;margin-top:20px}
-footer .wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
-footer a:hover{color:var(--deep)}
 </style>
 </head>
 <body>
@@ -165,167 +146,145 @@ footer a:hover{color:var(--deep)}
   <symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
   <symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5z"/></symbol>
   <symbol id="book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></symbol>
+  <symbol id="hands" viewBox="0 0 24 24"><path d="M7 21v-5l-3-4 2-6 3 5M17 21v-5l3-4-2-6-3 5M9 11l3 3 3-3"/></symbol>
+  <symbol id="beads" viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><circle cx="18" cy="9" r="2"/><circle cx="17" cy="16" r="2"/><circle cx="7" cy="16" r="2"/><circle cx="6" cy="9" r="2"/><path d="M12 18v4"/></symbol>
+  <symbol id="cloud" viewBox="0 0 24 24"><path d="M7 18h10a4 4 0 0 0 .5-7.97A5.5 5.5 0 0 0 7.1 9.6 4.2 4.2 0 0 0 7 18z"/></symbol>
+  <symbol id="news" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></symbol>
   <symbol id="ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
   <symbol id="x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol>
+  <symbol id="share" viewBox="0 0 24 24"><path d="M12 3v12M8 7l4-4 4 4"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/></symbol>
+  <symbol id="plus" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/></symbol>
+  <symbol id="open" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></symbol>
   <symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3M14 9l2 2"/></symbol>
-  <symbol id="send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
   <symbol id="code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></symbol>
   <symbol id="edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
   <symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
   <symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
-  <symbol id="gauge" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4-5"/></symbol>
+  <symbol id="send" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></symbol>
   <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></symbol>
+  <symbol id="gauge" viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 14 4-5"/></symbol>
   <symbol id="heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+  <symbol id="wifi" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16.5a5 5 0 0 1 7 0M5 12.6a10 10 0 0 1 4-2.4M12 8.1a10 10 0 0 1 7 4.5"/><circle cx="12" cy="20" r="1"/></symbol>
 </svg>
 
 <nav><div class="wrap"><div class="bar">
   <a class="brand" href="./"><img src="logo.png" alt="">Salah <span>Time</span></a>
-  <div class="links"><a href="#what">কী পাবেন</a><a href="#rules">নিয়ম</a><a href="#dev">ডেভেলপার</a><a class="btn pri" href="#request"><svg class="i"><use href="#key"/></svg>Key নিন</a></div>
+  <a class="btn gold sm" href="#request"><svg class="i"><use href="#key"/></svg>Key নিন</a>
 </div></div></nav>
 
-<main class="wrap">
-  <header class="hero">
+<header class="scene">
+  <div class="stars"></div><div class="moon"></div>
+  <div class="mosque"><svg viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><defs><linearGradient id="mw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b3538"/><stop offset="1" stop-color="#02100f"/></linearGradient></defs><g fill="#14464a" opacity=".9"><rect x="0" y="210" width="60" height="40"/><rect x="70" y="196" width="40" height="54"/><rect x="980" y="200" width="56" height="50"/><rect x="1050" y="186" width="44" height="64"/><rect x="1110" y="206" width="90" height="44"/><rect x="150" y="214" width="70" height="36"/></g><g fill="#0a2a2e"><rect x="440" y="160" width="320" height="90"/><path d="M482 162c-20-60 50-110 118-150 68 40 138 90 118 150z"/><rect x="597" y="0" width="6" height="16"/><path d="M415 168c-8-30 18-52 45-66 27 14 53 36 45 66z"/><path d="M695 168c-8-30 18-52 45-66 27 14 53 36 45 66z"/><rect x="392" y="40" width="22" height="210"/><path d="M388 46c0-14 6-30 15-44 9 14 15 30 15 44z"/><rect x="786" y="40" width="22" height="210"/><path d="M782 46c0-14 6-30 15-44 9 14 15 30 15 44z"/></g><g fill="#ffc870" opacity=".95"><rect x="520" y="192" width="14" height="30" rx="7"/><rect x="556" y="192" width="14" height="30" rx="7"/><rect x="593" y="186" width="14" height="36" rx="7"/><rect x="630" y="192" width="14" height="30" rx="7"/><rect x="666" y="192" width="14" height="30" rx="7"/><rect x="398" y="90" width="10" height="20" rx="5"/><rect x="792" y="90" width="10" height="20" rx="5"/></g><rect x="0" y="250" width="1200" height="50" fill="url(#mw)"/><g fill="#ffc870" opacity=".22"><rect x="520" y="258" width="14" height="22" rx="7"/><rect x="556" y="258" width="14" height="22" rx="7"/><rect x="593" y="258" width="14" height="26" rx="7"/><rect x="630" y="258" width="14" height="22" rx="7"/><rect x="666" y="258" width="14" height="22" rx="7"/></g></svg>
+</div>
+  <div class="wrap hero">
     <div>
-      <span class="kick"><b></b>Salah Time API</span>
       <h1>আপনার অ্যাপে<br><em>নামাজের সময়</em></h1>
-      <p class="lead">Salah Time-এর নির্ভুল সময় আর কনটেন্ট দিয়ে নিজের মতো অ্যাপ বানান।</p>
-      <div class="cta"><a class="btn pri" href="#request"><svg class="i"><use href="#key"/></svg>ফ্রি API key নিন</a><a class="btn" href="#dev"><svg class="i"><use href="#code"/></svg>কোড দেখুন</a></div>
-      <div class="free"><span><svg class="i"><use href="#ok"/></svg>সম্পূর্ণ ফ্রি</span><span><svg class="i"><use href="#ok"/></svg>দিনে ৫,০০০ request</span><span><svg class="i"><use href="#ok"/></svg>নিজের ডিজাইন</span></div>
+      <p>ফ্রি API key দিয়ে নিজের মতো অ্যাপ বানান</p>
+      <div class="cta"><a class="btn gold" href="#request"><svg class="i"><use href="#key"/></svg>ফ্রি key নিন</a><a class="btn" href="#dev"><svg class="i"><use href="#code"/></svg>কোড দেখুন</a></div>
+      <div class="pills"><span><svg class="i"><use href="#ok"/></svg>ফ্রি</span><span><svg class="i"><use href="#ok"/></svg>দিনে ৫,০০০ request</span><span><svg class="i"><use href="#ok"/></svg>নিজের ডিজাইন</span></div>
     </div>
-    <div class="art">
-      <div class="ph"><div class="s"><span class="nt"></span>
-        <div class="t1">পরবর্তী নামাজ · ঢাকা</div>
-        <div class="t2">আসর</div>
-        <div class="t3">০১:২৪:০৮</div>
-        <div class="row"><span>ফজর</span><b>04:59</b></div>
-        <div class="row"><span>যোহর</span><b>11:46</b></div>
-        <div class="row on"><span>আসর</span><b>15:35</b></div>
-        <div class="row"><span>মাগরিব</span><b>17:11</b></div>
-        <div class="row"><span>এশা</span><b>18:30</b></div>
+    <div class="artbox">
+      <div class="app"><div class="s">
+        <div class="t1">পরবর্তী নামাজ · ঢাকা</div><div class="t2">আসর</div><div class="t3">০১:২৪:০৮</div>
+        <div class="row"><span>ফজর</span><b>04:59</b></div><div class="row"><span>যোহর</span><b>11:46</b></div>
+        <div class="row on"><span>আসর</span><b>15:35</b></div><div class="row"><span>মাগরিব</span><b>17:11</b></div><div class="row"><span>এশা</span><b>18:30</b></div>
       </div></div>
-      <div class="code"><span class="k">GET</span> /v1/prayer-times<br>?district=<span class="s2">dhaka</span><br><br>{ <span class="k">"asr"</span>: <span class="s2">"15:35"</span> }</div>
+      <div class="codec"><span class="k">GET</span> /v1/prayer-times<br>{ <span class="k">"asr"</span>: <span class="v">"15:35"</span> }</div>
       <div class="chip c1"><svg class="i"><use href="#moon"/></svg>সেহরি-ইফতার</div>
       <div class="chip c2"><svg class="i"><use href="#compass"/></svg>কিবলা</div>
-      <div class="chip c3"><svg class="i"><use href="#cal"/></svg>হিজরি তারিখ</div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <section id="what">
-    <div class="sh"><h2>কী কী পাবেন</h2><p>যেটা লাগবে, শুধু সেটাই চেয়ে নিন</p></div>
-    <div class="tiles">
-      <div class="tile"><div class="ic"><svg class="i"><use href="#clock"/></svg></div><b>নামাজের সময়</b><span>দিন বা পুরো মাস</span></div>
-      <div class="tile"><div class="ic"><svg class="i"><use href="#moon"/></svg></div><b>রমজান</b><span>৬৪ জেলার সেহরি-ইফতার</span></div>
-      <div class="tile"><div class="ic"><svg class="i"><use href="#cal"/></svg></div><b>হিজরি তারিখ</b><span>বাংলা মাসের নাম</span></div>
-      <div class="tile"><div class="ic"><svg class="i"><use href="#compass"/></svg></div><b>কিবলা</b><span>দিক ও দূরত্ব</span></div>
-      <div class="tile"><div class="ic"><svg class="i"><use href="#book"/></svg></div><b>কনটেন্ট</b><span>দোয়া, ৯৯ নাম, হাদিস</span></div>
+<main class="wrap">
+  <section>
+    <div class="sh"><h2>কী কী <em>পাবেন</em></h2></div>
+    <div class="icons5">
+      <div class="icon glass"><div class="c"><svg class="i"><use href="#clock"/></svg></div><b>নামাজের সময়</b><span>দিন বা মাস</span></div>
+      <div class="icon glass"><div class="c"><svg class="i"><use href="#moon"/></svg></div><b>রমজান</b><span>৬৪ জেলা</span></div>
+      <div class="icon glass"><div class="c"><svg class="i"><use href="#cal"/></svg></div><b>হিজরি</b><span>বাংলা মাস</span></div>
+      <div class="icon glass"><div class="c"><svg class="i"><use href="#compass"/></svg></div><b>কিবলা</b><span>দিক ও দূরত্ব</span></div>
+      <div class="icon glass"><div class="c"><svg class="i"><use href="#book"/></svg></div><b>কনটেন্ট</b><span>দোয়া, হাদিস</span></div>
     </div>
   </section>
 
   <section>
-    <div class="sh"><h2>৩ ধাপে key</h2></div>
+    <div class="sh"><h2>৩ ধাপে <em>key</em></h2></div>
     <div class="flow">
-      <div class="st"><span class="n"><svg class="i"><use href="#edit"/></svg></span><div><b>ফর্ম পূরণ</b><span>অ্যাপের নাম আর কাজটা লিখুন</span></div></div>
-      <div class="st"><span class="n"><svg class="i"><use href="#search"/></svg></span><div><b>আমরা দেখি</b><span>সাধারণত ১-৩ দিন</span></div></div>
-      <div class="st"><span class="n"><svg class="i"><use href="#mail"/></svg></span><div><b>ইমেইলে key</b><span>তারপরই শুরু করুন</span></div></div>
+      <div class="st glass"><span class="c"><svg class="i"><use href="#edit"/></svg></span><div><b>ফর্ম পূরণ</b><span>অ্যাপের নাম ও কাজ</span></div></div>
+      <div class="st glass"><span class="c"><svg class="i"><use href="#search"/></svg></span><div><b>আমরা দেখি</b><span>১-৩ দিন</span></div></div>
+      <div class="st glass"><span class="c"><svg class="i"><use href="#mail"/></svg></span><div><b>ইমেইলে key</b><span>তারপরই শুরু</span></div></div>
     </div>
   </section>
 
-  <section id="rules">
-    <div class="sh"><h2>নিয়ম</h2><p>নিয়ম ভাঙলে key বন্ধ হয়ে যাবে</p></div>
+  <section>
+    <div class="sh"><h2>নিয়ম</h2></div>
     <div class="rules">
-      <div class="rc y"><h3><i>✓</i>করতে পারবেন</h3><ul>
-        <li><svg class="i"><use href="#ok"/></svg>নিজের অ্যাপ, ওয়েবসাইট বা মসজিদের ডিসপ্লেতে দেখানো</li>
-        <li><svg class="i"><use href="#ok"/></svg>নিজের নাম, লোগো আর ডিজাইন</li>
+      <div class="rc y glass"><h3><svg class="i"><use href="#ok"/></svg>করতে পারবেন</h3><ul>
+        <li><svg class="i"><use href="#ok"/></svg>নিজের অ্যাপ, ওয়েবসাইট, মসজিদের ডিসপ্লে</li>
+        <li><svg class="i"><use href="#ok"/></svg>নিজের নাম, লোগো, ডিজাইন</li>
         <li><svg class="i"><use href="#ok"/></svg>ফ্রি বা বিজ্ঞাপনসহ অ্যাপ</li>
-        <li><svg class="i"><use href="#ok"/></svg>২৪ ঘণ্টা পর্যন্ত ফোনে জমা রাখা</li>
       </ul></div>
-      <div class="rc n"><h3><i>✕</i>পারবেন না</h3><ul>
-        <li><svg class="i"><use href="#x"/></svg>Salah Time-এর নাম, লোগো বা হুবহু ডিজাইন</li>
-        <li><svg class="i"><use href="#x"/></svg>key শেয়ার, বিক্রি বা খোলা জায়গায় রাখা</li>
-        <li><svg class="i"><use href="#x"/></svg>দোয়া-হাদিসের লেখা বদলানো বা উৎস মুছা</li>
-        <li><svg class="i"><use href="#x"/></svg>সব ডেটা নামিয়ে আবার বিক্রি করা</li>
+      <div class="rc n glass"><h3><svg class="i"><use href="#x"/></svg>পারবেন না</h3><ul>
+        <li><svg class="i"><use href="#x"/></svg>Salah Time-এর নাম, লোগো বা ডিজাইন</li>
+        <li><svg class="i"><use href="#x"/></svg>key শেয়ার বা বিক্রি</li>
+        <li><svg class="i"><use href="#x"/></svg>দোয়া-হাদিসের লেখা বদলানো</li>
       </ul></div>
-    </div>
-    <div class="facts">
-      <div class="fact"><span class="ic"><svg class="i"><use href="#shield"/></svg></span><div><b>ইউজারের তথ্য দিই না</b><span>কারো লোকেশন বা ফোনের তথ্য না</span></div></div>
-      <div class="fact"><span class="ic"><svg class="i"><use href="#gauge"/></svg></span><div><b>দিনে ৫,০০০ request</b><span>বেশি লাগলে জানান</span></div></div>
-      <div class="fact"><span class="ic"><svg class="i"><use href="#heart"/></svg></span><div><b>"তথ্য: Salah Time"</b><span>ছোট করে নাম লিখে দিন</span></div></div>
     </div>
   </section>
 
   <section id="dev">
-    <div class="dev">
-      <div class="sh"><h2>ডেভেলপারদের জন্য</h2><p>GET request, JSON উত্তর, key যায় header-এ</p></div>
+    <div class="sh"><h2>ডেভেলপারদের <em>জন্য</em></h2></div>
+    <div class="dev glass">
       <div class="basebar"><span>Base URL: <code class="base">লোড হচ্ছে…</code></span><span>Header: <code>X-API-Key</code></span></div>
       <div class="tabs" id="exTabs"><button class="on" data-ex="curl">cURL</button><button data-ex="js">JavaScript</button><button data-ex="dart">Flutter</button><button data-ex="kt">Kotlin</button></div>
       <pre id="ex"></pre>
-      <div class="eps">
-        <div class="ep"><code>/v1/prayer-times</code><span>এক দিনের সময়</span><em class="tag">prayer</em></div>
-        <div class="ep"><code>/v1/prayer-times/month</code><span>পুরো মাস</span><em class="tag">prayer</em></div>
-        <div class="ep"><code>/v1/ramadan</code><span>সেহরি-ইফতার</span><em class="tag">ramadan</em></div>
-        <div class="ep"><code>/v1/districts</code><span>৬৪ জেলা</span><em class="tag">ramadan</em></div>
-        <div class="ep"><code>/v1/hijri</code><span>হিজরি তারিখ</span><em class="tag">calendar</em></div>
-        <div class="ep"><code>/v1/qibla</code><span>কিবলার দিক</span><em class="tag">qibla</em></div>
-        <div class="ep"><code>/v1/duas</code><span>দোয়া</span><em class="tag">content</em></div>
-        <div class="ep"><code>/v1/names99</code><span>৯৯ নাম</span><em class="tag">content</em></div>
-        <div class="ep"><code>/v1/hadith</code><span>হাদিস</span><em class="tag">content</em></div>
-        <div class="ep"><code>/v1/articles</code><span>লেখা</span><em class="tag">content</em></div>
-      </div>
-      <details class="more"><summary>প্যারামিটার ও ভুলের কোড</summary>
-        <p><span class="mono">lat, lng</span> অথবা <span class="mono">district=dhaka</span> · <span class="mono">date=2027-02-18</span> · <span class="mono">tz=Asia/Dhaka</span> · <span class="mono">method</span>: karachi (ডিফল্ট), mwl, isna, egypt, makkah · <span class="mono">madhab</span>: hanafi (ডিফল্ট), shafi · কনটেন্টে <span class="mono">q, limit, offset</span> · হিজরি ও রমজানে <span class="mono">adjust</span></p>
-        <p><span class="mono">401</span> key নেই বা ভুল · <span class="mono">403</span> এই অংশের অনুমতি নেই / key বন্ধ · <span class="mono">429</span> আজকের সীমা শেষ (রাত ১২টা UTC-তে আবার শুরু) · <span class="mono">X-RateLimit-Remaining</span> header-এ বাকি সংখ্যা · <span class="mono">/v1/me</span> আপনার key-এর তথ্য</p>
+      <div class="eps"><code>/v1/prayer-times</code><code>/v1/prayer-times/month</code><code>/v1/ramadan</code><code>/v1/districts</code><code>/v1/hijri</code><code>/v1/qibla</code><code>/v1/duas</code><code>/v1/names99</code><code>/v1/hadith</code><code>/v1/articles</code><code>/v1/me</code></div>
+      <details class="more"><summary>প্যারামিটার ও নিয়মের বিস্তারিত</summary>
+        <p><span class="mono">lat, lng</span> বা <span class="mono">district=dhaka</span> · <span class="mono">date=2027-02-18</span> · <span class="mono">tz=Asia/Dhaka</span> · <span class="mono">method</span>: karachi, mwl, isna, egypt, makkah · <span class="mono">madhab</span>: hanafi, shafi · কনটেন্টে <span class="mono">q, limit, offset</span> · হিজরি ও রমজানে <span class="mono">adjust</span></p>
+        <p><span class="mono">401</span> key ভুল · <span class="mono">403</span> অনুমতি নেই · <span class="mono">429</span> আজকের সীমা শেষ · প্রতিটা উত্তরে <span class="mono">X-RateLimit-Remaining</span></p>
+        <p>ইউজারের কোনো তথ্য দেওয়া হয় না। যেখানে দেখাবেন সেখানে ছোট করে লিখুন "তথ্য: Salah Time"। ২৪ ঘণ্টা পর্যন্ত ফোনে জমা রাখা যাবে। নিয়ম ভাঙলে key বন্ধ হবে।</p>
       </details>
     </div>
   </section>
 
   <section id="request">
-    <div class="req">
-      <div class="side">
-        <h3>ফ্রি API key নিন</h3>
-        <p>সঠিক তথ্য দিন, আপনার ইমেইলেই key যাবে।</p>
-        <ul><li><i>১</i>ফর্ম পূরণ করুন</li><li><i>২</i>১-৩ দিনে যাচাই</li><li><i>৩</i>ইমেইলে key</li></ul>
+    <div class="sh"><h2>ফ্রি <em>API key</em> নিন</h2><p>ইমেইলে key পাঠানো হবে</p></div>
+    <form class="glass" id="reqForm" novalidate>
+      <div class="row">
+        <label class="f">আপনার নাম *<input name="name" required maxlength="80" autocomplete="name"></label>
+        <label class="f">ইমেইল *<input name="email" type="email" required maxlength="120" autocomplete="email"></label>
       </div>
-      <form class="card" id="reqForm" novalidate>
-        <div class="row">
-          <label class="f">আপনার নাম *<input name="name" required maxlength="80" autocomplete="name"></label>
-          <label class="f">ইমেইল *<input name="email" type="email" required maxlength="120" autocomplete="email"></label>
-        </div>
-        <div class="row">
-          <label class="f">অ্যাপের নাম *<input name="app" required maxlength="100"></label>
-          <label class="f">প্ল্যাটফর্ম<select name="platform"><option>Android</option><option>iOS</option><option>Android ও iOS</option><option>ওয়েবসাইট</option><option>মসজিদের ডিসপ্লে</option><option>অন্য কিছু</option></select></label>
-        </div>
-        <div class="row">
-          <label class="f">প্রতিষ্ঠান (ঐচ্ছিক)<input name="org" maxlength="100"></label>
-          <label class="f">আনুমানিক ব্যবহারকারী<select name="users"><option>১০০-এর কম</option><option>১০০ থেকে ১,০০০</option><option>১,০০০ থেকে ১০,০০০</option><option>১০,০০০-এর বেশি</option></select></label>
-        </div>
-        <label class="f">অ্যাপ বা ওয়েবসাইটের লিংক (থাকলে)<input name="website" maxlength="200" placeholder="https://"></label>
-        <span class="lbl">কী কী লাগবে</span>
-        <div class="checks">
-          <label><input type="checkbox" name="scopes" value="prayer" checked>নামাজের সময়</label>
-          <label><input type="checkbox" name="scopes" value="ramadan">রমজান</label>
-          <label><input type="checkbox" name="scopes" value="calendar">হিজরি</label>
-          <label><input type="checkbox" name="scopes" value="qibla">কিবলা</label>
-          <label><input type="checkbox" name="scopes" value="content">কনটেন্ট</label>
-        </div>
-        <label class="f">কী কাজে লাগবে *<textarea name="purpose" rows="3" maxlength="1500" required placeholder="যেমন: আমাদের মসজিদের অ্যাপে প্রতিদিনের নামাজের সময় দেখাব।"></textarea></label>
-        <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label class="agree"><input type="checkbox" name="agree">নিয়মগুলো পড়েছি এবং মেনে চলব</label>
-        <button class="btn pri" type="submit" style="margin-top:16px;width:100%"><svg class="i"><use href="#send"/></svg>অনুরোধ পাঠান</button>
-        <div class="msg" id="msg"></div>
-      </form>
-    </div>
-  </section>
-
-  <section class="faq">
-    <div class="sh"><h2>প্রশ্ন ও উত্তর</h2></div>
-    <details class="q"><summary>API কি ফ্রি?</summary><p>হ্যাঁ, সাধারণ ব্যবহারের জন্য পুরোপুরি ফ্রি।</p></details>
-    <details class="q"><summary>key হারিয়ে গেলে?</summary><p>আবার ফর্ম পূরণ করে জানান। পুরানটা বন্ধ করে নতুন key দেওয়া হবে।</p></details>
-    <details class="q"><summary>ওয়েবসাইটে key রাখলে অন্যরা দেখবে না?</summary><p>লিংক দিলে key-টা শুধু আপনার ওয়েবসাইট থেকে চলার মতো করে দেব।</p></details>
-    <details class="q"><summary>সময় কতটা ঠিক?</summary><p>Salah Time অ্যাপের হুবহু একই হিসাব (করাচি পদ্ধতি, হানাফি আসর)। মসজিদের জামাতের সময় একটু আলাদা হতে পারে।</p></details>
+      <div class="row">
+        <label class="f">অ্যাপের নাম *<input name="app" required maxlength="100"></label>
+        <label class="f">প্ল্যাটফর্ম<select name="platform"><option>Android</option><option>iOS</option><option>Android ও iOS</option><option>ওয়েবসাইট</option><option>মসজিদের ডিসপ্লে</option><option>অন্য কিছু</option></select></label>
+      </div>
+      <div class="row">
+        <label class="f">প্রতিষ্ঠান (ঐচ্ছিক)<input name="org" maxlength="100"></label>
+        <label class="f">আনুমানিক ব্যবহারকারী<select name="users"><option>১০০-এর কম</option><option>১০০ থেকে ১,০০০</option><option>১,০০০ থেকে ১০,০০০</option><option>১০,০০০-এর বেশি</option></select></label>
+      </div>
+      <label class="f">অ্যাপ বা ওয়েবসাইটের লিংক<input name="website" maxlength="200" placeholder="https://"></label>
+      <span class="lbl">কী কী লাগবে</span>
+      <div class="checks">
+        <label><input type="checkbox" name="scopes" value="prayer" checked>নামাজের সময়</label>
+        <label><input type="checkbox" name="scopes" value="ramadan">রমজান</label>
+        <label><input type="checkbox" name="scopes" value="calendar">হিজরি</label>
+        <label><input type="checkbox" name="scopes" value="qibla">কিবলা</label>
+        <label><input type="checkbox" name="scopes" value="content">কনটেন্ট</label>
+      </div>
+      <label class="f">কী কাজে লাগবে *<textarea name="purpose" rows="3" maxlength="1500" required placeholder="যেমন: মসজিদের অ্যাপে প্রতিদিনের নামাজের সময় দেখাব।"></textarea></label>
+      <input class="hp" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="agree"><input type="checkbox" name="agree">নিয়মগুলো মেনে চলব</label>
+      <button class="btn gold" type="submit" style="margin-top:16px;width:100%"><svg class="i"><use href="#send"/></svg>অনুরোধ পাঠান</button>
+      <div class="msg" id="msg"></div>
+    </form>
   </section>
 </main>
 
-<footer><div class="wrap">
+<footer class="foot"><div class="wrap">
   <a class="brand" href="./"><img src="logo.png" alt="">Salah <span>Time</span></a>
   <span>© <span id="yr">2026</span> Salah Time Team</span>
   <div style="display:flex;gap:16px"><a href="./">হোম</a><a href="iphone.html">iPhone</a><a href="privacy.html">গোপনীয়তা</a></div>
@@ -377,5 +336,6 @@ f.onsubmit = async e => {
   btn.disabled = false;
 };
 </script>
+
 </body>
 </html>
